@@ -1,0 +1,249 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+
+    @template theme_boost/navbar
+
+    This template renders the top navbar.
+
+    Example context (json):
+    {
+        "output": {
+            "should_display_navbar_logo": true,
+            "get_compact_logo_url": "http://placekitten.com/50/50",
+            "custom_menu": "<li>..</li>",
+            "page_heading_menu": "<li>..</li>",
+            "search_box": "<div><input type='text'></div>",
+            "navbar_plugin_output": "<div class='dropdown'>Messaging</div>",
+            "user_menu": "<div class='dropdown'>John Doe</div>"
+        },
+        "config": {
+            "wwwroot": "#",
+            "homeurl": "/my/"
+        },
+       
+        "sitename": "Moodle Site",
+        "mobileprimarynav": [
+            {
+                "text": "Dashboard",
+                "url": "/my",
+                "isactive": true
+            },
+            {
+                "text": "Site home",
+                "url": "/",
+                "isactive": false
+            },
+            {
+                "text": "My courses",
+                "url": "/course",
+                "isactive": false
+            }
+            {
+                "text": "about us",
+                "url": "/aboutus",
+                "isactive": false
+            }
+            {
+                "text": "contact us",
+                "url": "/aboutus",
+                "isactive": false
+            }
+           
+        ]
+    }
+
+}}
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mea+Culpa&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<nav class="navbar fixed-top bg-body navbar-expand" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+    <div class="container-fluid">
+        
+        
+        <div class="logoSection">
+        <button class="navbar-toggler aabtn d-block d-md-none px-1 my-1 border-0" data-toggler="drawers" data-action="toggle" data-target="theme_boost-drawers-primary">
+            <span class="navbar-toggler-icon"></span>
+            <span class="visually-hidden">{{#str}}sidepanel, core{{/str}}</span>
+        </button>
+          
+        <a href="{{{ config.homeurl }}}" class="navbar-brand d-none d-md-flex align-items-center m-0 me-4 p-0 aabtn">
+
+            {{# output.should_display_navbar_logo }}
+                <img src="{{output.get_compact_logo_url}}" class="logo me-1" alt="{{sitename}}">
+            {{/ output.should_display_navbar_logo }}
+            {{^ output.should_display_navbar_logo }}
+                {{{ sitename }}}
+            {{/ output.should_display_navbar_logo }}
+        </a>
+        </div>
+        
+        
+        <div class="SearchSection">
+         <!-- 🔍 Search form -->
+        <form action="{{config.wwwroot}}/course/search.php" method="get" class="form-inline ml-auto d-flex">
+            <input type="text" name="search" class="form-control mr-2" placeholder="Search courses..." aria-label="Search">
+            <button type="submit" class="btn btn-outline-primary">Search</button>
+        </form>
+
+        {{{ output.search_box }}}
+        
+        </div>
+        
+
+    
+        <div class="MenuSection">
+        {{#primarymoremenu}}
+            <div class="primary-navigation">
+                {{> core/moremenu}}
+            </div>
+       {{/primarymoremenu}}
+
+        <ul class="navbar-nav d-none d-md-flex my-1 px-1">
+            <!-- page_heading_menu -->
+            <li>
+            <a class="nav-link" href="https://elearnkranti.com/course/index.php?categoryid=3">Offers</a>
+           </li>
+           <li>
+           <a class="nav-link" href="https://elearnkranti.com/course/index.php?categoryid=1">Courses</a> 
+           </li>
+           <li>
+           <a class="nav-link" href="https://elearnkranti.com/theme/boost/home1.php/#testimonialSection">Testimonials</a> 
+           </li>
+           
+        </ul>
+          <ul class="navbar-nav d-none d-md-flex my-1 px-1">
+             <!-- page_heading_menu -->
+              <li class="nav-item">
+              <a class="nav-link" href="{{ config.wwwroot }}/theme/boost/aboutus.php">About Us</a>
+               </li>
+        </ul>
+        <ul class="navbar-nav d-none d-md-flex my-1 px-1">
+            <!-- page_heading_menu -->
+              <li class="nav-item">
+               <a class="nav-link" href="{{ config.wwwroot }}/theme/boost/contact.php">Contact</a>
+               </li>
+               <li class="nav-item">
+               <a class="nav-link" href="{{ config.wwwroot }}/theme/boost/contact.php">Request a Call Back</a>
+               </li>
+ 
+        </ul>
+        
+        <ul class="navbar-nav d-none d-md-flex my-1 px-1">
+            <!-- page_heading_menu -->
+              <li class="nav-item">
+               <a class="nav-link" href="https://elearnkranti.com/login/index.php">Log in</a>
+               </li>
+ 
+        </ul>
+      
+        <div id="usernavigation" class="navbar-nav ms-auto h-100">
+            {{# output.search_box }}
+                {{{ output.search_box }}}
+                <div class="divider border-start h-75 align-self-center mx-1"></div>
+            {{/output.search_box}}
+            {{#langmenu}}
+                {{> theme_boost/language_menu }}
+                <div class="divider border-start h-75 align-self-center mx-1"></div>
+            {{/langmenu}}
+            {{{ output.navbar_plugin_output }}}
+            <!-- 
+            <div class="d-flex align-items-stretch usermenu-container" data-region="usermenu">
+                {{#usermenu}}
+                    {{> core/user_menu }}
+                {{/usermenu}}
+            </div>
+            -->
+            {{{ output.edit_switch }}}
+        </div>
+       
+        
+        </div>
+    </div>
+
+
+
+
+</nav>
+
+{{> theme_boost/primary-drawer-mobile }}
+
+
+
+
+<style>
+    
+    .MenuSection{
+        display: flex;
+    }
+    .navbar>.container-fluid{
+            padding: 10px 35px;
+    }
+    
+    .SearchSection{
+            min-width: 40%;
+    }
+    
+    
+    .SearchSection input{
+            min-width: 80%;
+            border: none;
+    }
+    
+    .SearchSection form{
+        border: 1px solid #dddddd;
+    padding: 4px 4px;
+    border-radius: 35px;
+    }
+    
+    .SearchSection button{
+        width: 18%;
+    border-radius: 40px;
+    background-image: linear-gradient(275deg, #4b5aed, #a865e9);
+    color: white;
+    border: none;
+    }
+    
+    .navbar.fixed-top {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 10px 10px -12px black !important;
+}
+
+.moremenu .nav-link.active {
+    border-bottom-color: white !important;
+}
+.navbar.fixed-top .nav-link {
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media only screen and (max-width: 900px) {
+  .SearchSection input {
+        min-width: 65% !important;
+        max-width: 65% !important;
+    }
+    .SearchSection button{
+        width: 30%;
+    }
+}
+    
+</style>

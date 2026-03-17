@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    
+    
+    #page.drawers .main-inner {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    #page.drawers {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    #page.drawers div[role="main"] {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    
+    .header-maxwidth {
+    display: none;
+    }
+
+
+.footer {
+  background-color: #111;
+  padding: 40px 20px;
+  margin-top: 65px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-left {
+  flex: 1 1 300px;
+}
+
+.logo {
+  
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.contact {
+  font-size: 14px;
+  color: white;
+  margin-top:0;
+  margin-bottom:0;
+
+}
+
+.contact-title {
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.contact-info span {
+  display: inline-block;
+  margin-right: 15px;
+  margin-top: 0px;
+}
+
+.footer-right {
+  padding-left:55px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0px;
+  flex: 1;
+}
+
+.footer-down h4 {
+  margin-bottom: 0px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.footer-down li {
+  margin-bottom: 6px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.footer-down li:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.footer {
+  background-color: #000000;
+  color: white;
+  padding: 0px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0;
+  
+}
+.footer {
+  margin: 0;
+  padding: 0;
+}
+.footer-left {
+  padding-left:50px;
+  padding-top:30px;
+  background-color:#00000;
+  color:white;
+}
+.top {
+  padding-top:40px;
+  padding-left:55px;
+  padding-bottom:40px;
+}
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding-bottom:40px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.tag{
+
+  padding-right:55px;
+  
+}
+.footer-left {
+    flex: 1 1 300px !important;
+}
+
+ .logininfo{
+  display: none;
+}
+.tool_dataprivacy{
+  display: none;
+}
+.mobilelink{
+   display: none;
+}
+#theme_switch_link{
+   display: none;
+}
+.footer-section{
+  display: none;
+}
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  
+  <div class="image-feature" style="padding: 50px 14px; max-width: 80%; margin: auto;">
+     <div class="image-text">
+      <h1 style="font-size:34px; font-weight: 500;">Privacy Policy for eLearnKranti</h1>
+      <p>
+          At eLearnKranti, your privacy is a top priority. We are dedicated to protecting your personal information and ensuring a secure, trustworthy learning experience. This Privacy Policy explains how we collect, use, share, and safeguard your data when you interact with our website (elearnkranti.com), mobile apps, or services. By using our platform, you consent to the practices described here. If you do not agree, please do not use our services. We comply with applicable laws, including India's Digital Personal Data Protection Act (DPDPA) 2023, GDPR for EU users, and CCPA for California residents. For region-specific rights, see Section 7.
+      </p>
+     
+       <h2 style="font-size:24px; font-weight: 500;">Information We Collect</h2>
+      <p>We collect data to provide, improve, and personalize your learning journey. This includes personal information such as your name, email address, phone number, and password when you sign up for an account; billing address and credit or debit card info, which is processed securely via third-party gateways like Stripe or Razorpay, though we do not store full card details; and optional details like photo, bio, or learning goals to enhance community features. Additionally, we gather usage and learning data, including progress tracking, quiz scores, video watch time, and forum posts; device and log info such as IP address, browser type, device ID, operating system, and access times. For marketing and communication, we collect email preferences for updates, promotions, or course recommendations when you sign up for newsletters. We do not collect sensitive data, such as health or political views, unless it is voluntarily provided in forums, which are public.</p>
+      
+      
+      
+      <h2 style="font-size:24px; font-weight: 500;">How We Use Your Information</h2>
+     <p>Your data helps us deliver exceptional education. We use it for service delivery, such as enrolling you in courses, tracking progress, issuing certificates, and providing support; personalization, including recommending courses based on your interests and history; communication, like sending enrollment confirmations, updates, or reminders, which you can opt out of anytime; improvement, by analyzing usage to enhance content, fix bugs, and develop new features; marketing, where with your consent we send tailored promotions via email or push notifications; and legal compliance, to detect fraud, resolve disputes, or respond to legal requests.</p>
+     
+     
+       <h2 style="font-size:24px; font-weight: 500;">Sharing Your Information</h2>
+     <p>We do not sell your data. We share it only when necessary, such as with service providers like trusted partners including cloud hosts like AWS and email services like Mailchimp, all under strict confidentiality agreements; affiliates and partners for joint promotions or certificate issuance, for example with accreditation bodies; legal requirements to comply with laws, protect rights, or enforce terms, such as in response to subpoenas; and in business transfers during a merger or acquisition, where data may transfer to the new entity. For aggregated, anonymized data, such as course completion trends, we may share it publicly to showcase our impact.</p>
+     
+     
+       <h2 style="font-size:24px; font-weight: 500;">Data Security</h2>
+     <p>We use industry-standard measures to protect your information, including encryption (SSL/TLS) for data in transit, secure servers and access controls for data at rest, and regular audits, firewalls, and monitoring for breaches. While no system is 100% secure, we notify affected users and authorities promptly if a breach occurs.</p>
+     
+     
+      <h2 style="font-size:24px; font-weight: 500;">Cookies and Tracking Technologies</h2>
+     <p>Our site uses cookies, pixels, and similar tools for functionality and analytics. Essential cookies handle login and session management, while analytics cookies from Google Analytics help understand site performance with anonymized IP addresses. Marketing cookies enable personalized ads, and you can opt out via browser settings or our cookie banner. You can manage preferences in your browser or our privacy settings, though disabling cookies may limit features.</p>
+     
+     <h2 style="font-size:24px; font-weight: 500;">Data Retention</h2>
+     <p>We retain data for active accounts as long as your account is active or needed for services. For inactive accounts, data is deleted after 2 years of inactivity, unless required for legal reasons. Completion data, including certificates and progress, is retained indefinitely for your records, though you can request deletion.</p>
+     
+     
+      <h2 style="font-size:24px; font-weight: 500;">Your Privacy Rights</h2>
+     <p>Depending on your location, you have rights to access your data via the account dashboard or by requesting a report; correction by updating inaccurate info in settings; deletion by requesting removal, subject to legal holds via email to support; opt-out from emails or marketing; portability to download your data in standard format; and under CCPA, to opt out of sharing since we do not sell data. To exercise these rights, email privacy@elearnkranti.com with verification, such as ID proof, and we'll respond within 30 days. Our services are for users 18 and older. We do not knowingly collect data from children under 13 (or 16 in some regions), and if we discover such data, we'll delete it. Parents or guardians can contact us for concerns.</p>
+     
+     
+     <h2 style="font-size:24px; font-weight: 500;">International Data Transfers</h2>
+     <p>Data is processed in India and may be transferred to the US or EU via providers. We ensure safeguards like Standard Contractual Clauses for compliance.</p>
+     
+     <h2 style="font-size:24px; font-weight: 500;">Changes to This Policy</h2>
+     <p>We may update this policy to reflect changes in our practices or laws. We'll notify you via email or site notice at least 30 days in advance. Continued use after changes implies acceptance.</p>
+     
+     
+     
+     
+     <h2 style="font-size:24px; font-weight: 500;">Contact Us</h2>
+     <p>Questions? Reach out to our Data Protection Officer by email at privacy@elearnkranti.com; visit the Help Center at elearnkranti.com/help/privacy for FAQs; Mon-Fri 9 AM - 6 PM IST); or mail eLearnKranti Pvt. Ltd.</p>
+     
+     
+     
+     
+     
+     
+    </div>
+   </div>
+
+
+<!--
+
+<footer class="footer">
+  <div class="footer-container">
+
+   
+    <div class="top">
+
+
+     
+        
+      
+
+          {{# output.loggedinuser }}
+          
+            You are logged in as 
+            <a href="{{{ output.userprofileurl }}}" title="View profile">{{{ output.userfullname }}}</a> 
+            (<a href="{{{ config.wwwroot }}}/login/logout.php?sesskey={{{ sesskey }}}">Log out</a>)
+          
+          {{/ output.loggedinuser }}
+        </div>
+      </div>
+    
+
+   
+    <div class="footer-right">
+      <div class="footer-down" style="min-width: 300px;">
+          <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1753703039/eLearnKranti%201%20%281%29.png" class="logo me-1" alt="Pariksha Kranti" style="margin-bottom: 20px !important;">
+        <p>Join eLearnKranti, India's premier e-learning platform launched in 2025, empowering learners with cutting-edge skills for a dynamic future.</p>
+      </div>
+      <div class="footer-down">
+        <h4>Data Science</h4>
+        <ul>
+          <li>Python</li>
+          <li>Machine Learning</li>
+          <li>ChatGPT</li>
+          <li>Deep Learning</li>
+        </ul>
+      </div>
+      <div class="footer-down">
+        <h4>IT Certificates</h4>
+        <ul>
+          <li>Amazon AWS</li>
+          <li>CCNA</li>
+          <li>Kubernetes</li>
+          <li>Power BI</li>
+        </ul>
+      </div>
+      <div class="footer-down">
+        <h4>Legal & Accessibility</h4>
+        <ul>
+          <li><a href="https://elearnkranti.com/theme/boost/privacy-policy.php">Privacy Policy</a></li>
+          <li><a href="https://elearnkranti.com/theme/boost/terms.php">Terms</a></li>
+          <li>Accessibility statement</li>
+          <li>Sitemap</li>
+        </ul>
+      </div>
+      
+     
+    </div>
+
+  </div>
+</footer>
+-->
+{{> theme_boost/footer }}
+</body>
+</html>

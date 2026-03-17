@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    
+    
+    #page.drawers .main-inner {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    #page.drawers {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    #page.drawers div[role="main"] {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    
+    .header-maxwidth {
+    display: none;
+    }
+
+
+.footer {
+  background-color: #111;
+  padding: 40px 20px;
+  margin-top: 65px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-left {
+  flex: 1 1 300px;
+}
+
+.logo {
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.contact {
+  font-size: 14px;
+  color: white;
+  margin-top:0;
+  margin-bottom:0;
+
+}
+
+.contact-title {
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.contact-info span {
+  display: inline-block;
+  margin-right: 15px;
+  margin-top: 0px;
+}
+
+.footer-right {
+  padding-left:55px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0px;
+  flex: 1;
+}
+
+.footer-down h4 {
+  margin-bottom: 0px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.footer-down li {
+  margin-bottom: 6px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.footer-down li:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.footer {
+  background-color: #000000;
+  color: white;
+  padding: 0px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0;
+  
+}
+.footer {
+  margin: 0;
+  padding: 0;
+}
+.footer-left {
+  padding-left:50px;
+  padding-top:30px;
+  background-color:#00000;
+  color:white;
+}
+.top {
+  padding-top:40px;
+  padding-left:55px;
+  padding-bottom:40px;
+}
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding-bottom:40px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.tag{
+
+  padding-right:55px;
+  
+}
+.footer-left {
+    flex: 1 1 300px !important;
+}
+
+ .logininfo{
+  display: none;
+}
+.tool_dataprivacy{
+  display: none;
+}
+.mobilelink{
+   display: none;
+}
+#theme_switch_link{
+   display: none;
+}
+.footer-section{
+  display: none;
+}
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  
+  <div class="image-feature" style="padding: 50px 14px; max-width: 80%; margin: auto;">
+     <div class="image-text">
+      <h1 style="font-size:34px; font-weight: 500;">PAYMENT TERMS & REFUND POLICY</h1>
+     
+       <h2 style="font-size:24px; font-weight: 500;">Payment Terms</h2>
+      <ol>
+          <li><strong>Course Fees: </strong>Fees for each course are displayed during enrollment. Prices are inclusive of taxes unless otherwise stated.</li>
+          <li><strong>Payment Methods: </strong>We accept payments via credit/debit cards, UPI, net banking, and other secure digital payment methods.</li>
+          <li><strong>Secure Transactions: </strong>All payments are processed through encrypted gateways to ensure safety.</li>
+          <li><strong>Installment Options: </strong>Select courses may offer flexible payment plans, subject to eligibility and terms displayed at checkout.</li>
+          <li><strong>Currency: </strong>All transactions are processed in Indian Rupees (INR).</li>
+      </ol>
+      
+      
+      <h2 style="font-size:24px; font-weight: 500;">Refund Policy</h2>
+     <p>Our platform provides free, limited access to the website and some content after logging in. You can decide based on this whether to enrol or not. We stand by the quality and depth of the content we provide and do not offer refunds. All payments on this platform will be irrevocable, non-refundable, non-transferable, and non-creditable.
+The enrollment once made cannot be canceled.</p>
+     
+     
+    </div>
+   </div>
+
+
+<!--
+<footer class="footer">
+  <div class="footer-container">
+
+   
+    <div class="top">
+
+
+     
+        
+      
+
+          {{# output.loggedinuser }}
+          
+            You are logged in as 
+            <a href="{{{ output.userprofileurl }}}" title="View profile">{{{ output.userfullname }}}</a> 
+            (<a href="{{{ config.wwwroot }}}/login/logout.php?sesskey={{{ sesskey }}}">Log out</a>)
+          
+          {{/ output.loggedinuser }}
+        </div>
+      </div>
+    
+
+    
+    <div class="footer-right">
+      <div class="footer-down" style="min-width: 300px;">
+          <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1753703039/eLearnKranti%201%20%281%29.png" class="logo me-1" alt="Pariksha Kranti" style="margin-bottom: 20px !important;">
+        <p>Join eLearnKranti, India's premier e-learning platform launched in 2025, empowering learners with cutting-edge skills for a dynamic future.</p>
+      </div>
+      <div class="footer-down">
+        <h4>Data Science</h4>
+        <ul>
+          <li>Python</li>
+          <li>Machine Learning</li>
+          <li>ChatGPT</li>
+          <li>Deep Learning</li>
+        </ul>
+      </div>
+      <div class="footer-down">
+        <h4>IT Certificates</h4>
+        <ul>
+          <li>Amazon AWS</li>
+          <li>CCNA</li>
+          <li>Kubernetes</li>
+          <li>Power BI</li>
+        </ul>
+      </div>
+      <div class="footer-down">
+        <h4>Legal & Accessibility</h4>
+        <ul>
+          <li><a href="https://elearnkranti.com/theme/boost/privacy-policy.php">Privacy Policy</a></li>
+          <li><a href="https://elearnkranti.com/theme/boost/terms.php">Terms</a></li>
+          <li>Accessibility statement</li>
+          <li>Sitemap</li>
+        </ul>
+      </div>
+      
+     
+    </div>
+
+  </div>
+</footer>
+-->
+</body>
+</html>

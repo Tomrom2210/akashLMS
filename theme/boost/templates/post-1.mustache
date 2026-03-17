@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    
+    
+    #page.drawers .main-inner {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    #page.drawers {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    #page.drawers div[role="main"] {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    
+    .header-maxwidth {
+    display: none;
+    }
+    
+    
+    .banner-content {
+       background-image: url('https://elearnkranti.com/media/mainBanner3.png'); /* Replace with your image path */
+      background-size: cover;
+      background-position: center;
+      height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 15px;
+    }
+
+    .banner-content h1 {
+      font-size: 40px;
+      font-weight: 700;
+      color: #111;
+      margin: 0;
+      text-align: center;
+    }
+
+
+.footer {
+  background-color: #111;
+  padding: 40px 20px;
+  margin-top: 65px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-left {
+  flex: 1 1 300px;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.contact {
+  font-size: 14px;
+  color: white;
+  margin-top:0;
+  margin-bottom:0;
+
+}
+
+.contact-title {
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.contact-info span {
+  display: inline-block;
+  margin-right: 15px;
+  margin-top: 0px;
+}
+
+.footer-right {
+  padding-left:55px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0px;
+  flex: 1;
+}
+
+.footer-down h4 {
+  margin-bottom: 0px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.footer-down li {
+  margin-bottom: 6px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.footer-down li:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.footer {
+  background-color: #000000;
+  color: white;
+  padding: 0px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0;
+  
+}
+.footer {
+  margin: 0;
+  padding: 0;
+}
+.footer-left {
+  padding-left:50px;
+  padding-top:30px;
+  background-color:#00000;
+  color:white;
+}
+.top {
+  padding-top:40px;
+  padding-left:55px;
+  padding-bottom:40px;
+}
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding-bottom:40px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.tag{
+
+  padding-right:55px;
+  
+}
+.footer-left {
+    flex: 1 1 300px !important;
+}
+
+ .logininfo{
+  display: none;
+}
+.tool_dataprivacy{
+  display: none;
+}
+.mobilelink{
+   display: none;
+}
+#theme_switch_link{
+   display: none;
+}
+.footer-section{
+  display: none;
+}
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+    
+     <section class="about-banner">
+    <div class="banner-content">
+      <h1>Blog Post</h1>
+    </div>
+  </section>
+  
+  <div class="image-feature" style="padding: 50px 14px; max-width: 80%; margin: auto;">
+     <div class="image-text">
+      <h1 style="font-size:34px; font-weight: 500;">What is Lorem Ipsum?</h1>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+       <h2 style="font-size:24px; font-weight: 500;">Where does it come from?</h2>
+      <p>
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.<br>
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+      </p>
+      
+      <h2 style="font-size:24px; font-weight: 500;">Where does it come from?</h2>
+      <p>
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.<br>
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+      </p>
+      
+      <h2 style="font-size:24px; font-weight: 500;">Where does it come from?</h2>
+      <p>
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.<br>
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+      </p>
+      
+      <h2 style="font-size:24px; font-weight: 500;">Where does it come from?</h2>
+      <p>
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.<br>
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+      </p>
+ 
+    </div>
+   </div>
+
+
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Left Side -->
+    <div class="top">
+
+
+     
+        
+      
+
+          {{# output.loggedinuser }}
+          
+            You are logged in as 
+            <a href="{{{ output.userprofileurl }}}" title="View profile">{{{ output.userfullname }}}</a> 
+            (<a href="{{{ config.wwwroot }}}/login/logout.php?sesskey={{{ sesskey }}}">Log out</a>)
+          
+          {{/ output.loggedinuser }}
+        </div>
+      </div>
+    
+
+    <!-- Right Side -->
+    <div class="footer-right">
+      <div class="footer-down" style="min-width: 300px;">
+          <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1753703039/eLearnKranti%201%20%281%29.png" class="logo me-1" alt="Pariksha Kranti" style="margin-bottom: 20px !important;">
+        <p>Join eLearnKranti, India's premier e-learning platform launched in 2025, empowering learners with cutting-edge skills for a dynamic future.</p>
+      </div>
+      <div class="footer-down">
+        <h4>Data Science</h4>
+        <ul>
+          <li>Python</li>
+          <li>Machine Learning</li>
+          <li>ChatGPT</li>
+          <li>Deep Learning</li>
+        </ul>
+      </div>
+      <div class="footer-down">
+        <h4>IT Certificates</h4>
+        <ul>
+          <li>Amazon AWS</li>
+          <li>CCNA</li>
+          <li>Kubernetes</li>
+          <li>Power BI</li>
+        </ul>
+      </div>
+      <div class="footer-down">
+        <h4>Legal & Accessibility</h4>
+        <ul>
+          <li><a href="https://elearnkranti.com/theme/boost/privacy-policy.php">Privacy Policy</a></li>
+          <li><a href="https://elearnkranti.com/theme/boost/terms.php">Terms</a></li>
+          <li>Accessibility statement</li>
+          <li>Sitemap</li>
+        </ul>
+      </div>
+      
+     
+    </div>
+
+  </div>
+</footer>
+</body>
+</html>

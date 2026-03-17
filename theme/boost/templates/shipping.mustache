@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    
+    
+    #page.drawers .main-inner {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    #page.drawers {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    #page.drawers div[role="main"] {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    
+    .header-maxwidth {
+    display: none;
+    }
+
+
+.footer {
+  background-color: #111;
+  padding: 40px 20px;
+  margin-top: 65px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-left {
+  flex: 1 1 300px;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.contact {
+  font-size: 14px;
+  color: white;
+  margin-top:0;
+  margin-bottom:0;
+
+}
+
+.contact-title {
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.contact-info span {
+  display: inline-block;
+  margin-right: 15px;
+  margin-top: 0px;
+}
+
+.footer-right {
+  padding-left:55px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0px;
+  flex: 1;
+}
+
+.footer-down h4 {
+  margin-bottom: 0px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.footer-down li {
+  margin-bottom: 6px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.footer-down li:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.footer {
+  background-color: #000000;
+  color: white;
+  padding: 0px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0;
+  
+}
+.footer {
+  margin: 0;
+  padding: 0;
+}
+.footer-left {
+  padding-left:50px;
+  padding-top:30px;
+  background-color:#00000;
+  color:white;
+}
+.top {
+  padding-top:40px;
+  padding-left:55px;
+  padding-bottom:40px;
+}
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding-bottom:40px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.tag{
+
+  padding-right:55px;
+  
+}
+.footer-left {
+    flex: 1 1 300px !important;
+}
+
+ .logininfo{
+  display: none;
+}
+.tool_dataprivacy{
+  display: none;
+}
+.mobilelink{
+   display: none;
+}
+#theme_switch_link{
+   display: none;
+}
+.footer-section{
+  display: none;
+}
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  
+  <div class="image-feature" style="padding: 50px 14px; max-width: 80%; margin: auto;">
+     <div class="image-text">
+      <h1 style="font-size:34px; font-weight: 500;">Shipping Policy for eLearnKranti</h1>
+      <p>At eLearnKranti, our focus is on delivering transformative online courses directly to your digital doorstep. As we specialize in digital educational content, all products are provided electronically—no physical shipping is required. This policy outlines how we ensure seamless, secure, and timely delivery of your course materials. By purchasing from us, you agree to these terms.</p>
+     
+       <h2 style="font-size:24px; font-weight: 500;">Digital Delivery Overview</h2>
+      <p>Instant Access: Upon successful payment, you'll receive immediate access to your enrolled course via your eLearnKranti account dashboard. This includes video lectures, downloadable resources (e.g., PDFs, worksheets), quizzes, and community forums.
+No Physical Products: All courses are 100% digital. We do not ship physical items such as books, merchandise, or certificates (digital certificates are issued upon completion).
+Delivery Method: Content is hosted on our secure platform (elearnkranti.com) and accessible via web browser, iOS/Android apps, or compatible learning management systems.</p>
+      
+      
+      <h2 style="font-size:24px; font-weight: 500;">Delivery Timeline</h2>
+     <p>Standard Delivery: Access is granted instantly (within 1-2 minutes) after purchase confirmation. You'll receive an email with login details and a direct link to your course.
+High-Demand Periods: During peak enrollment times (e.g., course launches or sales events), delivery may take up to 5 minutes due to system verification.
+Subscription Plans: For monthly/annual subscriptions, access renews automatically on your billing cycle without interruption.</p>
+
+
+ <h2 style="font-size:24px; font-weight: 500;">System Requirements and Compatibility</h2>
+     <p>To ensure smooth delivery and access:
+
+Device Compatibility: Courses are optimized for desktop/laptop (Windows, macOS, Chrome OS), tablets, and smartphones (iOS 14+, Android 10+).
+Browser Support: Use the latest versions of Chrome, Firefox, Safari, or Edge. Enable JavaScript and cookies for full functionality.
+Internet Connection: A stable broadband connection (at least 5 Mbps) is recommended for streaming videos. Offline access is available for downloaded materials via our app.
+Account Setup: You must create and verify an eLearnKranti account with a valid email address. Access is tied to your account—do not share credentials.
+
+If your device doesn't meet these requirements, contact support for guidance.</p>
+
+
+<h2 style="font-size:24px; font-weight: 500;">Delivery Issues and Troubleshooting</h2>
+     <p>We strive for 99.9% uptime, but if you encounter delays or access problems:
+
+Common Fixes: Check your spam folder for the welcome email, clear browser cache, or try incognito mode.
+Reporting Issues: Email support@elearnkranti.com with your order number, device details, and a screenshot of the error. We'll resolve within 24 hours.
+Force Majeure: Delivery may be affected by unforeseen events (e.g., server outages, cyber incidents). We'll notify you via email and provide alternative access where possible.</p>
+
+
+
+
+<h2 style="font-size:24px; font-weight: 500;">International Delivery</h2>
+     <p>Global Access: Our platform is available worldwide, with no geographic restrictions. Content is in English (with subtitles in select languages for popular courses).
+Data Privacy: We comply with GDPR, CCPA, and other global standards for secure delivery of your personal data.</p>
+
+<h2 style="font-size:24px; font-weight: 500;">Changes to Delivery</h2>
+     <p>We may update course content or platform features, but existing enrollments retain access to the version purchased. Major updates will be communicated via email.</p>
+
+
+
+
+     
+     
+    </div>
+   </div>
+
+
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Left Side -->
+    <div class="top">
+
+
+     
+        
+      
+
+          {{# output.loggedinuser }}
+          
+            You are logged in as 
+            <a href="{{{ output.userprofileurl }}}" title="View profile">{{{ output.userfullname }}}</a> 
+            (<a href="{{{ config.wwwroot }}}/login/logout.php?sesskey={{{ sesskey }}}">Log out</a>)
+          
+          {{/ output.loggedinuser }}
+        </div>
+      </div>
+    
+
+    <!-- Right Side -->
+    <div class="footer-right">
+      <div class="footer-down" style="min-width: 300px;">
+          <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1753703039/eLearnKranti%201%20%281%29.png" class="logo me-1" alt="Pariksha Kranti" style="margin-bottom: 20px !important;">
+        <p>Join eLearnKranti, India's premier e-learning platform launched in 2025, empowering learners with cutting-edge skills for a dynamic future.</p>
+      </div>
+      <div class="footer-down">
+        <h4>Data Science</h4>
+        <ul>
+          <li>Python</li>
+          <li>Machine Learning</li>
+          <li>ChatGPT</li>
+          <li>Deep Learning</li>
+        </ul>
+      </div>
+      <div class="footer-down">
+        <h4>IT Certificates</h4>
+        <ul>
+          <li>Amazon AWS</li>
+          <li>CCNA</li>
+          <li>Kubernetes</li>
+          <li>Power BI</li>
+        </ul>
+      </div>
+      <div class="footer-down">
+        <h4>Legal & Accessibility</h4>
+        <ul>
+          <li><a href="https://elearnkranti.com/theme/boost/privacy-policy.php">Privacy Policy</a></li>
+          <li><a href="https://elearnkranti.com/theme/boost/terms.php">Terms</a></li>
+          <li>Accessibility statement</li>
+          <li>Sitemap</li>
+        </ul>
+      </div>
+      
+     
+    </div>
+
+  </div>
+</footer>
+</body>
+</html>

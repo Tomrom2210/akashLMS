@@ -1,0 +1,923 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    
+    
+    #page.drawers .main-inner {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    #page.drawers {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    #page.drawers div[role="main"] {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    
+    .header-maxwidth {
+    display: none;
+    }
+
+    /* === BANNER === */
+    .banner-content {
+       background-image: url('https://elearnkranti.com/media/mainBanner3.png'); /* Replace with your image path */
+      background-size: cover;
+      background-position: center;
+      height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 15px;
+    }
+
+    .banner-content h1 {
+      font-size: 40px;
+      font-weight: 700;
+      color: #111;
+      margin: 0;
+      text-align: center;
+    }
+
+    .announcement-bar {
+      background-color: #1d1d1f;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .skills-section {
+      text-align: center;
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .skills-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .skills-section p {
+      color: #333;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    /* === IMAGE FEATURE === */
+    .image-feature {
+      background-color: #f9f9f9;
+      padding: 30px 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .image-left, .image-text {
+      flex: 1 1 100%;
+      max-width: 560px;
+    }
+
+    .image-left img {
+      width: 100%;
+      border-radius: 6px;
+    }
+
+    .image-nav {
+      display: flex;
+      justify-content: space-between;
+      width: 60px;
+      margin-top: 10px;
+    }
+
+    .image-nav span {
+      font-size: 24px;
+      color: #4b5aed;
+      cursor: pointer;
+    }
+
+    .image-text h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #1d1d1d;
+    }
+
+    .image-text p {
+      color: #444;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* === IMPACT SECTION === */
+    .impact-section {
+      background-image: linear-gradient(275deg, #4b5aed, #a865e9);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .impact-section h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .impact-section p {
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+
+    .impact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .impact-item h3 {
+      font-size: 1.6rem;
+      margin-bottom: 5px;
+    }
+
+    .impact-item span {
+      font-size: 0.95rem;
+    }
+
+    /* === JOIN US SECTION === */
+    .section {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .content, .image {
+      flex: 1 1 100%;
+      max-width: 600px;
+    }
+
+    .content {
+      text-align: center;
+    }
+
+    .quote {
+      color: #4b5aed;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .roles {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .btn {
+      background-image: linear-gradient(275deg, #4b5aed, #a865e9);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10%;
+    }
+
+    /* === LEADERS SECTION === */
+    .leaders-section {
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .subheading {
+      color: #4b5aed;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .leaders-header h2 {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    .leaders-image img {
+      width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* === INFO CARDS === */
+    .info-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px 20px;
+    }
+
+    .info-card {
+      flex: 1 1 100%;
+      max-width: 350px;
+    }
+
+    .bar {
+      height: 4px;
+      background-image: linear-gradient(275deg, #4b5aed, #a865e9);
+      margin-bottom: 15px;
+      border-radius: 2px;
+    }
+
+    .info-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .info-card p {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .info-card a {
+      color: #4b5aed;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .info-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* === CENTER CTA SECTION === */
+    .center-section {
+      text-align: center;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .center-section p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .learn-btn {
+      background-image: linear-gradient(275deg, #4b5aed, #a865e9);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .learn-btn:hover {
+      background-color: #004c44;
+    }
+
+    /* === MEDIA QUERIES === */
+    @media (min-width: 769px) {
+      .content, .image-left, .image-text, .info-card {
+        flex: 1 1 45%;
+      }
+
+      .image-feature {
+        flex-direction: row;
+      }
+
+      .section {
+        flex-direction: row;
+        text-align: left;
+      }
+
+      .content {
+        text-align: left;
+        padding-right: 30px;
+      }
+
+      .image {
+        text-align: center;
+      }
+
+      .info-card {
+        flex: 1 1 30%;
+      }
+    }
+
+   /* body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+  color: #fff;
+} */
+
+.footer {
+  background-color: #111;
+  padding: 40px 20px;
+  margin-top: 65px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-left {
+  flex: 1 1 300px;
+}
+
+.logo {
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.contact {
+  font-size: 14px;
+  color: white;
+  margin-top:0;
+  margin-bottom:0;
+
+}
+
+.contact-title {
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.contact-info span {
+  display: inline-block;
+  margin-right: 15px;
+  margin-top: 0px;
+}
+
+.footer-right {
+  padding-left:55px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0px;
+  flex: 1;
+}
+
+.footer-down h4 {
+  margin-bottom: 0px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.footer-down li {
+  margin-bottom: 6px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.footer-down li:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.footer {
+  background-color: #000000;
+  color: white;
+  padding: 0px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0;
+  
+}
+.footer {
+  margin: 0;
+  padding: 0;
+}
+.footer-left {
+  padding-left:50px;
+  padding-top:30px;
+  background-color:#00000;
+  color:white;
+}
+.top {
+  padding-top:40px;
+  padding-left:55px;
+  padding-bottom:40px;
+}
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding-bottom:40px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.tag{
+
+  padding-right:55px;
+  
+}
+.footer-left {
+    flex: 1 1 300px !important;
+}
+
+ .logininfo{
+  display: none;
+}
+.tool_dataprivacy{
+  display: none;
+}
+.mobilelink{
+   display: none;
+}
+#theme_switch_link{
+   display: none;
+}
+.footer-section{
+  display: none;
+}
+
+
+
+
+.testimonialparantSection {
+    background-image: linear-gradient(275deg, #4b5aed, #a865e9);
+    padding: 90px 0px;
+}
+.top-educators-section {
+    margin: 0 auto;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+.top-educators-section .subtitle {
+    color: white;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+.educators-container {
+    border-radius: 10px;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    justify-content: center;
+    max-width: 100%;
+    max-width: 1240px;
+    margin: auto;
+}
+.educator-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.educator-card img {
+    width: 100%;
+    border-radius: 5px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+.educator-card h3 {
+    font-size: 1.05rem;
+    margin: 8px 0 5px;
+}
+.educator-card p {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 12px;
+}
+.stats {
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+.profile-link {
+    font-size: 0.9rem;
+    color: #a865e9;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+@media (min-width: 768px) {
+    .educators-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+
+   @media only screen and (max-width: 600px) {
+     .SearchSection input {
+        min-width: 55% !important;
+        max-width: 55% !important;
+    }
+    .SearchSection button {
+        width: 40%;
+    }
+    
+    .footer-right {
+    display: block;
+    }
+    
+    
+}
+
+
+#page-content{
+    padding-bottom: 0rem !important;
+}
+
+.logo {
+   max-height: 100px;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <section class="about-banner">
+    <div class="banner-content">
+      <h1>Welcome to where<br>possibilities begin</h1>
+    </div>
+  </section>
+
+  <div class="announcement-bar">
+    <p><strong>Check out our latest company news!</strong></p>
+  </div>
+
+
+  <div class="image-feature">
+    <div class="image-left">
+      <img src="https://elearning.allhandsondeck.eu/wp-content/uploads/2022/03/mimi-thian-vdXMSiX-n6M-unsplash-scaled.jpg" alt="Featured image">
+    </div>
+    <div class="image-text">
+      <h3>ABOUT US</h3>
+      <p>Welcome to eLearnKranti, a revolutionary e-learning platform designed to empower students, professionals, and dreamers with cutting-edge skills and knowledge to thrive in a dynamic world. Launched in 2025, eLearnKranti is India’s answer to the evolving educational landscape, aligning with the Prime Minister’s vision of a digitally empowered, skill-driven nation. We are committed to fostering innovation, entrepreneurship, and personal growth through a unique blend of domains: skill development, legal education, personality development, marketing, start-ups, and e-IP Cells and e-incubation centers for colleges.
+Our platform stands out with live interactive sessions led by industry experts and thought leaders, ensuring real-time engagement and personalized learning. Complementing this, our weekly and monthly podcasts bring insights from innovators, entrepreneurs, and educators directly to you, keeping you inspired and informed. Upon course completion, every student receives an e-certificate, a testament to their dedication and newly acquired expertise.
+At eLearnKranti, we don’t just teach—we ignite curiosity, nurture creativity, and empower you to shape the future. Join us to unlock your potential and be part of India’s educational revolution!
+</p>
+    </div>
+  </div>
+
+  <div class="impact-section">
+    <h2>Your Journey to Excellence Starts with E-Learn Kranti . Smart Learning. Bright Future.</h2>
+    <p>We have Developed a System - Where Learning Meets Possibility. E-Learn Kranti  - Your Gateway to Smarter Learning.</p>
+    <div class="impact-grid">
+      <div class="impact-item"><h3>82M+</h3><span>Learners</span></div>
+      <div class="impact-item"><h3>62K</h3><span>Instructors</span></div>
+      <div class="impact-item"><h3>250K</h3><span>Courses</span></div>
+      <div class="impact-item"><h3>75</h3><span>Languages</span></div>
+      <div class="impact-item"><h3>17K+</h3><span>Customers</span></div>
+    </div>
+  </div>
+  
+ 
+
+  <section class="section">
+    <div class="content">
+      <h2>MESSAGE FROM THE FOUNDER'S DESK</h2>
+       <div class="quote">Dear Learners</div>
+      <p class="roles">Welcome to eLearnKranti, where your journey to success begins! As the founder of this transformative platform, I am thrilled to introduce a space crafted to empower you with the skills, knowledge, and mindset needed to excel in today’s fast-evolving world. Inspired by the Prime Minister’s vision for a digitally empowered India by 2025, eLearnKranti is more than an e-learning portal—it’s a movement to redefine education and unleash limitless possibilities.<br>
+Our mission is to bridge the gap between aspiration and achievement. Whether you’re a student aiming to master new skills, an aspiring entrepreneur exploring start-ups, or a professional seeking to enhance your personality or legal acumen, eLearnKranti offers a vibrant ecosystem tailored to your goals. Our live sessions with expert faculty and thought-provoking podcasts ensure you stay connected to real-world insights, while our focus on AI-driven learning prepares you for the future.<br>
+With eLearnKranti, you’re not just learning—you’re building a foundation for innovation, leadership, and success. Let’s embark on this journey together and create a brighter, bolder future for India!
+</p>
+     
+    </div>
+    <div class="image">
+      <img src="https://media.istockphoto.com/id/1362120018/photo/multi-ethnic-business-team.jpg?s=612x612&w=0&k=20&c=72pGNEMuZc2uxW7KJqv8nTafopfcY4rCd3NvDJagiHo=" alt="Team">
+    </div>
+  </section>
+  
+  
+  
+    
+  <div class="image-feature" style="padding: 50px 14px;">
+     <div class="image-text">
+      <h3 style="font-size:30px; font-weight: 500;">Vision</h3>
+      <p>To empower every learner in India with future-ready skills, fostering innovation, entrepreneurship, and personal growth in alignment with the Prime Minister’s vision for a digitally transformed nation by 2025. We aim to create a dynamic, inclusive e-learning ecosystem that drives individual and collective progress</p>
+    </div>
+    <div class="image-text">
+      <h3 style="font-size:30px; font-weight: 500;">Mission</h3>
+      <p> Empower Through Skills: Offer diverse, industry-relevant courses in skill development, legal education, personality development, marketing, start-ups, and e-IP Cells/e-incubation centers to equip learners for success. 
+          Leverage Technology: Integrate AI-driven tools and interactive live sessions to deliver personalized, engaging, and accessible education. 
+          Inspire Innovation: Provide podcasts and real-time mentorship to spark creativity, entrepreneurial thinking, and lifelong learning. 
+          Certify Achievement: Award e-certificates to recognize learners’ dedication and expertise, enhancing their career prospects. 
+          Bridge Gaps: Make quality education accessible to all, regardless of geography or background, to support India’s journey toward a knowledge-driven economy. 
+          Encourage Lifelong Learning: Promote self-improvement, multi-disciplinary learning, and career agility in today’s dynamic job landscape. 
+          Building Industry Partnerships: Collaborate with Corporations, Institutions, Incubators, and Government bodies to ensure internship support and provide placements.  
+</p>
+    </div>
+  </div>
+  
+  
+  
+
+  <section class="leaders-section">
+    <div class="leaders-header">
+      <p class="subheading">From the Headquarters</p>
+      <h2>Our leaders</h2>
+    </div>
+    <div class="leaders-image">
+      <img src="https://thumbs.dreamstime.com/b/group-portrait-three-professionals-formal-wear-standing-desk-bright-office-space-smiling-camera-team-confident-377146360.jpg" alt="Leaders">
+    </div>
+  </section>
+
+  <section class="info-section">
+    <div class="info-card">
+      <div class="bar"></div>
+      <h3>Work with us</h3>
+      <p>We build a culture that is inclusive, diverse, and dedicated to growth and success.</p>
+      <a href="#">Join our team →</a>
+    </div>
+    <div class="info-card">
+      <div class="bar"></div>
+      <h3>See our research</h3>
+      <p>Explore our insights and trends shaping today’s learning and work environments.</p>
+      <a href="#">Learn more →</a>
+    </div>
+    <div class="info-card">
+      <div class="bar"></div>
+      <h3>Read our blog</h3>
+      <p>Check out our updates, ideas, projects, and stories from the community.</p>
+      <a href="#">Read now →</a>
+    </div>
+  </section>
+  
+  
+
+  <section class="center-section">
+    <p>We empower teams and individuals to grow, adapt, and succeed—wherever the future takes them.</p>
+    <a href="#" class="learn-btn">Learn more</a>
+  </section>
+  
+  
+  
+  
+   <div class="testimonialparantSection">
+
+
+<section class="top-educators-section">
+  <h2>Our Team</h2>
+
+  <div class="educators-container">
+    <!-- Educator Card 1 -->
+    <div class="educator-card">
+      <img src="https://elearnkranti.com/media/pro1.webp" alt="Dheeraj Kumar">
+      <h3>Dheeraj Kumar</h3>
+      <p>16+ years of teaching experience<br>Qualified– NET, CAT, GATE</p>
+      <div class="stats">
+        <span><strong>6M</strong><br>Watch Mins</span>
+        <span><strong>10K</strong><br>Followers</span>
+      </div>
+      <a href="#" class="profile-link">View Profile &gt;</a>
+    </div>
+
+    <!-- Educator Card 2 -->
+    <div class="educator-card">
+      <img src="https://elearnkranti.com/media/pro2.avif" alt="Ravi Prakash">
+      <h3>Ravi Prakash</h3>
+      <p>12+ years of teaching experience<br>Qualified– NET, CAT, GATE</p>
+      <div class="stats">
+        <span><strong>5M</strong><br>Watch Mins</span>
+        <span><strong>8K</strong><br>Followers</span>
+      </div>
+      <a href="#" class="profile-link">View Profile &gt;</a>
+    </div>
+
+    <!-- Educator Card 3 -->
+    <div class="educator-card">
+      <img src="https://elearnkranti.com/media/pro3.avif" alt="Pooja Patel">
+      <h3>Pooja Patel</h3>
+      <p>15+ years of teaching experience<br>Qualified– NET, CAT, GATE</p>
+      <div class="stats">
+        <span><strong>8M</strong><br>Watch Mins</span>
+        <span><strong>12K</strong><br>Followers</span>
+      </div>
+      <a href="#" class="profile-link">View Profile &gt;</a>
+    </div>
+
+    <!-- Educator Card 4 -->
+    <div class="educator-card">
+      <img src="https://elearnkranti.com/media/pro4.avif" alt="Priya Sharma">
+      <h3>Priya Sharma</h3>
+      <p>8+ years of teaching experience<br>Qualified– NET, CAT, GATE</p>
+      <div class="stats">
+        <span><strong>4M</strong><br>Watch Mins</span>
+        <span><strong>6K</strong><br>Followers</span>
+      </div>
+      <a href="#" class="profile-link">View Profile &gt;</a>
+    </div>
+  </div>
+
+</section>
+
+</div>
+  
+
+  
+  
+  
+  
+  
+
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Left Side -->
+    <div class="top">
+
+
+     
+        
+      
+
+          {{# output.loggedinuser }}
+          
+            You are logged in as 
+            <a href="{{{ output.userprofileurl }}}" title="View profile">{{{ output.userfullname }}}</a> 
+            (<a href="{{{ config.wwwroot }}}/login/logout.php?sesskey={{{ sesskey }}}">Log out</a>)
+          
+          {{/ output.loggedinuser }}
+        </div>
+      </div>
+    
+
+    <!-- Right Side -->
+    <div class="footer-right">
+      <div class="footer-down">
+          <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1767950654/eLearnKranti%20Logo%20%281%29.png" class="logo me-1" alt="Pariksha Kranti" style="margin-bottom: 20px !important;">
+        <p>Join eLearnKranti, India's premier e-learning platform launched in 2025, empowering learners with cutting-edge skills for a dynamic future.</p>
+      </div>
+      <div class="footer-down">
+        <h4>Data Science</h4>
+        <ul>
+          <li>Python</li>
+          <li>Machine Learning</li>
+          <li>ChatGPT</li>
+          <li>Deep Learning</li>
+        </ul>
+      </div>
+      <div class="footer-down">
+        <h4>Legal & Accessibility</h4>
+        <ul>
+         <li><a href="https://elearnkranti.com/theme/boost/privacy-policy.php">Privacy Policy</a></li>
+          <li><a href="https://elearnkranti.com/theme/boost/terms.php">Terms</a></li>
+          <li>Accessibility statement</li>
+          <li>Sitemap</li>
+        </ul>
+      </div>
+     <div class="footer-down">
+        <h4>Contact Information</h4>
+        <ul>
+          <li>Phone: +91 6284910733</li>
+          <li>Email: info@elearnkranti.com</li>
+          <li><a href="https://www.linkedin.com/in/elearn-kranti-a1ab65395/">Linkedin</a></li>
+          <li><a href="https://www.instagram.com/elearnkranti?igsh=aDZpcnpmNGxoZWF6&utm_source=qr">Instagram</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61585129565822">Facebook</a></li>
+        </ul>
+      </div>
+      
+     
+    </div>
+
+  </div>
+</footer>
+</body>
+</html>

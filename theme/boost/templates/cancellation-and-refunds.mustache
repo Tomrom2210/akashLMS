@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    
+    
+    #page.drawers .main-inner {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    #page.drawers {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    #page.drawers div[role="main"] {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    
+    .header-maxwidth {
+    display: none;
+    }
+
+
+.footer {
+  background-color: #111;
+  padding: 40px 20px;
+  margin-top: 65px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-left {
+  flex: 1 1 300px;
+}
+
+.logo {
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.contact {
+  font-size: 14px;
+  color: white;
+  margin-top:0;
+  margin-bottom:0;
+
+}
+
+.contact-title {
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.contact-info span {
+  display: inline-block;
+  margin-right: 15px;
+  margin-top: 0px;
+}
+
+.footer-right {
+  padding-left:55px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0px;
+  flex: 1;
+}
+
+.footer-down h4 {
+  margin-bottom: 0px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.footer-down li {
+  margin-bottom: 6px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.footer-down li:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.footer {
+  background-color: #000000;
+  color: white;
+  padding: 0px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0;
+  
+}
+.footer {
+  margin: 0;
+  padding: 0;
+}
+.footer-left {
+  padding-left:50px;
+  padding-top:30px;
+  background-color:#00000;
+  color:white;
+}
+.top {
+  padding-top:40px;
+  padding-left:55px;
+  padding-bottom:40px;
+}
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding-bottom:40px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.tag{
+
+  padding-right:55px;
+  
+}
+.footer-left {
+    flex: 1 1 300px !important;
+}
+
+ .logininfo{
+  display: none;
+}
+.tool_dataprivacy{
+  display: none;
+}
+.mobilelink{
+   display: none;
+}
+#theme_switch_link{
+   display: none;
+}
+.footer-section{
+  display: none;
+}
+
+#page-content{
+    padding-bottom: 0rem !important;
+}
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  
+  <div class="image-feature" style="padding: 50px 14px; max-width: 80%; margin: auto;">
+     <div class="image-text">
+         <h1>Cancellation & Refunds for eLearnKranti</h1>
+  <p> At eLearnKranti, we are committed to providing high-quality online courses that empower learners like you. We understand that circumstances change, and we want our cancellation and refund policy to be fair, transparent, and straightforward. This policy applies to all course purchases made through our platform (elearnkranti.com or associated apps). By enrolling in a course, you agree to these terms.</p>
+   
+<h2>1. Eligibility for Cancellation and Refunds</h2>
+
+<p>Cooling-Off Period: You may cancel your enrollment and request a full refund within 7 days from the date of purchase, provided you have not accessed any course materials (e.g., videos, downloads, quizzes, or live sessions). This gives you time to review the course without commitment.
+No Access Guarantee: If you haven't logged in or started the course during the cooling-off period, you'll receive a 100% refund of the purchase price (excluding any applicable taxes or processing fees).
+Post-Access Refunds: Once you access course content, no refunds are available. This ensures we can continue delivering value to all learners while respecting your decision if the course isn't right for you early on.</p>
+
+<h2>2. Non-Refundable Purchases</h2>
+
+<p>The following are not eligible for refunds under any circumstances:
+
+Courses that have been accessed, even partially.
+Subscription-based access (e.g., monthly plans) after the first billing cycle—cancellations take effect at the end of the current cycle, but no prorated refunds are issued.
+Promotional discounts, coupons, or bundled offers—refunds will be processed at the original discounted price.
+Third-party payments or fees (e.g., payment gateway charges).
+</p>
+
+<h2>3. Special Circumstances</h2>
+<p>We review refund requests on a case-by-case basis for extenuating situations, such as:
+
+Technical issues preventing access (must be reported within 48 hours of purchase).
+Course cancellation by eLearnKranti (e.g., due to instructor unavailability)—full refunds or credits will be offered.
+Documented medical or personal emergencies (supporting documentation required).
+
+To request consideration, email us at support@elearnkranti.com with your order details and explanation.</p>
+
+
+<h3>4. How to Request a Cancellation or Refund</h3>
+
+<p>Log In: Access your account dashboard on elearnkranti.com.
+Navigate to Orders: Go to "My Account" > "Orders" and select the relevant purchase.
+Submit Request: Click "Request Refund" and provide a brief reason (optional).
+Confirmation: You'll receive an email confirmation within 24 hours. Processing takes 5-10 business days, depending on your payment method.
+
+Refunds are issued to the original payment method. For credit/debit cards, expect 3-7 business days; for bank transfers, up to 10 business days.</p>
+
+
+<h3>5. Subscription Cancellations</h3>
+
+<p>Monthly/Annual Plans: Cancel anytime via your account settings. Access continues until the end of the paid period—no prorated refunds.
+Auto-Renewal: Subscriptions renew automatically unless canceled. We'll send renewal reminders 7 days in advance.</p>
+
+<h3>6. Contact Us</h3>
+<p>If you have questions about this policy or need assistance, reach out to our support team:
+
+Email: privacy@elearnkranti.com
+
+We reserve the right to update this policy with 30 days' notice via email or our website. Your continued use of our services constitutes acceptance of changes.</p>
+     
+    </div>
+   </div>
+
+<!--
+
+<footer class="footer">
+  <div class="footer-container">
+
+   
+    <div class="top">
+
+
+     
+        
+      
+
+          {{# output.loggedinuser }}
+          
+            You are logged in as 
+            <a href="{{{ output.userprofileurl }}}" title="View profile">{{{ output.userfullname }}}</a> 
+            (<a href="{{{ config.wwwroot }}}/login/logout.php?sesskey={{{ sesskey }}}">Log out</a>)
+          
+          {{/ output.loggedinuser }}
+        </div>
+      </div>
+    
+
+    
+    <div class="footer-right">
+      <div class="footer-down">
+          <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1753703039/eLearnKranti%201%20%281%29.png" class="logo me-1" alt="Pariksha Kranti" style="margin-bottom: 20px !important;">
+        <p>Join eLearnKranti, India's premier e-learning platform launched in 2025, empowering learners with cutting-edge skills for a dynamic future.</p>
+      </div>
+      <div class="footer-down">
+        <h4>Data Science</h4>
+        <ul>
+          <li>Python</li>
+          <li>Machine Learning</li>
+          <li>ChatGPT</li>
+          <li>Deep Learning</li>
+        </ul>
+      </div>
+      <div class="footer-down">
+        <h4>IT Certificates</h4>
+        <ul>
+          <li>Amazon AWS</li>
+          <li>CCNA</li>
+          <li>Kubernetes</li>
+          <li>Power BI</li>
+        </ul>
+      </div>
+      <div class="footer-down">
+        <h4>Legal & Accessibility</h4>
+        <ul>
+          <li><a href="https://elearnkranti.com/theme/boost/privacy-policy.php">Privacy Policy</a></li>
+          <li><a href="https://elearnkranti.com/theme/boost/terms.php">Terms</a></li>
+          <li>Accessibility statement</li>
+          <li>Sitemap</li>
+        </ul>
+      </div>
+      
+     
+    </div>
+
+  </div>
+</footer>
+-->
+{{> theme_boost/footer }}
+</body>
+</html>

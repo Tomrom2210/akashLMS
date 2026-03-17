@@ -1,0 +1,688 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+ 
+</head>
+<body>
+  <section class="contact-hero">
+    <div class="hero-text">
+      
+    </div>
+  </section>
+
+  <section class="our-origins">
+  <div class="container">
+    <h2>Our origins</h2>
+    <p>
+      In a quiet corner of the world, where opportunities were few and resources limited, one spark changed everything — a connection to the internet. What started as a simple interest in computers soon became a doorway to discovery.
+    </p>
+    <p>
+      Through hours of self-learning and endless curiosity, a passion for technology was born — not just to understand it, but to use it to empower others. Today, that journey continues with a mission: to make learning simple, practical, and within reach for anyone eager to grow.
+    </p>
+  </div>
+</section>
+<section class="how-we-started">
+  <div class="container">
+    <div class="started-content">
+      <div class="started-image">
+        <img src="https://djgeqya1wekbj.cloudfront.net/product-images/600-600/ECDL-1200x600.jpg.webp" alt="How we started image" />
+      </div>
+      <div class="started-text">
+        <h2>Behind The Platform</h2>
+        <p>
+         What began as a simple desire to learn turned into a mission to share knowledge with others. With just a laptop, internet access, and a passion for coding, we built our first project—step by step, mistake by mistake. That journey shaped our belief: learning should be accessible, practical, and empowering for everyone.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-form-section">
+  <div class="form-container">
+    <h2>Contact Us</h2>
+    <form action="#" method="post">
+      <div class="form-group">
+        <label for="username">Your Name</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email ID</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required />
+      </div>
+
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<section class="help-support">
+  <div class="container">
+    <p>
+      Check out our <a href="#">Help and Support</a> center to find quick answers to your questions.
+    </p>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Left Side -->
+    <div class="top">
+
+
+     
+        
+      
+
+          {{# output.loggedinuser }}
+          
+            You are logged in as 
+            <a href="{{{ output.userprofileurl }}}" title="View profile">{{{ output.userfullname }}}</a> 
+            (<a href="{{{ config.wwwroot }}}/login/logout.php?sesskey={{{ sesskey }}}">Log out</a>)
+          
+          {{/ output.loggedinuser }}
+        </div>
+      </div>
+    
+
+    <!-- Right Side -->
+    <div class="footer-right">
+      <div class="footer-down">
+          <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1767950654/eLearnKranti%20Logo%20%281%29.png" class="logo me-1" alt="Pariksha Kranti" style="margin-bottom: 20px !important;">
+        <p>Join eLearnKranti, India's premier e-learning platform launched in 2025, empowering learners with cutting-edge skills for a dynamic future.</p>
+      </div>
+      <div class="footer-down">
+        <h4>Data Science</h4>
+        <ul>
+          <li>Python</li>
+          <li>Machine Learning</li>
+          <li>ChatGPT</li>
+          <li>Deep Learning</li>
+        </ul>
+      </div>
+      <div class="footer-down">
+        <h4>Legal & Accessibility</h4>
+        <ul>
+         <li><a href="https://elearnkranti.com/theme/boost/privacy-policy.php">Privacy Policy</a></li>
+          <li><a href="https://elearnkranti.com/theme/boost/terms.php">Terms</a></li>
+          <li>Accessibility statement</li>
+          <li>Sitemap</li>
+        </ul>
+      </div>
+     <div class="footer-down">
+        <h4>Contact Information</h4>
+        <ul>
+          <li>Phone: +91 6284910733</li>
+          <li>Email: info@elearnkranti.com</li>
+          <li><a href="https://www.linkedin.com/in/elearn-kranti-a1ab65395/">Linkedin</a></li>
+          <li><a href="https://www.instagram.com/elearnkranti?igsh=aDZpcnpmNGxoZWF6&utm_source=qr">Instagram</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61585129565822">Facebook</a></li>
+        </ul>
+      </div>
+      
+     
+    </div>
+
+  </div>
+</footer>
+</body>
+
+
+
+</html>
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f6f8f9;
+}
+
+
+    #page.drawers .main-inner {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    #page.drawers {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    #page.drawers div[role="main"] {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    
+    .header-maxwidth {
+    display: none;
+    }
+    
+.contact-hero {
+    background-image: url('https://elearnkranti.com/media/2.jpg');
+    background-size: cover;
+    height:550px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 10%;
+  flex-wrap: wrap;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #121212;
+  line-height: 1.3;
+}
+
+.hero-image {
+  position: relative;
+  width: 320px;
+  max-width: 100%;
+  margin-top: 30px;
+}
+
+.hero-image img {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.bg-box {
+  position: absolute;
+  background-color: #ffa400;
+  width: 100%;
+  height: 70%;
+  top: 30%;
+  left: -10%;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-image {
+    margin-top: 40px;
+  }
+
+  .bg-box {
+    width: 90%;
+    left: 5%;
+  }
+}
+
+.our-origins {
+background-color: #f7f9fa;
+  padding: 80px 20px;
+  text-align: center;
+
+}
+
+.our-origins .container {
+  max-width: 800px;
+  margin: 0 auto;
+    
+}
+
+.our-origins h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #121212;
+}
+
+.our-origins p {
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .our-origins h2 {
+    font-size: 1.8rem;
+  }
+
+  .our-origins p {
+    font-size: 1rem;
+  }
+}
+.contact-form-section {
+  background-color: #f7f9fc;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 600px;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #121212;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fefefe;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #4b5aed;
+  outline: none;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background-color: #4b5aed;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #4b5aed;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 30px 20px;
+  }
+
+  .form-container h2 {
+    font-size: 1.6rem;
+  }
+}
+.how-we-started {
+  background-color: #f7f9fa;
+  padding: 60px 20px;
+}
+
+.started-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 70px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.started-image img {
+  max-width: 100%;
+  width: 400px;
+  
+}
+
+.started-text {
+  max-width: 500px;
+}
+
+.started-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: #121212;
+}
+
+.started-text p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .started-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .started-text {
+    max-width: 100%;
+  }
+
+  .started-text h2 {
+    font-size: 1.6rem;
+  }
+}
+
+.help-support {
+  background-color: #ffffff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.help-support p {
+  font-size: 1rem;
+  color: #222;
+  line-height: 1.6;
+}
+
+.help-support a {
+  color: #4b5aed;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.help-support a:hover {
+  text-decoration: underline;
+}
+
+
+    /* body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+  color: #fff;
+} */
+
+.footer {
+  background-color: #111;
+  padding: 40px 20px;
+  margin-top: 65px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-left {
+  flex: 1 1 300px;
+}
+
+.logo {
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.contact {
+  font-size: 14px;
+  color: white;
+  margin-top:0;
+  margin-bottom:0;
+
+}
+
+.contact-title {
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.contact-info span {
+  display: inline-block;
+  margin-right: 15px;
+  margin-top: 0px;
+}
+
+.footer-right {
+  padding-left:55px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0px;
+  flex: 1;
+}
+
+.footer-down h4 {
+  margin-bottom: 0px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.footer-down li {
+  margin-bottom: 6px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.footer-down li:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.footer {
+  background-color: #000000;
+  color: white;
+  padding: 0px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0;
+  
+}
+.footer {
+  margin: 0;
+  padding: 0;
+}
+.footer-left {
+  padding-left:50px;
+  padding-top:30px;
+  background-color:#00000;
+  color:white;
+}
+.top {
+  padding-top:40px;
+  padding-left:55px;
+  padding-bottom:40px;
+}
+
+.footer-right {
+  flex: 2 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding-bottom:40px;
+}
+
+.footer-down h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-down ul li {
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-info span,
+.contact-info div,
+.contact-info h5 {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.tag{
+  padding-right:55px;
+  
+}
+.footer-left {
+    flex: 1 1 300px !important;
+}
+
+.logininfo{
+  display: none;
+}
+.tool_dataprivacy{
+  display: none;
+}
+.mobilelink{
+   display: none;
+}
+.footer-section{
+  display: none;
+}
+
+.SearchSection button {
+    width: 18% !important;
+    border-radius: 40px !important;
+    padding: 8px !important;
+}
+
+
+
+ @media only screen and (max-width: 600px) {
+     .SearchSection input {
+        min-width: 55% !important;
+        max-width: 55% !important;
+    }
+    .SearchSection button {
+               width: 40% !important;
+    }
+    
+    .footer-right {
+    display: block;
+    }
+    
+    .contact-hero {
+    height: 250px;
+    }
+    
+}
+
+#page-content{
+    padding-bottom: 0rem !important;
+}
+
+
+</style>

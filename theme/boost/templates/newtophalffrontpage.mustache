@@ -1,0 +1,105 @@
+
+<!-- Top Banner -->
+<div class="top-banner">
+    Enroll now & get 20% off on all tech courses – Limited time offer!
+</div>
+
+<!-- Header Section -->
+<header class="header">
+    <div class="left-section">
+
+        <!-- Logo linking to homepage -->
+       <a href="{{ config.wwwroot }}" class="logo-link">
+   
+    <h3 class="logo-heading">{{ sitename }}</h3>
+</a>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <span class="search-icon">&#128269;</span>
+            <input type="text" placeholder="Search for anything" />
+        </div>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="nav-links">
+        <a href="{{ config.wwwroot }}">Home</a>
+        <a href="{{ config.wwwroot }}/course/">Courses</a>
+        <a href="{{ config.wwwroot }}/about">About Us</a>
+        <a href="{{ config.wwwroot }}/contact">Contact</a>
+        <a href="{{ config.wwwroot }}/pricing">Plan & Pricing</a>
+    </nav>
+
+   
+</header>
+
+
+
+  <div class="hero-section">
+    <img src="https://static.uacdn.net/thumbnail/banner/87158fe8e21e4591809ad4c3e0e341b1.jpg?q=75&auto=format%2Ccompress&w=828" alt="hero" class="front" />
+  </div>
+
+  <section class="hero">
+    <h1>Prepare for Placements, Up skill, and Succeed – 1000+ Courses Await.</h1>
+    <p>Join Thousands of Learners Achieving Their Career Dreams</p>
+    <div class="buttons">
+      <button class="outline-btn">Try learning for free</button>
+      <button class="fill-btn">View subscription plans</button>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card red">
+      <h3>📺 Live classes <span>➔</span></h3>
+      <p>Watch free online coaching classes by our best educators.</p>
+    </div>
+    <div class="feature-card blue">
+      <h3>🎓 Top educators <span>➔</span></h3>
+      <p>Learn from some of the best educators in the country.</p>
+    </div>
+    <div class="feature-card pink">
+      <h3>👥 Batches <span>➔</span></h3>
+      <p>Curated batches to simplify the learning journey for your goal.</p>
+    </div>
+    <div class="feature-card yellow">
+      <h3>📚 Courses <span>➔</span></h3>
+      <p>Learn every subject in detail from your favourite educator.</p>
+    </div>
+    <div class="feature-card green">
+      <h3>📝 Test Series <span>➔</span></h3>
+      <p>Evaluate and boost your exam preparation with test series.</p>
+    </div>
+    <div class="feature-card rose">
+      <h3>📖 Practice <span>➔</span></h3>
+      <p>Strengthen your exam preparation with adaptive practice tests.</p>
+    </div>
+    <div class="feature-card teal">
+      <h3>📂 Playlist <span>➔</span></h3>
+      <p>High quality lecture videos for the entire syllabus for all your subjects.</p>
+    </div>
+    <div class="feature-card indigo">
+      <h3>💬 Doubts <span>➔</span></h3>
+      <p>Get quick and detailed solutions to clarify your doubts.</p>
+    </div>
+  </section>
+
+  <section class="popular-section">
+    <h2>Popular Courses</h2>
+    <p>Our most loved and trusted courses — start now!</p>
+
+     {{> theme_boost/head }}
+
+<body {{{ bodyattributes }}}>
+{{> core/local/toast/wrapper}}
+<div id="page-wrapper" class="d-print-block">
+
+    {{{ output.main_content }}}
+
+    {{! {{> theme_boost/navbar }}}}
+
+
+{{{ output.render_course_tiles }}}
+
+
+
+  </section>
