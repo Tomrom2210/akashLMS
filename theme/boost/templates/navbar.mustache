@@ -88,7 +88,7 @@
         <a href="{{{ config.homeurl }}}" class="navbar-brand d-none d-md-flex align-items-center m-0 me-4 p-0 aabtn">
 
             {{# output.should_display_navbar_logo }}
-                <img src="{{output.get_compact_logo_url}}" class="logo me-1" alt="{{sitename}}">
+                <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1767950654/eLearnKranti%20Logo%20%281%29.png" class="logo logotop me-1" alt="{{sitename}}">
             {{/ output.should_display_navbar_logo }}
             {{^ output.should_display_navbar_logo }}
                 {{{ sitename }}}
@@ -97,12 +97,16 @@
         </div>
         
         
-        <div class="SearchSection">
-         <!-- 🔍 Search form -->
-        <form action="{{config.wwwroot}}/course/search.php" method="get" class="form-inline ml-auto d-flex">
-            <input type="text" name="search" class="form-control mr-2" placeholder="Search courses..." aria-label="Search">
+        <div class="SearchSection" data-search="wrapper">
+        <button class="btn btn-link search-toggle" type="button" aria-label="Open search" data-search="toggle">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+        <div class="search-form-wrap" data-search="form">
+        <form action="{{config.wwwroot}}/course/search.php" method="get" class="form-inline d-flex">
+            <input type="text" name="search" class="form-control" placeholder="Search courses..." aria-label="Search">
             <button type="submit" class="btn btn-outline-primary">Search</button>
         </form>
+        </div>
 
         {{{ output.search_box }}}
         
@@ -119,15 +123,25 @@
 
         <ul class="navbar-nav d-none d-md-flex my-1 px-1">
             <!-- page_heading_menu -->
-            <li>
+            <!--<li>
             <a class="nav-link" href="https://elearnkranti.com/course/index.php?categoryid=3">Offers</a>
+           </li>-->
+           <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Courses
+           </a>
+           <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
+             {{#navcourses}}
+               <li><a class="dropdown-item" href="{{url}}">{{{name}}}</a></li>
+             {{/navcourses}}
+             {{^navcourses}}
+               <li><span class="dropdown-item-text">No courses yet</span></li>
+             {{/navcourses}}
+           </ul>
            </li>
-           <li>
-           <a class="nav-link" href="https://elearnkranti.com/course/index.php?categoryid=1">Courses</a> 
-           </li>
-           <li>
+           <!--<li>
            <a class="nav-link" href="https://elearnkranti.com/theme/boost/home1.php/#testimonialSection">Testimonials</a> 
-           </li>
+           </li>-->
            
         </ul>
           <ul class="navbar-nav d-none d-md-flex my-1 px-1">
@@ -142,7 +156,7 @@
                <a class="nav-link" href="{{ config.wwwroot }}/theme/boost/contact.php">Contact</a>
                </li>
                <li class="nav-item">
-               <a class="nav-link" href="{{ config.wwwroot }}/theme/boost/contact.php">Request a Call Back</a>
+               <a class="btn btn-primary request-callback-btn ms-2" href="{{ config.wwwroot }}/theme/boost/contact.php">Request a Call Back</a>
                </li>
  
         </ul>
@@ -150,9 +164,24 @@
         <ul class="navbar-nav d-none d-md-flex my-1 px-1">
             <!-- page_heading_menu -->
               <li class="nav-item">
-               <a class="nav-link" href="https://elearnkranti.com/login/index.php">Log in</a>
+               <a class="nav-link login-icon-link" href="https://elearnkranti.com/login/index.php" aria-label="Log in">
+                 <i class="fa fa-user" aria-hidden="true"></i>
+               </a>
                </li>
  
+        </ul>
+
+        <ul class="navbar-nav d-none d-md-flex my-1 px-1">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="quickMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quickMenu">
+                <li><a class="dropdown-item" href="https://elearnkranti.com/course/index.php?categoryid=3">Offers</a></li>
+                <li><a class="dropdown-item" href="https://elearnkranti.com/theme/boost/home1.php/#testimonialSection">Testimonials</a></li>
+                <!--<li><a class="dropdown-item" href="{{ config.wwwroot }}/theme/boost/aboutus.php">About Us</a></li>-->
+              </ul>
+            </li>
         </ul>
       
         <div id="usernavigation" class="navbar-nav ms-auto h-100">
@@ -190,16 +219,37 @@
 
 
 <style>
-    
+    .logotop{
+        max-height:calc(90px - (0.25rem * 2)) !important;
+    }
     .MenuSection{
         display: flex;
+    }
+    .navbar {
+        height: 90px !important;
     }
     .navbar>.container-fluid{
             padding: 10px 35px;
     }
     
-    .SearchSection{
+.SearchSection{
             min-width: 40%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+    }
+
+    .search-toggle{
+        color: inherit;
+        text-decoration: none;
+        padding: 4px 6px;
+    }
+    .search-form-wrap{
+        display: none;
+        flex: 1;
+    }
+    .SearchSection.is-open .search-form-wrap{
+        display: block;
     }
     
     
@@ -236,6 +286,47 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.request-callback-btn {
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-weight: 600;
+    border-radius: 40px;
+    background-image: linear-gradient(275deg, #4b5aed, #a865e9);
+    color: white;
+    border: none;
+}
+
+.login-icon-link i,
+#quickMenu i {
+    font-size: 18px;
+}
+
+@media (min-width: 768px) {
+  .nav-item.dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+}
+
+.navbar .dropdown-menu {
+    max-width: 360px;
+    min-width: 240px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.navbar .dropdown-item,
+.navbar .dropdown-item-text {
+    white-space: normal;
+    line-height: 1.35;
+    word-break: break-word;
+}
+
+/* Keep hamburger dropdown inside viewport */
+#quickMenu + .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
 @media only screen and (max-width: 900px) {
   .SearchSection input {
         min-width: 65% !important;
@@ -245,5 +336,32 @@
         width: 30%;
     }
 }
+
+@media (min-width: 992px) {
+    .search-form-wrap{
+        display: block;
+    }
+    .search-toggle{
+        display: none;
+    }
+}
     
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-search="wrapper"]').forEach(function (wrap) {
+      var toggle = wrap.querySelector('[data-search="toggle"]');
+      var formWrap = wrap.querySelector('[data-search="form"]');
+      if (!toggle || !formWrap) { return; }
+      toggle.addEventListener('click', function () {
+        wrap.classList.toggle('is-open');
+        if (wrap.classList.contains('is-open')) {
+          var input = formWrap.querySelector('input');
+          if (input) { input.focus(); }
+        }
+      });
+    });
+  });
+</script>
+

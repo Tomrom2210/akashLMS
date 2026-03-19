@@ -19,7 +19,7 @@ $CFG->dboptions = array (
 );
 
 $CFG->wwwroot   = 'http://localhost/akashLMS';
-$CFG->dataroot  = 'D:\\softwares\\xampp\\htdocs\\akashLMS\\moodledata';
+$CFG->dataroot  = 'D:\\softwares\\xampp\\htdocs\\moodledata';
 $CFG->admin     = 'admin';
 
 $CFG->directorypermissions = 0777;

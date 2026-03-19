@@ -27,6 +27,8 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->libdir . '/behat/lib.php');
 require_once($CFG->dirroot . '/course/lib.php');
 
+global $DB;
+
 // Add block button in editing mode.
 $addblockbutton = $OUTPUT->addblockbutton();
 
@@ -82,6 +84,21 @@ $regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settin
 $header = $PAGE->activityheader;
 $headercontent = $header->export_for_template($renderer);
 
+$navcourses = $DB->get_records_sql("
+    SELECT id, fullname
+    FROM {course}
+    WHERE id <> 1
+    ORDER BY timecreated DESC
+", null, 0, 10);
+
+$navcoursedata = [];
+foreach ($navcourses as $course) {
+    $navcoursedata[] = [
+        'name' => format_string($course->fullname, true, ['context' => context_course::instance($course->id), 'escape' => false]),
+        'url' => (new moodle_url('/course/view.php', ['id' => $course->id]))->out(false)
+    ];
+}
+
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -101,7 +118,8 @@ $templatecontext = [
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
     'overflow' => $overflow,
     'headercontent' => $headercontent,
-    'addblockbutton' => $addblockbutton
+    'addblockbutton' => $addblockbutton,
+    'navcourses' => $navcoursedata
 ];
 
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);

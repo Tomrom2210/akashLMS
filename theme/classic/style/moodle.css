@@ -39650,7 +39650,7 @@ div.editor_atto_toolbar button .icon {
   height: 51px;
 }
 .navbar.fixed-top .navbar-brand .logo {
-  max-height: calc(50px - (0.25rem * 2));
+  max-height: calc(90px - (0.25rem * 2));
 }
 .navbar.fixed-top .nav-link {
   height: 100%;
