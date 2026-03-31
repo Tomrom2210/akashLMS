@@ -32051,6 +32051,7 @@ body.drawer-ease {
 .drawer.drawer-left.show {
   left: 0;
   visibility: visible;
+  top: 15% !important;
 }
 .drawer.drawer-left .drawertoggle {
   margin-right: auto;
@@ -39230,7 +39231,7 @@ body.tox-fullscreen .tox.tox-tinymce-aux {
 @media (min-width: 992px) {
   .drawer-left,
   .drawer-right {
-    top: 60px;
+    top: 130px;
     height: calc(100vh - 60px);
   }
   .hasstickyfooter .drawer-left,

@@ -64,12 +64,13 @@
         <p>Join eLearnKranti, India's premier e-learning platform launched in 2025, empowering learners with cutting-edge skills for a dynamic future.</p>
       </div>
       <div class="footer-down">
-        <h4>Data Science</h4>
+        <h4>Quick Links</h4>
         <ul>
-          <li>Python</li>
-          <li>Machine Learning</li>
-          <li>ChatGPT</li>
-          <li>Deep Learning</li>
+          <li> <a class="nav-link" href="{{ config.wwwroot }}/theme/boost/aboutus.php">About Us</a></li>
+          <li> <a class="nav-link" href="{{ config.wwwroot }}/course/index.php?categoryid=1">Courses</a></li>
+          <li><a class="dropdown-item" href="https://elearnkranti.com/course/index.php?categoryid=3">Offers</a></li>
+          <li><a class="dropdown-item" href="{{ config.wwwroot }}/theme/boost/testimonials.php">Testimonials</a></li>
+          <li><a class="nav-link" href="{{ config.wwwroot }}/theme/boost/contact.php">Contact</a></li>
         </ul>
       </div>
       <div class="footer-down">
@@ -84,7 +85,7 @@
      <div class="footer-down">
         <h4>Contact Information</h4>
         <ul>
-          <li>Phone: +91 6284910733</li>
+          <li>Phone:+91 8448714115</li>
           <li>Email: info@elearnkranti.com</li>
           <li><a href="https://www.linkedin.com/in/elearn-kranti-a1ab65395/">Linkedin</a></li>
           <li><a href="https://www.instagram.com/elearnkranti?igsh=aDZpcnpmNGxoZWF6&utm_source=qr">Instagram</a></li>
@@ -176,7 +177,7 @@
 
 
 .footer {
-  background-color: #111;
+  background: linear-gradient(275deg, #4b5aed, #a865e9);
   padding: 40px 20px;
   margin-top: 65px;
 }
@@ -201,7 +202,7 @@
   padding-left:55px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0px;
+  gap: 25px;
   flex: 1;
 }
 
@@ -252,9 +253,7 @@ body {
 .SearchSection button {
     width: 25% !important;
 }
-.SearchSection {
-    min-width: 30%;
-}
+
 .moremenu {
     opacity: 1;
 }
@@ -277,108 +276,22 @@ require(['theme_boost/footer-popover'], function(FooterPopover) {
 
 
 
-{{!
-    This file is part of Moodle - http://moodle.org/
-
-    Moodle is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    Moodle is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-}}
-{{!
-    @template theme_boost/footer
-
-    Page footer.
-
-    Example context (json):
-    {
-        "output": {
-            "page_doc_link": "Documentation for this page",
-            "supportemail": "<a href=\"#\">Contact site support</a>",
-            "has_popover_links": true,
-            "services_support": "Services and support",
-            "login_info": "You are logged in as cute kitten",
-            "moodle_release": "90210",
-            "has_communication_links": true,
-            "communication_url": "https://element:8081/#/room/#yourroom:synapse",
-            "communication_link": "<a href=\"#\">Communication room</a>"
-        }
-    }
-}}
-
-<footer id="page-footer" class="footer-popover bg-white">
-    <div data-region="footer-container-popover">
-        {{#output.has_communication_links}}
-            <button onclick="window.open('{{output.communication_url}}', '_blank', 'noreferrer')" class="btn btn-icon rounded-circle bg-primary text-white btn-footer-communication" aria-label="{{#str}}communicationroomlink, course{{/str}}">
-                {{#pix}}t/messages-o, core{{/pix}}
-            </button>
-        {{/output.has_communication_links}}
-        <button class="btn btn-icon rounded-circle bg-secondary btn-footer-popover" data-action="footer-popover" aria-label="{{#str}}showfooter, theme_boost{{/str}}">
-            {{#pix}}e/question, core{{/pix}}
-        </button>
+<div id="page-footer" class="footer-system-meta" hidden>
+    <div class="logininfo">
+        {{{ output.login_info }}}
     </div>
-    <div class="footer-content-popover container" data-region="footer-content-popover">
-        {{#output.has_communication_links}}
-            <div class="footer-section p-3 border-bottom footer-link-communication">
-                <div class="footer-support-link">{{{ output.communication_link }}}</div>
-            </div>
-        {{/output.has_communication_links}}
-        {{# output.has_popover_links }}
-            <div class="footer-section p-3 border-bottom">
-                {{# output.page_doc_link }}
-                    <div class="footer-support-link">{{{ output.page_doc_link }}}</div>
-                {{/ output.page_doc_link }}
-
-                {{# output.services_support_link }}
-                    <div class="footer-support-link">{{{ output.services_support_link }}}</div>
-                {{/ output.services_support_link }}
-
-                {{# output.supportemail }}
-                    <div class="footer-support-link">{{{ output.supportemail }}}</div>
-                {{/ output.supportemail }}
-            </div>
-            
-        {{/ output.has_popover_links }}
-        <div class="footer-section p-3 border-bottom">
-            <div class="logininfo">
-                {{{ output.login_info }}}
-            </div>
-            <div class="tool_usertours-resettourcontainer">
-            </div>
-
-            {{{ output.standard_footer_html }}}
-            {{{ output.standard_end_of_body_html }}}
-        </div>
-        <div class="footer-section p-3">
-            <div>{{#str}}poweredbymoodle, core{{/str}}</div>
-            {{#output.moodle_release}}
-                <div>
-                    {{#str}}version, core{{/str}} {{{ output.moodle_release }}}
-                </div>
-            {{/output.moodle_release}}
-        </div>
+    <div class="tool_usertours-resettourcontainer">
     </div>
+    {{{ output.standard_footer_html }}}
+    {{{ output.standard_end_of_body_html }}}
+</div>
 
-    <div class="footer-content-debugging footer-dark bg-dark text-light">
-        <div class="container-fluid footer-dark-inner">
-            {{{ output.debug_footer_html }}}
-        </div>
+{{#output.debug_footer_html}}
+<div class="footer-content-debugging footer-dark bg-dark text-light">
+    <div class="container-fluid footer-dark-inner">
+        {{{ output.debug_footer_html }}}
     </div>
-</footer>
-{{#js}}
-require(['theme_boost/footer-popover'], function(FooterPopover) {
-    FooterPopover.init();
-});
-{{/js}}
-
-
+</div>
+{{/output.debug_footer_html}}
 
 

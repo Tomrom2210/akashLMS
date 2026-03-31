@@ -52,7 +52,7 @@
     {{$drawercloseonresize}}1{{/drawercloseonresize}}
     {{$drawerheading}}
         {{# output.should_display_navbar_logo }}
-            <img src="{{output.get_compact_logo_url}}" class="logo py-1 h-100" alt="{{sitename}}">
+            <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1767950654/eLearnKranti%20Logo%20%281%29.png" class="logo py-1 h-100" alt="{{sitename}}">
         {{/ output.should_display_navbar_logo }}
         {{^ output.should_display_navbar_logo }}
             <span class="sitename" title="{{{ sitename }}}">{{{ sitename }}}</span>
@@ -91,7 +91,102 @@
                 </a>
                 {{/haschildren}}
             {{/mobileprimarynav}}
+            <a id="mobile-courses-toggle" href="#" class="list-group-item list-group-item-action icons-collapse-expand collapsed d-flex" data-bs-toggle="collapse" data-bs-target="#mobile-courses-menu" aria-expanded="false" aria-controls="mobile-courses-menu">
+                Courses
+                <span class="ms-auto expanded-icon icon-no-margin mx-2">
+                    {{#pix}} t/expanded, core {{/pix}}
+                    <span class="visually-hidden">
+                        {{#str}} collapse, core {{/str}}
+                    </span>
+                </span>
+                <span class="ms-auto collapsed-icon icon-no-margin mx-2">
+                    {{#pix}} t/collapsed, core {{/pix}}
+                    <span class="visually-hidden">
+                        {{#str}} expand, core {{/str}}
+                    </span>
+                </span>
+            </a>
+           <!-- <div class="collapse list-group-item p-0 border-0" role="menu" id="mobile-courses-menu" aria-labelledby="mobile-courses-toggle">
+                <a href="{{ config.wwwroot }}/course/index.php" class="ps-5 list-group-item list-group-item-action">
+                    All Courses
+                </a>
+                {{#navcourses}}
+                    <a href="{{url}}" class="ps-5 list-group-item list-group-item-action">
+                        {{{name}}}
+                    </a>
+                {{/navcourses}}
+                {{^navcourses}}
+                    <span class="ps-5 list-group-item text-muted">
+                        No courses yet
+                    </span>
+                {{/navcourses}}
+            </div>-->
+            <a id="mobile-categories-toggle" href="#" class="list-group-item list-group-item-action icons-collapse-expand collapsed d-flex" data-bs-toggle="collapse" data-bs-target="#mobile-categories-menu" aria-expanded="false" aria-controls="mobile-categories-menu">
+                Explore 
+                <span class="ms-auto expanded-icon icon-no-margin mx-2">
+                    {{#pix}} t/expanded, core {{/pix}}
+                    <span class="visually-hidden">
+                        {{#str}} collapse, core {{/str}}
+                    </span>
+                </span>
+                <span class="ms-auto collapsed-icon icon-no-margin mx-2">
+                    {{#pix}} t/collapsed, core {{/pix}}
+                    <span class="visually-hidden">
+                        {{#str}} expand, core {{/str}}
+                    </span>
+                </span>
+            </a>
+            <div class="collapse list-group-item p-0 border-0" role="menu" id="mobile-categories-menu" aria-labelledby="mobile-categories-toggle">
+                <a href="{{ config.wwwroot }}/course/index.php" class="ps-5 list-group-item list-group-item-action">
+                    All Categories
+                </a>
+                {{#navcategories}}
+                    <a href="{{url}}" class="ps-5 list-group-item list-group-item-action">
+                        {{{name}}}
+                    </a>
+                {{/navcategories}}
+                {{^navcategories}}
+                    <span class="ps-5 list-group-item text-muted">
+                        No categories yet
+                    </span>
+                {{/navcategories}}
+            </div>
+            <a href="{{ config.wwwroot }}/theme/boost/aboutus.php" class="list-group-item list-group-item-action">
+                About Us
+            </a>
+            <a href="{{ config.wwwroot }}/theme/boost/contact.php" class="list-group-item list-group-item-action">
+                Contact
+            </a>
+            <a href="{{ config.wwwroot }}/theme/boost/testimonials.php" class="list-group-item list-group-item-action">
+                Testimonials
+            </a>
+            <a href="{{ config.wwwroot }}/login/index.php" class="list-group-item list-group-item-action">
+                Log In
+            </a>
         </div>
+        <style>
+            #theme_boost-drawers-primary.drawer {
+                z-index: 1045;
+            }
+            #theme_boost-drawers-primary .drawerheader {
+                margin-top: var(--offerbar-height, 44px);
+            }
+            #theme_boost-drawers-primary .list-group-item {
+                font-weight: 600;
+                border: 0;
+                border-bottom: 1px solid rgba(75, 90, 237, 0.08);
+                padding: 14px 18px;
+            }
+            #theme_boost-drawers-primary .list-group-item.active {
+                background-image: linear-gradient(275deg, #4b5aed, #a865e9);
+                border-color: transparent;
+                color: #fff;
+            }
+            #theme_boost-drawers-primary .collapse .list-group-item {
+                background: #f8f8ff;
+                font-weight: 500;
+            }
+        </style>
     {{/drawercontent}}
     {{$drawerstate}}show-drawer-primary{{/drawerstate}}
 {{/ theme_boost/drawer}}

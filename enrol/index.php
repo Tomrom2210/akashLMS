@@ -7,14 +7,6 @@ use core_course\external\course_summary_exporter;
 $id = required_param('id', PARAM_INT);
 $returnurl = optional_param('returnurl', null, PARAM_LOCALURL);
 
-if (!isloggedin()) {
-    $referer = get_local_referer();
-    if (empty($referer)) {
-        $SESSION->wantsurl = "$CFG->wwwroot/course/view.php?id=$id";
-    }
-    redirect(get_login_url());
-}
-
 $course = $DB->get_record('course', ['id' => $id], '*', MUST_EXIST);
 $context = context_course::instance($course->id, MUST_EXIST);
 
@@ -33,16 +25,16 @@ $PAGE->set_url('/enrol/index.php', ['id' => $course->id]);
 $PAGE->set_secondary_navigation(false);
 $PAGE->add_body_class('limitedwidth');
 
-if (\core\session\manager::is_loggedinas() && $USER->loginascontext->contextlevel == CONTEXT_COURSE) {
+if (isloggedin() && \core\session\manager::is_loggedinas() && $USER->loginascontext->contextlevel == CONTEXT_COURSE) {
     throw new \moodle_exception('loginasnoenrol', '', $CFG->wwwroot.'/course/view.php?id='.$USER->loginascontext->instanceid);
 }
 
-if (!core_course_category::can_view_course_info($course) && !is_enrolled($context, $USER, '', true)) {
+if (isloggedin() && !core_course_category::can_view_course_info($course) && !is_enrolled($context, $USER, '', true)) {
     throw new \moodle_exception('coursehidden', '', $CFG->wwwroot . '/');
 }
 
 // Already enrolled? Redirect to course.
-if (is_enrolled($context, $USER, '', true)) {
+if (isloggedin() && is_enrolled($context, $USER, '', true)) {
     $destination = !empty($SESSION->wantsurl) ? $SESSION->wantsurl : "$CFG->wwwroot/course/view.php?id=$course->id";
     unset($SESSION->wantsurl);
     redirect($destination);
@@ -85,7 +77,7 @@ $templatecontext = [
     'fullname' => format_string($course->fullname),
     'summary' => $summary,
     'courseimage' => $imageurl,
-    'price' => $price,
+    'price' => '',
     'enrolurl' => (new moodle_url('/enrol/index.php', ['id' => $course->id]))->out(false),
     'teachers' => $teachers,
     'haswidgets' => !empty($widgets),

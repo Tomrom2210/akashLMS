@@ -73,9 +73,67 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Mea+Culpa&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<div class="topOfferBar">
+  <p>
+    Launch your career with our exclusive academic offers — enjoy a flat <span>20% off</span> on all courses
+  </p>
+</div>
+<style>
+:root {
+  --offerbar-height: 44px;
+  --mobile-offerbar-height: 40px;
+  --site-navbar-height: 0px;
+  --mobile-site-navbar-height: 0px;
+}
 
-<nav class="navbar fixed-top bg-body navbar-expand" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+.topOfferBar {
+  width: 100%;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+
+  /* Gradient like your image */
+  background: linear-gradient(90deg, #0f2f6e, #6a11cb, #2f72de);
+
+  position: relative;
+  z-index: 9999;
+  min-height: var(--offerbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topOfferBar p {
+  margin: 0;
+}
+
+.topOfferBar span {
+  color: #00ff95;
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root {
+    --offerbar-height: var(--mobile-offerbar-height);
+  }
+  .topOfferBar {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+}
+.topOfferBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+</style>
+<nav class="navbar fixed-top bg-body navbar-expand site-topnav" aria-label="{{#str}}sitemenubar, admin{{/str}}">
     <div class="container-fluid">
         
         
@@ -92,6 +150,14 @@
             {{/ output.should_display_navbar_logo }}
             {{^ output.should_display_navbar_logo }}
                 {{{ sitename }}}
+            {{/ output.should_display_navbar_logo }}
+        </a>
+        <a href="{{{ config.homeurl }}}" class="navbar-brand mobile-brand d-flex d-md-none align-items-center m-0 p-0 aabtn">
+            {{# output.should_display_navbar_logo }}
+                <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1767950654/eLearnKranti%20Logo%20%281%29.png" class="logo mobile-logotop" alt="{{sitename}}">
+            {{/ output.should_display_navbar_logo }}
+            {{^ output.should_display_navbar_logo }}
+                <span class="mobile-brand-text">{{{ sitename }}}</span>
             {{/ output.should_display_navbar_logo }}
         </a>
         </div>
@@ -126,21 +192,40 @@
             <!--<li>
             <a class="nav-link" href="https://elearnkranti.com/course/index.php?categoryid=3">Offers</a>
            </li>-->
-           <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
            <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
              Courses
            </a>
-           <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
-             {{#navcourses}}
-               <li><a class="dropdown-item" href="{{url}}">{{{name}}}</a></li>
-             {{/navcourses}}
-             {{^navcourses}}
-               <li><span class="dropdown-item-text">No courses yet</span></li>
-             {{/navcourses}}
-           </ul>
+                     <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
+                         <li><a class="dropdown-item" href="{{ config.wwwroot }}/course/index.php">All Courses</a></li>
+                         <li><hr class="dropdown-divider"></li>
+                         {{#navcourses}}
+                             <li><a class="dropdown-item" href="{{url}}">{{{name}}}</a></li>
+                             <li><hr class="dropdown-divider"></li>
+                         {{/navcourses}}
+                         {{^navcourses}}
+                             <li><span class="dropdown-item-text">No courses yet</span></li>
+                         {{/navcourses}}
+                     </ul>
+           </li>-->
+           <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Explore 
+           </a>
+                     <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                         <li><a class="dropdown-item" href="{{ config.wwwroot }}/course/index.php">All Categories</a></li>
+                         <li><hr class="dropdown-divider"></li>
+                         {{#navcategories}}
+                             <li><a class="dropdown-item" href="{{url}}">{{{name}}}</a></li>
+                             <li><hr class="dropdown-divider"></li>
+                         {{/navcategories}}
+                         {{^navcategories}}
+                             <li><span class="dropdown-item-text">No categories yet</span></li>
+                         {{/navcategories}}
+                     </ul>
            </li>
            <!--<li>
-           <a class="nav-link" href="https://elearnkranti.com/theme/boost/home1.php/#testimonialSection">Testimonials</a> 
+           <a class="nav-link" href="{{ config.wwwroot }}/theme/boost/testimonials.php">Testimonials</a> 
            </li>-->
            
         </ul>
@@ -156,18 +241,18 @@
                <a class="nav-link" href="{{ config.wwwroot }}/theme/boost/contact.php">Contact</a>
                </li>
                <li class="nav-item">
-               <a class="btn btn-primary request-callback-btn ms-2" href="{{ config.wwwroot }}/theme/boost/contact.php">Request a Call Back</a>
+               <a class="btn btn-primary request-callback-btn ms-2" href="tel:+91 8448714115">Request a Call Back</a>
                </li>
  
         </ul>
-        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <ul class="navbar-nav d-none d-md-flex my-1 px-1">
             <!-- page_heading_menu -->
               <li class="nav-item">
-               <a class="nav-link login-icon-link" href="https://elearnkranti.com/login/index.php" aria-label="Log in">
-                 <i class="fa fa-user" aria-hidden="true"></i>
-               </a>
-               </li>
+                            <a class="nav-link login-icon-link" href="#" aria-label="Log in" id="openLoginModal">
+                                 <i class="fa fa-user" aria-hidden="true"></i>
+                            </a>
+              </li>
  
         </ul>
 
@@ -178,7 +263,7 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quickMenu">
                 <li><a class="dropdown-item" href="https://elearnkranti.com/course/index.php?categoryid=3">Offers</a></li>
-                <li><a class="dropdown-item" href="https://elearnkranti.com/theme/boost/home1.php/#testimonialSection">Testimonials</a></li>
+                <li><a class="dropdown-item" href="{{ config.wwwroot }}/theme/boost/testimonials.php">Testimonials</a></li>
                 <!--<li><a class="dropdown-item" href="{{ config.wwwroot }}/theme/boost/aboutus.php">About Us</a></li>-->
               </ul>
             </li>
@@ -213,6 +298,40 @@
 
 </nav>
 
+<!-- Login Modal (kept outside the fixed navbar to avoid stacking/overlay issues) -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title w-100 text-center" id="loginModalLabel">Log in to <span class="text-primary">eLearnKranti</span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <div class="loginform">
+                    <form class="login-form" action="/login/index.php" method="post" id="loginFormModal">
+                        <input type="hidden" name="logintoken" value="">
+                        <div class="login-form-username mb-3">
+                            <label for="modal-username" class="visually-hidden">Username</label>
+                            <input type="text" name="username" id="modal-username" class="form-control form-control-lg" placeholder="Username" autocomplete="username" required>
+                        </div>
+                        <div class="login-form-password mb-3">
+                            <label for="modal-password" class="visually-hidden">Password</label>
+                            <input type="password" name="password" id="modal-password" class="form-control form-control-lg" placeholder="Password" autocomplete="current-password" required>
+                        </div>
+                        <div class="login-form-submit mb-3">
+                            <button class="btn btn-primary btn-lg w-100" type="submit" id="loginbtnModal">Log in</button>
+                        </div>
+                        <div class="login-form-forgotpassword mb-3 text-center">
+                            <a href="{{ config.wwwroot }}/login/forgot_password.php">Forgotten your username or password?</a><br>
+                            <a href="{{ config.wwwroot }}/login/signup.php">Sign up for an account</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {{> theme_boost/primary-drawer-mobile }}
 
 
@@ -222,14 +341,54 @@
     .logotop{
         max-height:calc(90px - (0.25rem * 2)) !important;
     }
+    .mobile-logotop{
+        max-height: 44px;
+        width: auto;
+    }
+    .mobile-brand{
+        min-width: 0;
+        max-width: calc(100vw - 140px);
+    }
+    .mobile-brand-text{
+        display: inline-block;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-weight: 700;
+    }
+    .site-topnav{
+        min-height: 90px;
+        height: auto !important;
+        top: var(--offerbar-height);
+        margin-top: 0;
+        z-index: 1035;
+    }
+    #page.drawers{
+        padding-top: calc(var(--offerbar-height) + var(--site-navbar-height)) !important;
+    }
     .MenuSection{
         display: flex;
+        align-items: center;
+        margin-left: auto;
+        min-width: 0;
     }
     .navbar {
         height: 90px !important;
     }
     .navbar>.container-fluid{
             padding: 10px 35px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: nowrap;
+    }
+    .logoSection{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 0 0 auto;
+        min-width: 0;
     }
     
 .SearchSection{
@@ -237,12 +396,17 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            flex: 1 1 420px;
+            min-width: 0;
     }
 
     .search-toggle{
         color: inherit;
         text-decoration: none;
         padding: 4px 6px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
     .search-form-wrap{
         display: none;
@@ -260,8 +424,9 @@
     
     .SearchSection form{
         border: 1px solid #dddddd;
-    padding: 4px 4px;
-    border-radius: 35px;
+        padding: 4px 4px;
+        border-radius: 35px;
+        width: 100%;
     }
     
     .SearchSection button{
@@ -296,10 +461,23 @@
     border: none;
 }
 
-.login-icon-link i,
-#quickMenu i {
-    font-size: 18px;
-}
+
+    .login-icon-link i,
+    #quickMenu i {
+        font-size: 18px;
+    }
+
+    /* Fix for Font Awesome dropdown arrow on .dropdown-toggle */
+    .dropdown-toggle::after {
+        display: inline-block;
+        font-family: 'FontAwesome', 'Arial';
+        content: "\f0d7"; /* fa-caret-down */
+        margin-left: 4px;
+        font-size: 12px;
+        width: auto;
+        border: 0;
+        vertical-align: middle;
+    }
 
 @media (min-width: 768px) {
   .nav-item.dropdown:hover > .dropdown-menu {
@@ -345,23 +523,135 @@
         display: none;
     }
 }
-    
+
+@media (max-width: 767.98px) {
+    .site-topnav{
+        min-height: auto;
+        height: auto !important;
+    }
+    .site-topnav.navbar.fixed-top{
+        position: fixed !important;
+        top: var(--offerbar-height);
+        left: 0;
+        right: 0;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    .site-topnav > .container-fluid{
+        padding: 10px 14px 14px;
+        gap: 10px;
+        flex-wrap: nowrap;
+        position: relative;
+    }
+    .logoSection{
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+    .mobile-brand{
+        max-width: none;
+    }
+    .mobile-logotop{
+        max-height: 88px;
+    }
+    .SearchSection{
+        order: 2;
+        flex: 0 0 auto;
+        width: auto;
+        min-width: auto;
+        margin-left: auto;
+        position: static;
+    }
+    .SearchSection form{
+        min-width: 0;
+    }
+    .SearchSection input{
+        min-width: 0 !important;
+        max-width: none !important;
+        width: 100%;
+    }
+    .SearchSection button{
+        width: auto;
+        padding: 10px 16px;
+        flex: 0 0 auto;
+    }
+    .search-form-wrap{
+        display: none;
+        width: calc(100vw - 28px);
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 14px;
+        right: 14px;
+        z-index: 1001;
+        padding: 10px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+    }
+    .SearchSection.is-open .search-form-wrap{
+        display: block;
+    }
+    .search-toggle{
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        border-radius: 999px;
+        background-image: linear-gradient(275deg, #4b5aed, #a865e9);
+        color: #fff;
+        box-shadow: 0 14px 30px rgba(107, 95, 234, 0.3);
+    }
+    .search-toggle i{
+        font-size: 12px;
+    }
+    .search-form-wrap form{
+        gap: 8px;
+    }
+    .MenuSection{
+        display: none;
+    }
+    .navbar-toggler{
+        flex: 0 0 auto;
+    }
+    #page.drawers{
+        padding-top: calc(var(--offerbar-height) + var(--mobile-site-navbar-height)) !important;
+    }
+}
+    hr{
+        margin: 0px !important;
+    }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('[data-search="wrapper"]').forEach(function (wrap) {
-      var toggle = wrap.querySelector('[data-search="toggle"]');
-      var formWrap = wrap.querySelector('[data-search="form"]');
-      if (!toggle || !formWrap) { return; }
-      toggle.addEventListener('click', function () {
-        wrap.classList.toggle('is-open');
-        if (wrap.classList.contains('is-open')) {
-          var input = formWrap.querySelector('input');
-          if (input) { input.focus(); }
+    document.addEventListener('DOMContentLoaded', function () {
+        // Search toggle
+        document.querySelectorAll('[data-search="wrapper"]').forEach(function (wrap) {
+            var toggle = wrap.querySelector('[data-search="toggle"]');
+            var formWrap = wrap.querySelector('[data-search="form"]');
+            if (!toggle || !formWrap) { return; }
+            toggle.addEventListener('click', function () {
+                wrap.classList.toggle('is-open');
+                toggle.setAttribute('aria-expanded', wrap.classList.contains('is-open') ? 'true' : 'false');
+                if (wrap.classList.contains('is-open')) {
+                    var input = formWrap.querySelector('input');
+                    if (input) { input.focus(); }
+                }
+            });
+            document.addEventListener('click', function(event) {
+                if (!wrap.contains(event.target)) {
+                    wrap.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        // Login modal trigger
+        var loginBtn = document.getElementById('openLoginModal');
+        if (loginBtn) {
+            loginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                var modal = new bootstrap.Modal(document.getElementById('loginModal'));
+                modal.show();
+            });
         }
-      });
     });
-  });
 </script>
 
