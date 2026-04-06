@@ -147,11 +147,9 @@ define(['jquery'], function($) {
             return true;
         });
 
-        // Handling addSubsection
-        $('body').on('click', '[data-action="addModule"]', function(event) {
-            setTimeout(() => {
-                location.reload();
-            }, 200);
+        // Let Moodle open the activity chooser normally.
+        // Reloading immediately here interrupts "Add content" actions inside sections.
+        $('body').on('click', '[data-action="addModule"], [data-action="newModule"]', function() {
             return true;
         });
 

@@ -36,6 +36,13 @@ export const init = () => {
     const container = document.querySelector(SELECTORS.FOOTERCONTAINER);
     const footerButton = document.querySelector(SELECTORS.FOOTERBUTTON);
     const footerArrow = document.querySelector(SELECTORS.FOOTERARROW);
+    const footerContent = document.querySelector(SELECTORS.FOOTERCONTENT);
+
+    // This theme can override the footer markup and omit the standard popover elements.
+    // In that case, skip initialization instead of crashing the whole page.
+    if (!container || !footerButton || !footerContent) {
+        return;
+    }
 
     new Popover(footerButton, {
         content: getFooterContent,
@@ -99,7 +106,8 @@ export const init = () => {
  * @private
  */
 const getFooterContent = () => {
-    return document.querySelector(SELECTORS.FOOTERCONTENT).innerHTML;
+    const footerContent = document.querySelector(SELECTORS.FOOTERCONTENT);
+    return footerContent ? footerContent.innerHTML : '';
 };
 
 export {

@@ -32006,7 +32006,7 @@ body.drawer-ease {
   z-index: 1015;
   position: fixed;
   height: 100vh;
-  top: 0;
+  top: 130px !important;
 }
 @media (max-width: 991.98px) {
   .drawer {
@@ -32042,6 +32042,7 @@ body.drawer-ease {
   max-width: 285px;
   left: calc(-285px + -10px);
   visibility: hidden;
+  top: 120px !important;
 }
 @media (prefers-reduced-motion: reduce) {
   .drawer.drawer-left {
@@ -32051,7 +32052,7 @@ body.drawer-ease {
 .drawer.drawer-left.show {
   left: 0;
   visibility: visible;
-  top: 15% !important;
+  top: 120px !important;
 }
 .drawer.drawer-left .drawertoggle {
   margin-right: auto;
@@ -39236,7 +39237,7 @@ body.tox-fullscreen .tox.tox-tinymce-aux {
   }
   .hasstickyfooter .drawer-left,
   .hasstickyfooter .drawer-right {
-    top: 60px;
+    top: 160px;
     height: calc(100vh - 60px - max(80px, 0.9375rem * 3));
   }
   #page.drawers {

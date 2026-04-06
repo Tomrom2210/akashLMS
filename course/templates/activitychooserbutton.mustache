@@ -65,3 +65,19 @@
     </div>
 </div>
 {{/hasactionlinks}}
+{{#js}}
+    require(['theme_boost/bootstrap/dropdown'], function(Dropdown) {
+        var trigger = document.getElementById('dropdownMenuButton-{{#modid}}{{modid}}{{/modid}}{{^modid}}{{uniqid}}{{/modid}}');
+        if (!trigger) {
+            return;
+        }
+
+        var instance = Dropdown.getOrCreateInstance(trigger);
+
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            instance.toggle();
+        });
+    });
+{{/js}}

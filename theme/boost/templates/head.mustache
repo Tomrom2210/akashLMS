@@ -41,6 +41,48 @@
         width: 40%;
     }
 }
+
+/* Keep Moodle tertiary navigation dropdowns usable on Participants pages. */
+.path-user .tertiary-navigation,
+.path-user .tertiary-navigation .navitem,
+.path-user .tertiary-navigation .tertiary-navigation-selector,
+.path-user .tertiary-navigation .dropdown.select-menu {
+    overflow: visible;
+}
+
+.path-user .tertiary-navigation .dropdown.select-menu {
+    position: relative;
+}
+
+.path-user .tertiary-navigation .dropdown-menu[role="listbox"] {
+    min-width: 18rem;
+    max-width: min(90vw, 28rem);
+    max-height: min(70vh, 28rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1060;
+}
+
+.path-user .tertiary-navigation .dropdown-menu[role="listbox"] .dropdown-item,
+.path-user .tertiary-navigation .dropdown-menu[role="listbox"] [role="presentation"] {
+    white-space: normal;
+}
+
+/* Keep RemUI "Add content" dropdowns visible and above section cards. */
+body#page-course-view-remuiformat .course-content .divider,
+body#page-course-view-remuiformat .course-content .divider .divider-content,
+body#page-course-view-remuiformat .course-content .divider .dropdown {
+    overflow: visible;
+}
+
+body#page-course-view-remuiformat .course-content .divider .divider-content {
+    z-index: 1055;
+}
+
+body#page-course-view-remuiformat .course-content .divider .dropdown-menu {
+    z-index: 1060;
+    min-width: 15rem;
+}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {

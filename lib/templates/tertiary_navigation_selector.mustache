@@ -77,7 +77,12 @@
     {{>core/select_menu}}
 </nav>
 {{#js}}
-    document.querySelector('#{{baseid}}').addEventListener('change', function(e) {
-        window.location.href = e.target.value;
-    });
+    var input = document.getElementById('{{baseid}}-input');
+    if (input) {
+        input.addEventListener('change', function(e) {
+            if (e.target.value) {
+                window.location.href = e.target.value;
+            }
+        });
+    }
 {{/js}}
