@@ -189,6 +189,33 @@
         <p class="ts3-subtitle">Highly rated courses curated for you</p>
 
         <div class="ts3-grid">
+            {{#has_recommendedcourses}}
+            {{#recommendedcourses}}
+            <div class="ts3-card {{layoutclass}}">
+                <img src="{{image}}" alt="{{name}}">
+                <div class="ts3-content">
+                    <h3>{{{name}}}</h3>
+                    <p>{{teacher}}</p>
+                    <div class="ts3-rating">{{{stars}}}</div>
+                    <div class="ts3-price">{{{price}}}</div>
+                    <a href="{{url}}" class="ts3-button">Enroll Now</a>
+                </div>
+            </div>
+            {{/recommendedcourses}}
+            {{/has_recommendedcourses}}
+            {{^has_recommendedcourses}}
+            <div class="ts3-card">
+                <img src="/media/new/s-m.jpg" alt="Course placeholder">
+                <div class="ts3-content">
+                    <h3>Courses will appear here soon</h3>
+                    <p>New courses from the backend will be displayed in this section.</p>
+                    <div class="ts3-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="ts3-price">Free</div>
+                    <a href="/course/index.php" class="ts3-button">Browse Courses</a>
+                </div>
+            </div>
+            {{/has_recommendedcourses}}
+            <div style="display:none;">
 
             <!-- Card -->
             <div class="ts3-card">
@@ -260,6 +287,7 @@
                     <div class="ts3-price">₹ 25000 + <small>GST</small></div>
                     <button>Enroll Now</button>
                 </div>
+            </div>
             </div>
 
         </div>
@@ -463,8 +491,10 @@
 }
 
 /* BUTTON (stick to bottom) */
-.ts3-content button {
+.ts3-content button,
+.ts3-content .ts3-button {
     margin-top: auto; /* IMPORTANT FIX */
+    display: inline-block;
     width: 100%;
     padding: 10px;
     border: none;
@@ -472,6 +502,8 @@
     background: linear-gradient(135deg, #6366f1, #8b5cf6);
     color: #fff;
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
 }
 
 /* HOVER */
@@ -958,7 +990,6 @@
         <div class="stats">
           <span><strong>200+</strong><br>Teaching time</span>
         </div>
-        <a href="#" class="profile-link">View Profile &gt;</a>
       </div>
     </div>
   </div>
@@ -1039,299 +1070,53 @@
   <section class="courses-section">
   <div class="courses-header">
     <div>
-      
       <h1>Explore Our Courses</h1>
     </div>
   </div>
-
-  <div class="courses-tabs">
-    <input type="radio" name="tabs" id="tab-all" class="tab-input" checked>
-    <input type="radio" name="tabs" id="tab-it" class="tab-input">
-    <input type="radio" name="tabs" id="tab-design" class="tab-input">
-    <input type="radio" name="tabs" id="tab-business" class="tab-input">
-    <input type="radio" name="tabs" id="tab-development" class="tab-input">
-    <input type="radio" name="tabs" id="tab-personal" class="tab-input">
-
-    <div class="tabs">
-      <label for="tab-all" class="tab-button tab-all">All</label>
-      <label for="tab-it" class="tab-button tab-it">IT & Software</label>
-      <label for="tab-design" class="tab-button tab-design">Design</label>
-      <label for="tab-business" class="tab-button tab-business">Business</label>
-      <label for="tab-development" class="tab-button tab-development">Development</label>
-      <label for="tab-personal" class="tab-button tab-personal">Personal Development</label>
+  {{#has_course_tabs}}
+  <div class="courses-tabs" data-course-tabs>
+    <div class="tabs" role="tablist" aria-label="Course categories">
+      {{#course_tabs}}
+      <button
+        type="button"
+        class="tab-button{{#active}} active{{/active}}"
+        data-tab-target="{{id}}"
+        role="tab"
+        aria-selected="{{#active}}true{{/active}}{{^active}}false{{/active}}">
+        {{name}}
+      </button>
+      {{/course_tabs}}
     </div>
-
-    <div class="tab-content" id="all-content">
+    {{#course_tabs}}
+    <div class="tab-content{{#active}} active{{/active}}" id="{{id}}" data-tab-panel role="tabpanel">
       <div class="course-grid">
+        {{#courses}}
         <div class="course-card">
           <div class="course-media">
-            <img src="https://elearnkranti.com/media/python.png" alt="Python Course">
-            <span class="course-badge">Top Rated</span>
+            <img src="{{image}}" alt="{{name}}">
+            <span class="course-badge">{{badge}}</span>
           </div>
           <div class="course-body">
-            <h3>Sales and Marketing</h3>
-            <p class="instructor">By Abhishek Singh</p>
+            <h3>{{name}}</h3>
+            <p class="instructor">{{teacher}}</p>
             <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
+            <div class="course-footer">
+              <span class="course-price">{{price}}</span>
+              <a href="{{url}}" class="premium-btn">View Course</a>
+            </div>
           </div>
         </div>
-
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/theme/boost/pix/javascript.jpeg" alt="JavaScript Course">
-            <span class="course-badge">Trending</span>
-          </div>
-          <div class="course-body">
-            <h3>Startup Compliances</h3>
-            <p class="instructor">By Abhay Sinha</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/media/c.png" alt="C Course">
-            <span class="course-badge">Core Skill</span>
-          </div>
-          <div class="course-body">
-            <h3>Cyber Security</h3>
-            <p class="instructor">By Abhay Sinha</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/media/Java.webp" alt="Java Course">
-            <span class="course-badge">Career Track</span>
-          </div>
-          <div class="course-body">
-            <h3>Digital Personal Data Protection</h3>
-            <p class="instructor">By Abhay Sinha</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
+        {{/courses}}
       </div>
     </div>
-
-    <div class="tab-content" id="it-content">
-      <div class="course-grid">
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/media/python.png" alt="Python Course">
-            <span class="course-badge">Top Rated</span>
-          </div>
-          <div class="course-body">
-            <h3>Sales and Marketing</h3>
-            <p class="instructor">By Abhishek Singh</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/theme/boost/pix/javascript.jpeg" alt="JavaScript Course">
-            <span class="course-badge">Trending</span>
-          </div>
-          <div class="course-body">
-            <h3>Startup Compliance and Legal</h3>
-            <p class="instructor">By Abhay Sinha</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/media/c.png" alt="C Course">
-            <span class="course-badge">Core Skill</span>
-          </div>
-          <div class="course-body">
-            <h3>Cyber Security</h3>
-            <p class="instructor">By Abhay Sinha</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-content" id="design-content">
-      <div class="course-grid">
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/media/python.png" alt="Python Course">
-            <span class="course-badge">Top Rated</span>
-          </div>
-          <div class="course-body">
-            <h3>Digital Personal Data Protection</h3>
-            <p class="instructor">By Abhishek Singh</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/theme/boost/pix/javascript.jpeg" alt="JavaScript Course">
-            <span class="course-badge">Trending</span>
-          </div>
-          <div class="course-body">
-            <h3>Startup Compliances and Legal</h3>
-            <p class="instructor">By Abhay Sinha</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/media/c.png" alt="C Course">
-            <span class="course-badge">Core Skill</span>
-          </div>
-          <div class="course-body">
-            <h3>Cyber Security</h3>
-            <p class="instructor">By Abhay Sinha</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-content" id="business-content">
-      <div class="course-grid">
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/media/python.png" alt="Python Course">
-            <span class="course-badge">Top Rated</span>
-          </div>
-          <div class="course-body">
-            <h3>Sales and Marketing</h3>
-            <p class="instructor">By Abhishek Singh</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/theme/boost/pix/javascript.jpeg" alt="JavaScript Course">
-            <span class="course-badge">Trending</span>
-          </div>
-          <div class="course-body">
-            <h3>Startup Compliances and Legal</h3>
-            <p class="instructor">By Abhay Sinha</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/media/c.png" alt="C Course">
-            <span class="course-badge">Core Skill</span>
-          </div>
-          <div class="course-body">
-            <h3>Cyber Security</h3>
-            <p class="instructor">By Abhay Sinha</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-content" id="development-content">
-      <div class="course-grid">
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/media/Java.webp" alt="Java Course">
-            <span class="course-badge">Career Track</span>
-          </div>
-          <div class="course-body">
-            <h3>Digital Personal Data Protection</h3>
-            <p class="instructor">By Abhay Sinha</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/media/python.png" alt="Python Course">
-            <span class="course-badge">Top Rated</span>
-          </div>
-          <div class="course-body">
-            <h3>Sales and Marketing</h3>
-            <p class="instructor">By Abhishek Singh</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/theme/boost/pix/javascript.jpeg" alt="JavaScript Course">
-            <span class="course-badge">Trending</span>
-          </div>
-          <div class="course-body">
-            <h3>Startup Compliances and Legal</h3>
-            <p class="instructor">By Abhay Sinha</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-content" id="personal-content">
-      <div class="course-grid">
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/media/python.png" alt="Python Course">
-            <span class="course-badge">Top Rated</span>
-          </div>
-          <div class="course-body">
-            <h3>Sales and Marketing</h3>
-            <p class="instructor">By Abhishek Singh</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/theme/boost/pix/javascript.jpeg" alt="JavaScript Course">
-            <span class="course-badge">Trending</span>
-          </div>
-          <div class="course-body">
-            <h3>Startup Compliances and Legal</h3>
-            <p class="instructor">By Abhay Sinha</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-media">
-            <img src="https://elearnkranti.com/media/c.png" alt="C Course">
-            <span class="course-badge">Core Skill</span>
-          </div>
-          <div class="course-body">
-            <h3>Cyber Security</h3>
-            <p class="instructor">By Abhay Sinha</p>
-            <div class="stars">★★★★★</div>
-            <button class="premium-btn">Premium</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    {{/course_tabs}}
   </div>
+  {{/has_course_tabs}}
+  {{^has_course_tabs}}
+  <div class="courses-empty-state">
+    <p>No courses are available right now.</p>
+  </div>
+  {{/has_course_tabs}}
 </section>
 <div class="contentContainer">
 
@@ -3655,6 +3440,25 @@ margin: 10px auto;
 .tab-content.active {
   display: block;
 }
+.course-footer {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.course-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+.courses-empty-state {
+  padding: 32px 24px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.78);
+  border-radius: 18px;
+  color: #475569;
+}
 
 /* Courses Grid */
 .course-grid {
@@ -3747,7 +3551,7 @@ margin: 10px auto;
 }
 
 .premium-btn {
-  width: 100%;
+  width: fit-content;
   border: none;
   padding: 10px 14px;
   border-radius: 12px;
@@ -4467,40 +4271,16 @@ h1,h2,h3 {
             background-color: #218838;
         }
 
-        /* Radio button hack for tab switching */
-        .tab-input {
-            display: none;
-        }
-
-        .tab-input#tab-all:checked ~ .tabs .tab-all,
-        .tab-input#tab-it:checked ~ .tabs .tab-it,
-        .tab-input#tab-design:checked ~ .tabs .tab-design,
-        .tab-input#tab-business:checked ~ .tabs .tab-business,
-        .tab-input#tab-development:checked ~ .tabs .tab-development,
-        .tab-input#tab-personal:checked ~ .tabs .tab-personal {
+        .tab-button.active {
             color: #fff;
             background: linear-gradient(275deg, #2b2b4d);
             border: 1px solid transparent;
             box-shadow: 0 18px 30px rgba(107, 95, 234, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.12);
             transform: translateY(-1px);
         }
-        .tab-input#tab-all:checked ~ .tabs .tab-all::after,
-        .tab-input#tab-it:checked ~ .tabs .tab-it::after,
-        .tab-input#tab-design:checked ~ .tabs .tab-design::after,
-        .tab-input#tab-business:checked ~ .tabs .tab-business::after,
-        .tab-input#tab-development:checked ~ .tabs .tab-development::after,
-        .tab-input#tab-personal:checked ~ .tabs .tab-personal::after {
+        .tab-button.active::after {
             background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
             animation: underline-sweep 1.2s ease-in-out infinite;
-        }
-
-        .tab-input#tab-all:checked ~ .tab-content#all-content,
-        .tab-input#tab-it:checked ~ .tab-content#it-content,
-        .tab-input#tab-design:checked ~ .tab-content#design-content,
-        .tab-input#tab-business:checked ~ .tab-content#business-content,
-        .tab-input#tab-development:checked ~ .tab-content#development-content,
-        .tab-input#tab-personal:checked ~ .tab-content#personal-content {
-            display: block;
         }
 
 
@@ -5351,3 +5131,32 @@ window.onload = function() {
 
 
 
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('[data-course-tabs]').forEach(function(container) {
+    var buttons = container.querySelectorAll('[data-tab-target]');
+    var panels = container.querySelectorAll('[data-tab-panel]');
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        var targetId = button.getAttribute('data-tab-target');
+        buttons.forEach(function(item) {
+          item.classList.remove('active');
+          item.setAttribute('aria-selected', 'false');
+        });
+        panels.forEach(function(panel) {
+          panel.classList.remove('active');
+        });
+        button.classList.add('active');
+        button.setAttribute('aria-selected', 'true');
+        var targetPanel = container.querySelector('#' + targetId);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+      });
+    });
+  });
+});
+</script>
