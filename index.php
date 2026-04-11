@@ -33,6 +33,15 @@ require_once($CFG->libdir .'/filelib.php');
 
 redirect_if_major_upgrade_required();
 
+$requesthost = $_SERVER['HTTP_HOST'] ?? '';
+$requesturi = $_SERVER['REQUEST_URI'] ?? '';
+$requestpath = parse_url($requesturi, PHP_URL_PATH) ?? '/';
+
+if ($requesthost === 'antiquewhite-gerbil-428700.hostingersite.com' &&
+        ($requestpath === '/' || $requestpath === '/index.php')) {
+    redirect(new moodle_url('/theme/boost/home1.php'));
+}
+
 // Redirect logged-in users to homepage if required.
 $redirect = optional_param('redirect', 1, PARAM_BOOL);
 

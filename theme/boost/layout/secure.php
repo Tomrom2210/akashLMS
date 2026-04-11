@@ -31,6 +31,13 @@ $bodyattributes = $OUTPUT->body_attributes();
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
+    'loginurl' => (new moodle_url('/login/index.php'))->out(false),
+    'forgotpasswordurl' => (new moodle_url('/login/forgot_password.php'))->out(false),
+    'signupurl' => (new moodle_url('/login/signup.php'))->out(false),
+    'logintoken' => \core\session\manager::get_login_token(),
+    'isloggedinuser' => isloggedin() && !isguestuser(),
+    'showloginbutton' => !isloggedin() || isguestuser(),
+    'logouturl' => (new moodle_url('/login/logout.php', ['sesskey' => sesskey()]))->out(false),
     'bodyattributes' => $bodyattributes,
     'sidepreblocks' => $blockshtml,
     'hasblocks' => $hasblocks
@@ -43,4 +50,3 @@ if (empty($PAGE->layout_options['noactivityheader'])) {
 }
 
 echo $OUTPUT->render_from_template('theme_boost/secure', $templatecontext);
-

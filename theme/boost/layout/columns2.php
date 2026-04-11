@@ -59,6 +59,13 @@ $headercontent = $header->export_for_template($renderer);
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
+    'loginurl' => (new moodle_url('/login/index.php'))->out(false),
+    'forgotpasswordurl' => (new moodle_url('/login/forgot_password.php'))->out(false),
+    'signupurl' => (new moodle_url('/login/signup.php'))->out(false),
+    'logintoken' => \core\session\manager::get_login_token(),
+    'isloggedinuser' => isloggedin() && !isguestuser(),
+    'showloginbutton' => !isloggedin() || isguestuser(),
+    'logouturl' => (new moodle_url('/login/logout.php', ['sesskey' => sesskey()]))->out(false),
     'sidepreblocks' => $blockshtml,
     'hasblocks' => $hasblocks,
     'bodyattributes' => $bodyattributes,

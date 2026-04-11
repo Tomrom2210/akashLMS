@@ -67,10 +67,15 @@
         <h4>Quick Links</h4>
         <ul>
           <li> <a class="nav-link" href="{{ config.wwwroot }}/theme/boost/aboutus.php">About Us</a></li>
-          <li> <a class="nav-link" href="{{ config.wwwroot }}/course/index.php?categoryid=1">Courses</a></li>
-          <li><a class="dropdown-item" href="https://elearnkranti.com/course/index.php?categoryid=3">Offers</a></li>
+          <li> <a class="nav-link" href="{{ config.wwwroot }}/course/index.php">Explore</a></li>
           <li><a class="dropdown-item" href="{{ config.wwwroot }}/theme/boost/testimonials.php">Testimonials</a></li>
           <li><a class="nav-link" href="{{ config.wwwroot }}/theme/boost/contact.php">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-down">
+        <h4>Categories</h4>
+        <ul id="footer-category-list">
+          <li>Loading categories...</li>
         </ul>
       </div>
       <div class="footer-down">
@@ -78,28 +83,52 @@
         <ul>
          <li><a href="https://elearnkranti.com/theme/boost/privacy-policy.php">Privacy Policy</a></li>
           <li><a href="https://elearnkranti.com/theme/boost/terms.php">Terms</a></li>
-          <li>Accessibility statement</li>
+          
           <li>Sitemap</li>
         </ul>
       </div>
+      
      <div class="footer-down">
         <h4>Contact Information</h4>
-        <ul>
-          <li>Phone:+91 9217456669</li>
-          <li>Email: info@elearnkranti.com</li>
-          <li><a href="https://www.linkedin.com/in/elearn-kranti-a1ab65395/">Linkedin</a></li>
-          <li><a href="https://www.instagram.com/elearnkranti?igsh=aDZpcnpmNGxoZWF6&utm_source=qr">Instagram</a></li>
-          <li><a href="https://www.facebook.com/profile.php?id=61585129565822">Facebook</a></li>
+        <ul class="contact-list">
+          <li><strong>Phone:</strong> +91 9217456669</li>
+          <li><strong>Email:</strong> info@elearnkranti.com</li>
+          <li><strong>Director:</strong> director@elearnkranti.com</li>
+          <li class="contact-address"><strong>Address:</strong> 205-206, Pragati House, 47-48, Nehru Place, New Delhi -110019, Delhi, India</li>
+          <li class="social-links">
+            <a href="https://www.linkedin.com/in/elearn-kranti-a1ab65395/" aria-label="LinkedIn" title="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A1.96 1.96 0 1 0 5.3 6.91 1.96 1.96 0 0 0 5.25 3Zm15.19 9.86c0-3.45-1.84-5.06-4.3-5.06-1.98 0-2.87 1.09-3.37 1.86V8.5H9.39V20h3.38v-6.04c0-1.59.3-3.13 2.27-3.13 1.94 0 1.97 1.81 1.97 3.23V20h3.39v-7.14Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/elearnkranti?igsh=aDZpcnpmNGxoZWF6&utm_source=qr" aria-label="Instagram" title="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M7.75 3h8.5A4.75 4.75 0 0 1 21 7.75v8.5A4.75 4.75 0 0 1 16.25 21h-8.5A4.75 4.75 0 0 1 3 16.25v-8.5A4.75 4.75 0 0 1 7.75 3Zm0 1.5A3.25 3.25 0 0 0 4.5 7.75v8.5a3.25 3.25 0 0 0 3.25 3.25h8.5a3.25 3.25 0 0 0 3.25-3.25v-8.5A3.25 3.25 0 0 0 16.25 4.5h-8.5Zm8.88 1.12a1.13 1.13 0 1 1 0 2.26 1.13 1.13 0 0 1 0-2.26ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61585129565822" aria-label="Facebook" title="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M13.5 21v-7.14h2.4l.36-2.78H13.5V9.3c0-.8.22-1.35 1.37-1.35h1.46V5.47c-.25-.03-1.12-.1-2.13-.1-2.1 0-3.54 1.28-3.54 3.64v2.07H8.28v2.78h2.38V21h2.84Z" fill="currentColor"/>
+              </svg>
+            </a>
+          </li>
         </ul>
       </div>
-      
-     
+      <div class="footer-down footer-payment">
+        <h4>Secure Payments</h4>
+        <p class="payment-copy">Your payments are protected with secure checkout support for popular gateways.</p>
+        <div class="payment-strip">
+          <img src="{{ config.wwwroot }}/theme/boost/pix/payment-methods.svg" width="80px" class="" alt="Secure payments supported: UPI, Visa, Mastercard, RuPay and NetBanking">
+        </div>
+      </div>
     </div>
-
   </div>
 </footer>
 
 <style>
+.payment-strip img{
+  width: 80px !important;
+}
 
 .MenuSection {
     display: flex;
@@ -136,7 +165,7 @@
 .footer-right {
   flex: 2 1 600px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 
@@ -201,9 +230,10 @@
   padding-bottom:40px;
   padding-left:55px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 25px;
   flex: 1;
+  align-items: start;
 }
 
 .footer-down h4 {
@@ -223,6 +253,103 @@
   margin-bottom: 6px;
   color: #ccc;
   cursor: pointer;
+}
+
+.contact-list li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.contact-list strong {
+  color: #fff;
+}
+
+.contact-address {
+  max-width: 320px;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.social-links a:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.55);
+  transform: translateY(-2px);
+}
+
+.social-links svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.footer-payment {
+  min-width: 0;
+  grid-column: 1 / -1;
+  margin-top: 10px;
+}
+
+.footer-payment .footer-down h4,
+.footer-payment h4 {
+  margin-bottom: 12px;
+}
+
+.payment-copy {
+  color: #d7d9ef;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  max-width: none;
+}
+
+.payment-strip {
+ max-width: fit-content;
+    background: wheat;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.payment-strip img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+}
+
+@media (max-width: 900px) {
+  .footer-right {
+    padding-left: 0;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .footer-payment {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .payment-strip img {
+    border-radius: 14px;
+  }
 }
 
 .footer-down li:hover {
@@ -269,6 +396,36 @@ if (document.querySelector('[data-action="footer-popover"]') &&
         FooterPopover.init();
     });
 }
+
+(function() {
+    const categoryList = document.getElementById('footer-category-list');
+    if (!categoryList) {
+        return;
+    }
+
+    fetch('{{ config.wwwroot }}/theme/boost/footer_categories.php', {credentials: 'same-origin'})
+        .then(response => response.json())
+        .then(data => {
+            const categories = Array.isArray(data.categories) ? data.categories : [];
+            categoryList.innerHTML = '';
+
+            categories.forEach(category => {
+                const item = document.createElement('li');
+                const anchor = document.createElement('a');
+                anchor.href = category.url;
+                anchor.textContent = category.name;
+                item.appendChild(anchor);
+                categoryList.appendChild(item);
+            });
+
+            if (!categories.length) {
+                categoryList.innerHTML = '<li><a href="{{ config.wwwroot }}/course/index.php">Browse all categories</a></li>';
+            }
+        })
+        .catch(() => {
+            categoryList.innerHTML = '<li><a href="{{ config.wwwroot }}/course/index.php">Browse all categories</a></li>';
+        });
+})();
 {{/js}}
 
 
@@ -297,4 +454,3 @@ if (document.querySelector('[data-action="footer-popover"]') &&
     </div>
 </div>
 {{/output.debug_footer_html}}
-

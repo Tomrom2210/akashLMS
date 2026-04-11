@@ -8,6 +8,30 @@ $PAGE->set_context(context_system::instance());
 $PAGE->set_url(new moodle_url('/home1.php'));
 $PAGE->set_title('Home Page');
 
+$formatprice = static function($amount, string $currency = 'INR'): string {
+    $currency = trim($currency) !== '' ? trim($currency) : 'INR';
+    $value = number_format((float) $amount, 2);
+
+    if ($currency === 'INR') {
+        return '&#8377; ' . $value;
+    }
+
+    return $currency . ' ' . $value;
+};
+
+$shortentext = static function(string $text, int $limit = 140): string {
+    $text = trim(preg_replace('/\s+/', ' ', $text));
+    if ($text === '') {
+        return '';
+    }
+
+    if (core_text::strlen($text) <= $limit) {
+        return $text;
+    }
+
+    return rtrim(core_text::substr($text, 0, $limit - 3)) . '...';
+};
+
 $navcourses = $DB->get_records_sql("
     SELECT c.id, c.fullname
     FROM {course} c
@@ -66,14 +90,12 @@ if (!empty($courseids)) {
         $amount = (float) $cost;
         if (!isset($pricesbycourse[$instance->courseid]) || $amount < $pricesbycourse[$instance->courseid]['amount']) {
             $currency = trim((string) $instance->currency) !== '' ? trim((string) $instance->currency) : 'INR';
-            $formattedprice = $currency . ' ' . number_format($amount, 2);
-            if ($currency === 'INR') {
-                $formattedprice = '&#8377; ' . number_format($amount, 2);
-            }
+            $formattedprice = $formatprice($amount, $currency);
 
             $pricesbycourse[$instance->courseid] = [
                 'amount' => $amount,
                 'label' => $formattedprice,
+                'currency' => $currency,
             ];
         }
     }
@@ -118,6 +140,185 @@ foreach (array_values($homecourses) as $index => $course) {
         'categoryname' => $categorylabel,
         'price' => $pricing['label'],
         'layoutclass' => $recommendedlayoutpattern[$index % count($recommendedlayoutpattern)],
+    ];
+}
+
+$featuredcourseid = 15;
+$featuredcourse = null;
+$featuredcourserecord = $DB->get_record_sql("
+    SELECT c.*, cc.name AS categoryname
+    FROM {course} c
+    LEFT JOIN {course_categories} cc ON cc.id = c.category
+    WHERE c.id = :courseid
+      AND c.visible = 1
+      AND (cc.id IS NULL OR cc.visible = 1)
+", ['courseid' => $featuredcourseid]);
+
+if ($featuredcourserecord) {
+    $featuredcontext = context_course::instance($featuredcourserecord->id);
+    $featuredlist = new core_course_list_element($featuredcourserecord);
+    $featuredimage = \core_course\external\course_summary_exporter::get_course_image($featuredcourserecord);
+    $featuredpricing = $pricesbycourse[$featuredcourserecord->id] ?? null;
+    $featuredsummary = trim(html_to_text(format_text(
+        $featuredcourserecord->summary,
+        $featuredcourserecord->summaryformat,
+        ['context' => $featuredcontext, 'para' => false]
+    )));
+    $featuredcategory = trim((string) ($featuredcourserecord->categoryname ?? ''));
+    $featuredcategory = $featuredcategory !== '' ? format_string($featuredcategory, true, [
+        'context' => $featuredcontext,
+        'escape' => false,
+    ]) : 'Uncategorised';
+
+    if (empty($featuredimage)) {
+        $featuredimage = $defaultimage;
+    }
+
+    $featuredcontacts = $featuredlist->get_course_contacts();
+    $featuredinstructor = '';
+    if (!empty($featuredcontacts)) {
+        $firstcontact = reset($featuredcontacts);
+        $featuredinstructor = trim((string) ($firstcontact['username'] ?? ''));
+    }
+
+    $featuredcustomfields = [];
+    foreach ($featuredlist->get_custom_fields() as $fielddata) {
+        $featuredcustomfields[$fielddata->get_shortname()] = trim((string) $fielddata->get_value());
+    }
+
+    $featuredsubtitle = $featuredcustomfields['banner_subtitle'] ?? $shortentext($featuredsummary, 150);
+    $featuredinstructorlabel = $featuredcustomfields['banner_instructor'] ?? ($featuredinstructor !== '' ? 'By ' . $featuredinstructor : '');
+    $featuredupdatelabel = $featuredcustomfields['banner_update'] ?? '';
+    if ($featuredupdatelabel === '') {
+        $updatedtimestamp = !empty($featuredcourserecord->timemodified) ? (int) $featuredcourserecord->timemodified : (int) $featuredcourserecord->timecreated;
+        if (!empty($updatedtimestamp)) {
+            $featuredupdatelabel = 'Updated ' . userdate($updatedtimestamp, '%B %Y');
+        }
+    }
+
+    $featuredprice = $featuredcustomfields['banner_price'] ?? ($featuredpricing['label'] ?? 'Free');
+    $featuredmrp = $featuredcustomfields['banner_mrp'] ?? '';
+    $featuredofferprice = $featuredcustomfields['banner_offer_price'] ?? ($featuredpricing['label'] ?? '');
+    $featuredmeta = $featuredcustomfields['banner_meta'] ?? ('Category: ' . $featuredcategory);
+    $featuredcustomsecondarytag = $featuredcustomfields['banner_secondary_tag'] ?? 'Popular';
+
+    if ($featuredmrp === '' && !empty($featuredpricing['amount'])) {
+        $featuredmrp = $formatprice($featuredpricing['amount'] + 2000, $featuredpricing['currency'] ?? 'INR');
+    }
+
+    $featuredcourse = [
+        'name' => format_string($featuredcourserecord->fullname, true, ['context' => $featuredcontext, 'escape' => false]),
+        'image' => $featuredimage,
+        'url' => (new moodle_url('/enrol/index.php', ['id' => $featuredcourserecord->id]))->out(false),
+        'subtitle' => $featuredsubtitle !== '' ? $featuredsubtitle : 'Course details will appear here after update.',
+        'subtitlejs' => json_encode($featuredsubtitle !== '' ? $featuredsubtitle : 'Course details will appear here after update.'),
+        'instructor' => $featuredinstructorlabel,
+        'update' => $featuredupdatelabel,
+        'meta' => $featuredmeta,
+        'stars' => $featuredcustomfields['banner_rating'] ?? '&#9733;&#9733;&#9733;&#9733;&#9733;',
+        'starsjs' => json_encode($featuredcustomfields['banner_rating'] ?? '&#9733;&#9733;&#9733;&#9733;&#9733;'),
+        'primarytag' => $featuredcustomfields['banner_primary_tag'] ?? 'Featured',
+        'secondarytag' => $featuredcustomsecondarytag,
+        'mrp' => $featuredmrp,
+        'offerprice' => $featuredofferprice,
+        'price' => $featuredprice,
+        'hasinstructor' => $featuredinstructorlabel !== '',
+        'hasupdate' => $featuredupdatelabel !== '',
+        'hasmeta' => $featuredmeta !== '',
+        'haspricing' => $featuredmrp !== '' || $featuredofferprice !== '',
+        'hasmrp' => $featuredmrp !== '',
+        'hasofferprice' => $featuredofferprice !== '',
+        'hassecondarytag' => $featuredcustomsecondarytag !== '',
+    ];
+}
+
+$secondaryfeaturedcourseid = 19;
+$secondaryfeaturedcourse = null;
+$secondaryfeaturedcourserecord = $DB->get_record_sql("
+    SELECT c.*, cc.name AS categoryname
+    FROM {course} c
+    LEFT JOIN {course_categories} cc ON cc.id = c.category
+    WHERE c.id = :courseid
+      AND c.visible = 1
+      AND (cc.id IS NULL OR cc.visible = 1)
+", ['courseid' => $secondaryfeaturedcourseid]);
+
+if ($secondaryfeaturedcourserecord) {
+    $secondaryfeaturedcontext = context_course::instance($secondaryfeaturedcourserecord->id);
+    $secondaryfeaturedlist = new core_course_list_element($secondaryfeaturedcourserecord);
+    $secondaryfeaturedpricing = $pricesbycourse[$secondaryfeaturedcourserecord->id] ?? null;
+    $secondaryfeaturedsummary = trim(html_to_text(format_text(
+        $secondaryfeaturedcourserecord->summary,
+        $secondaryfeaturedcourserecord->summaryformat,
+        ['context' => $secondaryfeaturedcontext, 'para' => false]
+    )));
+    $secondaryfeaturedcategory = trim((string) ($secondaryfeaturedcourserecord->categoryname ?? ''));
+    $secondaryfeaturedcategory = $secondaryfeaturedcategory !== '' ? format_string($secondaryfeaturedcategory, true, [
+        'context' => $secondaryfeaturedcontext,
+        'escape' => false,
+    ]) : 'Uncategorised';
+
+    $secondaryfeaturedcontacts = $secondaryfeaturedlist->get_course_contacts();
+    $secondaryfeaturedinstructor = '';
+    if (!empty($secondaryfeaturedcontacts)) {
+        $secondaryfirstcontact = reset($secondaryfeaturedcontacts);
+        $secondaryfeaturedinstructor = trim((string) ($secondaryfirstcontact['username'] ?? ''));
+    }
+
+    $secondaryfeaturedcustomfields = [];
+    foreach ($secondaryfeaturedlist->get_custom_fields() as $fielddata) {
+        $secondaryfeaturedcustomfields[$fielddata->get_shortname()] = trim((string) $fielddata->get_value());
+    }
+
+    $secondaryfeaturedsubtitle = $secondaryfeaturedcustomfields['banner_subtitle'] ?? $shortentext($secondaryfeaturedsummary, 150);
+    $secondaryfeaturedinstructorlabel = $secondaryfeaturedcustomfields['banner_instructor'] ??
+        ($secondaryfeaturedinstructor !== '' ? 'By ' . $secondaryfeaturedinstructor : '');
+    $secondaryfeaturedupdatelabel = $secondaryfeaturedcustomfields['banner_update'] ?? '';
+    if ($secondaryfeaturedupdatelabel === '') {
+        $secondaryupdatedtimestamp = !empty($secondaryfeaturedcourserecord->timemodified) ?
+            (int) $secondaryfeaturedcourserecord->timemodified : (int) $secondaryfeaturedcourserecord->timecreated;
+        if (!empty($secondaryupdatedtimestamp)) {
+            $secondaryfeaturedupdatelabel = 'Updated ' . userdate($secondaryupdatedtimestamp, '%B %Y');
+        }
+    }
+
+    $secondaryfeaturedprice = $secondaryfeaturedcustomfields['banner_price'] ?? ($secondaryfeaturedpricing['label'] ?? 'Free');
+    $secondaryfeaturedmrp = $secondaryfeaturedcustomfields['banner_mrp'] ?? '';
+    $secondaryfeaturedofferprice = $secondaryfeaturedcustomfields['banner_offer_price'] ??
+        ($secondaryfeaturedpricing['label'] ?? '');
+    $secondaryfeaturedmeta = $secondaryfeaturedcustomfields['banner_meta'] ??
+        ('Category: ' . $secondaryfeaturedcategory);
+    $secondaryfeaturedsecondarytag = $secondaryfeaturedcustomfields['banner_secondary_tag'] ?? 'Highest Rated';
+
+    if ($secondaryfeaturedmrp === '' && !empty($secondaryfeaturedpricing['amount'])) {
+        $secondaryfeaturedmrp = $formatprice($secondaryfeaturedpricing['amount'] + 2000,
+            $secondaryfeaturedpricing['currency'] ?? 'INR');
+    }
+
+    $secondaryfeaturedcourse = [
+        'name' => format_string($secondaryfeaturedcourserecord->fullname, true, [
+            'context' => $secondaryfeaturedcontext,
+            'escape' => false,
+        ]),
+        'url' => (new moodle_url('/enrol/index.php', ['id' => $secondaryfeaturedcourserecord->id]))->out(false),
+        'subtitle' => $secondaryfeaturedsubtitle !== '' ? $secondaryfeaturedsubtitle : 'Course details will appear here after update.',
+        'instructor' => $secondaryfeaturedinstructorlabel,
+        'update' => $secondaryfeaturedupdatelabel,
+        'meta' => $secondaryfeaturedmeta,
+        'stars' => $secondaryfeaturedcustomfields['banner_rating'] ?? '&#9733;&#9733;&#9733;&#9733;&#9733;',
+        'primarytag' => $secondaryfeaturedcustomfields['banner_primary_tag'] ?? 'Premium',
+        'secondarytag' => $secondaryfeaturedsecondarytag,
+        'mrp' => $secondaryfeaturedmrp,
+        'offerprice' => $secondaryfeaturedofferprice,
+        'price' => $secondaryfeaturedprice,
+        'hassubtitle' => $secondaryfeaturedsubtitle !== '',
+        'hasinstructor' => $secondaryfeaturedinstructorlabel !== '',
+        'hasupdate' => $secondaryfeaturedupdatelabel !== '',
+        'hasmeta' => $secondaryfeaturedmeta !== '',
+        'haspricing' => $secondaryfeaturedmrp !== '' || $secondaryfeaturedofferprice !== '',
+        'hasmrp' => $secondaryfeaturedmrp !== '',
+        'hasofferprice' => $secondaryfeaturedofferprice !== '',
+        'hassecondarytag' => $secondaryfeaturedsecondarytag !== '',
     ];
 }
 
@@ -173,6 +374,10 @@ $sliceandwrap = static function(array $items, int $offset, int $length): array {
 echo $OUTPUT->header();
 echo $OUTPUT->render_from_template('theme_boost/home1', [
     'navcourses' => $navcoursedata,
+    'featured_course' => $featuredcourse,
+    'has_featured_course' => !empty($featuredcourse),
+    'secondary_featured_course' => $secondaryfeaturedcourse,
+    'has_secondary_featured_course' => !empty($secondaryfeaturedcourse),
     'recommendedcourses' => $sliceandwrap($coursedata, 0, min(6, max(1, count($coursedata)))),
     'has_recommendedcourses' => !empty($coursedata),
     'course_tabs' => $coursetabs,

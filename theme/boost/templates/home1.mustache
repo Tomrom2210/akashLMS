@@ -20,8 +20,8 @@
 	<ul id="move">
 		<li><img src="/media/new/banner/1.jpeg"></li>
 		<li><img src="/media/new/banner/2.jpeg"></li>
-		<li><img src="/media/new/banner/3.jpeg"></li>
-		<li><img src="/media/new/banner/4.jpeg"></li>
+		<li><img src="/media/new/banner/5.jpeg"></li>
+		<li><img src="/media/new/banner/6.jpeg"></li>
 		
 
 	</ul>
@@ -45,15 +45,16 @@
     <div class="secondContainer">
       <div class="cta-text-wrapper">
         <h2 class="cta-heading-unique">
-          Prepare for Placements, Up skill, and Succeed  1000+ Courses Await.
+          One-to-One career Counselling Session.
         </h2>
         <p class="cta-subheading-unique">
-          Join Thousands of Learners Achieving Their Career Dreams
+          This is a pivotal stage where both students and parents actively seek structured guidance, making such counselling sessions highly relevant and impactful
         </p>
       </div>
       <div class="cta-button-group">
-        <a href="/course/index.php" class="cta-btn-outline-unique">Try learning for free</a>
-        <a href="/subscription/plans.php" class="cta-btn-outline-unique">View subscription plans</a>
+        <a href="#" class="cta-btn-outline-unique">10th Grade Students</a>
+        <a href="#" class="cta-btn-outline-unique">12th Grade Students</a>
+        <a href="#" class="cta-btn-outline-unique">Graduate Students</a>
       </div>
     </div>
     <style>
@@ -112,7 +113,6 @@
     </div>
     <div class="about-premium__actions">
       <a class="about-premium__btn" href="https://elearnkranti.com/theme/boost/aboutus.php">Read More</a>
-      <a class="about-premium__link" href="https://elearnkranti.com/course/index.php">Browse Courses</a>
     </div>
   </div>
   <div class="about-premium__media">
@@ -452,7 +452,7 @@
 /* IMAGE FIX (same height for all) */
 .ts3-card img {
     width: 100%;
-    height: 180px; /* FIXED HEIGHT */
+    height: auto; /* FIXED HEIGHT */
     object-fit: cover;
 }
 
@@ -499,7 +499,7 @@
     padding: 10px;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    background: linear-gradient(135deg, #111827, #4f46e5);
     color: #fff;
     cursor: pointer;
     text-align: center;
@@ -520,7 +520,7 @@
 
 .ts3-tall img,
 .ts3-wide img {
-    height: 180px !important;
+    height: 100% !important;
 }
 
 /* RESPONSIVE */
@@ -801,39 +801,70 @@
 }
 </style>
  <section class="ts3-section">
+  {{#has_featured_course}}
+  {{#featured_course}}
 
-  <div class="courseCard-container">
-    <img class="courseCard-image" src="/media/new/s-m.jpg" alt="Python Course Thumbnail">
+  <div class="courseCard-container" id="featured-course-banner">
+    <a href="{{url}}" class="courseCard-image-link">
+      <img class="courseCard-image" src="{{image}}" alt="{{name}}">
+    </a>
 
     <div class="courseCard-content">
-      <div class="courseCard-title">Startup Compliances </div>
-      <div class="courseCard-subtitle">From zero to hero — become job-ready with Marketing skills.</div>
+      <div class="courseCard-title"><a href="{{url}}">{{{name}}}</a></div>
       
-      <div class="courseCard-instructor">By Amit Tiwari</div>
-      <div class="courseCard-update">Updated August 2025</div>
-      <div class="courseCard-meta">25 hours&nbsp;&nbsp; 52 Lectures&nbsp;&nbsp; All levels</div>
+      
+      {{#hasinstructor}}<div class="courseCard-instructor">{{instructor}}</div>{{/hasinstructor}}
+      {{#hasupdate}}<div class="courseCard-update">{{update}}</div>{{/hasupdate}}
+      {{#hasmeta}}<div class="courseCard-meta">{{meta}}</div>{{/hasmeta}}
       
       <div class="courseCard-stars">★★★★★</div>
 
       <div class="courseCard-tags">
-        <div class="courseCard-tag-filled">Premium</div>
-        <div class="courseCard-tag-outline">Highest Rated</div>
+        <div class="courseCard-tag-filled"><a href="{{url}}">{{primarytag}}</a></div>
+        {{#hassecondarytag}}<div class="courseCard-tag-outline"><a href="{{url}}">{{secondarytag}}</a></div>{{/hassecondarytag}}
+        <div class="courseCard-tag-filled"><a href="{{url}}">Enrolment </a></div>
       </div>
 
+      {{#haspricing}}
       <div class="courseCard-pricing">
+        {{#hasmrp}}
         <div class="courseCard-price-row">
           <span class="courseCard-price-label">MRP</span>
-          <span class="courseCard-price-value courseCard-price-value--original"><s>&#8377; 8000/- + GST</s></span>
+          <span class="courseCard-price-value courseCard-price-value--original"><s>{{{mrp}}}</s></span>
         </div>
+        {{/hasmrp}}
+        {{#hasofferprice}}
         <div class="courseCard-price-row courseCard-price-row--discount">
           <span class="courseCard-price-label">Offer Price</span>
-          <span class="courseCard-price-value">&#8377; 1999/- + GST</span>
+          <span class="courseCard-price-value">{{{offerprice}}}</span>
         </div>
+        {{/hasofferprice}}
       </div>
+      {{/haspricing}}
 
-      <div class="courseCard-price">&#8377; 8000/+GST</div>
+      <div class="courseCard-price"><a href="{{url}}">{{{price}}}</a></div>
     </div>
   </div>
+  <script>
+  (function() {
+    var banner = document.getElementById('featured-course-banner');
+    if (!banner) {
+      return;
+    }
+
+    var subtitle = banner.querySelector('.courseCard-subtitle');
+    if (subtitle) {
+      subtitle.textContent = {{{subtitlejs}}};
+    }
+
+    var stars = banner.querySelector('.courseCard-stars');
+    if (stars) {
+      stars.innerHTML = {{{starsjs}}};
+    }
+  })();
+  </script>
+  {{/featured_course}}
+  {{/has_featured_course}}
 
   
 
@@ -954,6 +985,7 @@
     font-size: 28px;
   }
 }
+
 </style>
 
 </div>
@@ -998,6 +1030,7 @@
     <button class="view-all-btn">View all educators</button>
   </div>
 </section>
+here add
 
 </div>
 
@@ -1005,51 +1038,62 @@
 
 <div class="contentContainer">
 
+  {{#has_secondary_featured_course}}
+  {{#secondary_featured_course}}
   <div class="courseCard-container second-courseCard-container">
-    <img class="courseCard-image" src="/media/new/6-4.jpg" alt="Python Course Thumbnail">
+    <a href="{{url}}" class="courseCard-image-link">
+      <img class="courseCard-image social-governance" src="/media/new/6-4.jpg" alt="{{name}}">
+    </a>
 
     <div class="courseCard-content">
-      <div class="courseCard-title">Environmental, Social & Governance</div>
-      <div class="courseCard-subtitle">Mastering Environmental, Social & Governance (ESG) for Sustainable Business Impact</div>
+      <div class="courseCard-title"><a href="{{url}}">{{{name}}}</a></div>
       
-      <div class="courseCard-instructor">By Amit Tiwari</div>
-      <div class="courseCard-update">Updated August 2025</div>
-      <div class="courseCard-meta">25 hours&nbsp;&nbsp; 52 Lectures&nbsp;&nbsp; All levels</div>
+      
+      {{#hasinstructor}}<div class="courseCard-instructor">{{instructor}}</div>{{/hasinstructor}}
+      {{#hasupdate}}<div class="courseCard-update">{{update}}</div>{{/hasupdate}}
+      {{#hasmeta}}<div class="courseCard-meta">{{meta}}</div>{{/hasmeta}}
       
       <div class="courseCard-stars">★★★★★</div>
 
       <div class="courseCard-tags">
-        <div class="courseCard-tag-filled">Premium</div>
-        <div class="courseCard-tag-outline">Highest Rated</div>
+        <div class="courseCard-tag-filled"><a href="{{url}}">{{primarytag}}</a></div>
+        {{#hassecondarytag}}<div class="courseCard-tag-outline"><a href="{{url}}">{{secondarytag}}</a></div>{{/hassecondarytag}}
+        <div class="courseCard-tag-filled"><a href="{{url}}">Enrolment </a></div>
       </div>
+      {{#haspricing}}
       <div class="courseCard-pricing">
+        {{#hasmrp}}
         <div class="courseCard-price-row">
           <span class="courseCard-price-label">MRP</span>
-          <span class="courseCard-price-value courseCard-price-value--original"><s>&#8377; 8000/- + GST</s></span>
+          <span class="courseCard-price-value courseCard-price-value--original"><s>{{{mrp}}}</s></span>
         </div>
+        {{/hasmrp}}
+        {{#hasofferprice}}
         <div class="courseCard-price-row courseCard-price-row--discount">
           <span class="courseCard-price-label">Offer Price</span>
-          <span class="courseCard-price-value">&#8377; 1999/- + GST</span>
+          <span class="courseCard-price-value">{{{offerprice}}}</span>
         </div>
+        {{/hasofferprice}}
       </div>
-      <div class="courseCard-price">&#8377; 5559</div>
+      {{/haspricing}}
+      <div class="courseCard-price"><a href="{{url}}">{{{price}}}</a></div>
     </div>
   </div>
+  {{/secondary_featured_course}}
+  {{/has_secondary_featured_course}}
   <div class="eduHero-wrapper">
 
   <!-- LEFT CONTENT -->
   <div class="eduHero-content">
     <h1 class="eduHero-title">
-      Empower employability with online learning
+     Explore how learners are reaching their career goals on eLearn Kranti.
     </h1>
 
     <p class="eduHero-subtitle">
-      From zero to hero — become job-ready with Python skills.
+      94% of learners in emerging economies achieved at least one positive career outcome, while 97% also reported a personal benefit.
     </p>
 
    
-    <div class="eduHero-tags">Equip students with the most in-demand skills and prepare them for job success
-    </div>
 
     <div class="eduHero-bottom">
       <button class="request-callback-btn">Enroll Now</button>
@@ -1347,70 +1391,6 @@
   </div>
 </section>
 
-<!-- 
-<footer class="footer">
-  <div class="footer-container">
-
-    <div class="top">
-
-
-     
-        
-      
-
-          {{# output.loggedinuser }}
-          
-            You are logged in as 
-            <a href="{{{ output.userprofileurl }}}" title="View profile">{{{ output.userfullname }}}</a> 
-            (<a href="{{{ config.wwwroot }}}/login/logout.php?sesskey={{{ sesskey }}}">Log out</a>)
-          
-          {{/ output.loggedinuser }}
-        </div>
-      </div>
-    
-
-   
-    <div class="footer-right"> 
-      <div class="footer-down"> 
-          <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1767950654/eLearnKranti%20Logo%20%281%29.png" class="logo me-1" alt="Pariksha Kranti" style="margin-bottom: 20px !important;">
-        <p>1Join eLearnKranti, India's premier e-learning platform launched in 2025, empowering learners with cutting-edge skills for a dynamic future.</p>
-      </div>
-      <div class="footer-down">
-        <h4>Data Science</h4>
-        <ul>
-          <li>Python</li>
-          <li>Machine Learning</li>
-          <li>ChatGPT</li>
-          <li>Deep Learning</li>
-        </ul>
-      </div>
-      <div class="footer-down">
-        <h4>Legal & Accessibility</h4>
-        <ul>
-         <li><a href="https://elearnkranti.com/theme/boost/privacy-policy.php">Privacy Policy</a></li>
-          <li><a href="https://elearnkranti.com/theme/boost/terms.php">Terms</a></li>
-          <li>Accessibility statement</li>
-          <li>Sitemap</li>
-        </ul>
-      </div>
-     <div class="footer-down">
-        <h4>Contact Information</h4>
-        <ul>
-          <li>Phone: +91 6284910733</li>
-          <li>Email: info@elearnkranti.com</li>
-          <li><a href="https://www.linkedin.com/in/elearn-kranti-a1ab65395/">Linkedin</a></li>
-          <li><a href="https://www.instagram.com/elearnkranti?igsh=aDZpcnpmNGxoZWF6&utm_source=qr">Instagram</a></li>
-          <li><a href="https://www.facebook.com/profile.php?id=61585129565822">Facebook</a></li>
-        </ul>
-      </div>
-      
-     
-    </div>
-
-  </div>
-</footer>
--->
-
  
 
 
@@ -1422,393 +1402,393 @@
   
 
 
-<style>
-  .contact-cta-section{
-    position: relative;
-    max-width: 1240px;
-    margin: 80px auto 40px;
-    padding: 58px 56px;
-    border-radius: 34px;
-    overflow: hidden;
-    background:
-      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-      radial-gradient(circle at top left, rgba(84, 121, 255, 0.16), transparent 34%),
-      radial-gradient(circle at bottom right, rgba(20, 255, 144, 0.12), transparent 28%),
-      linear-gradient(135deg, #071d33 0%, #0a2441 46%, #09182b 100%);
-    background-size: 160px 160px, 160px 160px, auto, auto, auto;
-    box-shadow: 0 28px 70px rgba(7, 20, 38, 0.28);
-  }
-  .contact-cta-shell{
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(360px, 460px);
-    gap: 48px;
-    align-items: center;
-  }
-  .contact-cta-copy{
-    color: #f8fbff;
-    max-width: 560px;
-  }
-  .contact-cta-kicker{
-    display: inline-flex;
-    align-items: center;
-    margin-bottom: 18px;
-    padding: 7px 14px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
-  .contact-cta-copy h2{
-    font-size: 54px;
-    line-height: 1.08;
-    margin-bottom: 18px;
-    color: #ffffff;
-    font-weight: 800;
-  }
-  .contact-cta-copy p{
-    font-size: 17px;
-    line-height: 1.8;
-    color: rgba(240, 246, 255, 0.82);
-    margin-bottom: 28px;
-  }
-  .contact-cta-points{
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-  }
-  .contact-cta-point{
-    padding: 16px 18px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  .contact-cta-point strong{
-    display: block;
-    margin-bottom: 6px;
-    font-size: 22px;
-    color: #ffffff;
-  }
-  .contact-cta-point span{
-    font-size: 13px;
-    line-height: 1.5;
-    color: rgba(240, 246, 255, 0.8);
-  }
-  .contact-cta-formcard{
-    background: #ffffff;
-    border-radius: 26px;
-    padding: 32px;
-    box-shadow: 0 18px 40px rgba(5, 19, 37, 0.22);
-  }
-  .contact-form-intro{
-    margin-bottom: 20px;
-  }
-  .contact-form-intro h3{
-    font-size: 34px;
-    line-height: 1.15;
-    margin-bottom: 8px;
-    color: #0e1f38;
-    font-weight: 800;
-  }
-  .contact-form-intro p{
-    color: #69758a;
-    font-size: 15px;
-    line-height: 1.6;
-  }
-  .contact-cta-form{
-    display: grid;
-    gap: 16px;
-  }
-  .contact-form-group{
-    display: grid;
-    gap: 8px;
-  }
-  .contact-form-group label{
-    color: #13233f;
-    font-size: 14px;
-    font-weight: 700;
-  }
-  .contact-form-group input,
-  .contact-form-group textarea{
-    width: 100%;
-    border: 1px solid #d8dee8;
-    border-radius: 16px;
-    padding: 14px 16px;
-    font-size: 15px;
-    color: #17253d;
-    background: #fff;
-    outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  }
-  .contact-form-group input:focus,
-  .contact-form-group textarea:focus{
-    border-color: #4b5aed;
-    box-shadow: 0 0 0 4px rgba(75, 90, 237, 0.12);
-  }
-  .contact-form-group textarea{
-    resize: vertical;
-    min-height: 130px;
-  }
-  .contact-cta-submit{
-    width: 100%;
-    border: none;
-    border-radius: 999px;
-    padding: 16px 22px;
-    font-size: 18px;
-    font-weight: 700;
-    color: #ffffff;
-    cursor: pointer;
-    background: linear-gradient(275deg, #2b2b4d);
-    box-shadow: 0 18px 28px rgba(107, 95, 234, 0.26);
-  }
-  .contact-cta-submit:hover{
-    filter: brightness(1.04);
-  }
-  .about-premium{
-    max-width: 1240px;
-    margin: 60px auto;
-    padding: 36px;
-    border-radius: 28px;
-    background: linear-gradient(135deg, #f7f9ff 0%, #eef2ff 60%, #fef6ff 100%);
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 32px;
-    align-items: center;
-    box-shadow: 0 18px 40px rgba(24, 32, 79, 0.12);
-  }
-  .about-premium__content h1{
-    font-size: 40px;
-    line-height: 1.2;
-    margin: 10px 0 14px;
-    color: #1b1f3b;
-    font-weight: 700;
-  }
-  .about-premium__content p{
-    color: #4b4f6a;
-    font-size: 16px;
-    line-height: 1.7;
-    margin-bottom: 22px;
-  }
-  .about-premium__eyebrow{
-    display: inline-block;
-    font-size: 12px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #5962ff;
-    font-weight: 600;
-  }
-  .about-premium__stats{
-    display: flex;
-    gap: 18px;
-    margin-bottom: 22px;
-    flex-wrap: wrap;
-  }
-  .about-premium__stats .stat{
-    background: #fff;
-    padding: 12px 16px;
-    border-radius: 14px;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-    min-width: 120px;
-  }
-  .about-premium__stats strong{
-    display: block;
-    font-size: 18px;
-    color: #141a36;
-  }
-  .about-premium__stats span{
-    font-size: 13px;
-    color: #6b6f86;
-  }
-  .about-premium__actions{
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .about-premium__btn{
-    background: linear-gradient(90deg, #5f6bff, #9b4dff);
-    color: #fff;
-    padding: 10px 22px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: 0 10px 18px rgba(95,107,255,0.25);
-  }
-  .about-premium__link{
-    color: #2a2f55;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  .about-premium__media{
-    //display: flex;
-    //justify-content: center;
-    height:400px;
-  }
-  .about-premium__media img{
-        width: 100%;
-    height: 100%;
-    max-width: 539px;
-    border-radius: 22px;
-    background: white;
-    object-fit: contain;
-    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.18);
-  }
-  @media (max-width: 900px){
+  <style>
     .contact-cta-section{
-      margin: 56px 16px 32px;
-      padding: 36px 24px;
-      border-radius: 28px;
-      background-size: 130px 130px, 130px 130px, auto, auto, auto;
+      position: relative;
+      max-width: 1240px;
+      margin: 80px auto 40px;
+      padding: 58px 56px;
+      border-radius: 34px;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        radial-gradient(circle at top left, rgba(84, 121, 255, 0.16), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(20, 255, 144, 0.12), transparent 28%),
+        linear-gradient(135deg, #071d33 0%, #0a2441 46%, #09182b 100%);
+      background-size: 160px 160px, 160px 160px, auto, auto, auto;
+      box-shadow: 0 28px 70px rgba(7, 20, 38, 0.28);
     }
     .contact-cta-shell{
-      grid-template-columns: 1fr;
-      gap: 28px;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 460px);
+      gap: 48px;
+      align-items: center;
     }
     .contact-cta-copy{
-      max-width: none;
-    }
-    .contact-cta-copy h2{
-      font-size: 40px;
-      line-height: 1.15;
-    }
-    .contact-cta-copy p{
-      font-size: 15px;
-      line-height: 1.7;
-    }
-    .contact-cta-points{
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .contact-cta-formcard{
-      width: 100%;
-      max-width: 100%;
-      padding: 28px 24px;
-      border-radius: 24px;
-    }
-    .about-premium{
-      grid-template-columns: 1fr;
-      padding: 24px;
-      margin: 30px 16px;
-      gap: 22px;
-    }
-    .about-premium__content h1{
-      font-size: 28px;
-    }
-    .about-premium__media{
-      height: auto;
-    }
-    .about-premium__media img{
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-  }
-  @media (max-width: 600px){
-    .contact-cta-section{
-      margin: 48px 12px 28px;
-      padding: 28px 16px;
-      border-radius: 24px;
-      background-size: 120px 120px, 120px 120px, auto, auto, auto;
-    }
-    .contact-cta-shell{
-      grid-template-columns: 1fr;
-      gap: 24px;
+      color: #f8fbff;
+      max-width: 560px;
     }
     .contact-cta-kicker{
-      margin-bottom: 14px;
-      padding: 6px 12px;
-      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
     }
     .contact-cta-copy h2{
-      font-size: 34px;
-      line-height: 1.16;
+      font-size: 54px;
+      line-height: 1.08;
+      margin-bottom: 18px;
+      color: #ffffff;
+      font-weight: 800;
     }
     .contact-cta-copy p{
-      font-size: 14px;
-      line-height: 1.7;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(240, 246, 255, 0.82);
+      margin-bottom: 28px;
     }
     .contact-cta-points{
-      grid-template-columns: 1fr;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .contact-cta-point{
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .contact-cta-point strong{
+      display: block;
+      margin-bottom: 6px;
+      font-size: 22px;
+      color: #ffffff;
+    }
+    .contact-cta-point span{
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(240, 246, 255, 0.8);
     }
     .contact-cta-formcard{
-      padding: 24px 18px;
-      border-radius: 20px;
+      background: #ffffff;
+      border-radius: 26px;
+      padding: 32px;
+      box-shadow: 0 18px 40px rgba(5, 19, 37, 0.22);
+    }
+    .contact-form-intro{
+      margin-bottom: 20px;
     }
     .contact-form-intro h3{
-      font-size: 28px;
+      font-size: 34px;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      color: #0e1f38;
+      font-weight: 800;
     }
     .contact-form-intro p{
+      color: #69758a;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .contact-cta-form{
+      display: grid;
+      gap: 16px;
+    }
+    .contact-form-group{
+      display: grid;
+      gap: 8px;
+    }
+    .contact-form-group label{
+      color: #13233f;
       font-size: 14px;
+      font-weight: 700;
     }
     .contact-form-group input,
     .contact-form-group textarea{
-      padding: 13px 14px;
-      border-radius: 14px;
-      font-size: 14px;
+      width: 100%;
+      border: 1px solid #d8dee8;
+      border-radius: 16px;
+      padding: 14px 16px;
+      font-size: 15px;
+      color: #17253d;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .contact-form-group input:focus,
+    .contact-form-group textarea:focus{
+      border-color: #4b5aed;
+      box-shadow: 0 0 0 4px rgba(75, 90, 237, 0.12);
     }
     .contact-form-group textarea{
-      min-height: 110px;
+      resize: vertical;
+      min-height: 130px;
     }
     .contact-cta-submit{
-      padding: 15px 18px;
-      font-size: 16px;
+      width: 100%;
+      border: none;
+      border-radius: 999px;
+      padding: 16px 22px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      cursor: pointer;
+      background: linear-gradient(275deg, #2b2b4d);
+      box-shadow: 0 18px 28px rgba(107, 95, 234, 0.26);
+    }
+    .contact-cta-submit:hover{
+      filter: brightness(1.04);
     }
     .about-premium{
-      padding: 20px 16px;
-      margin: 22px 12px;
-      border-radius: 22px;
-      gap: 18px;
+      max-width: 1240px;
+      margin: 60px auto;
+      padding: 36px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #f7f9ff 0%, #eef2ff 60%, #fef6ff 100%);
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
+      align-items: center;
+      box-shadow: 0 18px 40px rgba(24, 32, 79, 0.12);
     }
     .about-premium__content h1{
-      font-size: 24px;
-      line-height: 1.25;
-      margin: 8px 0 12px;
+      font-size: 40px;
+      line-height: 1.2;
+      margin: 10px 0 14px;
+      color: #1b1f3b;
+      font-weight: 700;
     }
     .about-premium__content p{
-      font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 18px;
+      color: #4b4f6a;
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+    .about-premium__eyebrow{
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #5962ff;
+      font-weight: 600;
     }
     .about-premium__stats{
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-bottom: 18px;
+      display: flex;
+      gap: 18px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
     }
     .about-premium__stats .stat{
-      width: 100%;
-      min-width: 0;
-      padding: 12px 14px;
+      background: #fff;
+      padding: 12px 16px;
+      border-radius: 14px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+      min-width: 120px;
+    }
+    .about-premium__stats strong{
+      display: block;
+      font-size: 18px;
+      color: #141a36;
+    }
+    .about-premium__stats span{
+      font-size: 13px;
+      color: #6b6f86;
     }
     .about-premium__actions{
-      flex-direction: column;
-      align-items: stretch;
-      gap: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
     }
-    .about-premium__btn,
+    .about-premium__btn{
+      background: linear-gradient(275deg, #2b2b4d);;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 10px 18px rgba(95,107,255,0.25);
+    }
     .about-premium__link{
-      width: 100%;
-      text-align: center;
+      color: #2a2f55;
+      text-decoration: none;
+      font-weight: 600;
     }
     .about-premium__media{
-      order: -1;
+      //display: flex;
+      //justify-content: center;
+      height:400px;
     }
     .about-premium__media img{
-      border-radius: 18px;
+          width: 100%;
+      height: 100%;
+      max-width: 539px;
+      border-radius: 22px;
+      background: white;
+      object-fit: contain;
+      box-shadow: 0 16px 28px rgba(0, 0, 0, 0.18);
     }
-  }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    @media (max-width: 900px){
+      .contact-cta-section{
+        margin: 56px 16px 32px;
+        padding: 36px 24px;
+        border-radius: 28px;
+        background-size: 130px 130px, 130px 130px, auto, auto, auto;
+      }
+      .contact-cta-shell{
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .contact-cta-copy{
+        max-width: none;
+      }
+      .contact-cta-copy h2{
+        font-size: 40px;
+        line-height: 1.15;
+      }
+      .contact-cta-copy p{
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      .contact-cta-points{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .contact-cta-formcard{
+        width: 100%;
+        max-width: 100%;
+        padding: 28px 24px;
+        border-radius: 24px;
+      }
+      .about-premium{
+        grid-template-columns: 1fr;
+        padding: 24px;
+        margin: 30px 16px;
+        gap: 22px;
+      }
+      .about-premium__content h1{
+        font-size: 28px;
+      }
+      .about-premium__media{
+        height: auto;
+      }
+      .about-premium__media img{
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+    @media (max-width: 600px){
+      .contact-cta-section{
+        margin: 48px 12px 28px;
+        padding: 28px 16px;
+        border-radius: 24px;
+        background-size: 120px 120px, 120px 120px, auto, auto, auto;
+      }
+      .contact-cta-shell{
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .contact-cta-kicker{
+        margin-bottom: 14px;
+        padding: 6px 12px;
+        font-size: 11px;
+      }
+      .contact-cta-copy h2{
+        font-size: 34px;
+        line-height: 1.16;
+      }
+      .contact-cta-copy p{
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      .contact-cta-points{
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .contact-cta-formcard{
+        padding: 24px 18px;
+        border-radius: 20px;
+      }
+      .contact-form-intro h3{
+        font-size: 28px;
+      }
+      .contact-form-intro p{
+        font-size: 14px;
+      }
+      .contact-form-group input,
+      .contact-form-group textarea{
+        padding: 13px 14px;
+        border-radius: 14px;
+        font-size: 14px;
+      }
+      .contact-form-group textarea{
+        min-height: 110px;
+      }
+      .contact-cta-submit{
+        padding: 15px 18px;
+        font-size: 16px;
+      }
+      .about-premium{
+        padding: 20px 16px;
+        margin: 22px 12px;
+        border-radius: 22px;
+        gap: 18px;
+      }
+      .about-premium__content h1{
+        font-size: 24px;
+        line-height: 1.25;
+        margin: 8px 0 12px;
+      }
+      .about-premium__content p{
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 18px;
+      }
+      .about-premium__stats{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+      .about-premium__stats .stat{
+        width: 100%;
+        min-width: 0;
+        padding: 12px 14px;
+      }
+      .about-premium__actions{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .about-premium__btn,
+      .about-premium__link{
+        width: 100%;
+        text-align: center;
+      }
+      .about-premium__media{
+        order: -1;
+      }
+      .about-premium__media img{
+        border-radius: 18px;
+      }
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
 }
 
 
@@ -2005,7 +1985,7 @@ button {
 }
 
 .fill-btn:hover{
-    background-image: linear-gradient(101deg, #4b5aed, #a865e9);
+    background: linear-gradient(275deg, #2b2b4d);
 }
 
 
@@ -2492,7 +2472,7 @@ button {
 }
 
 .buynow .btn:hover {
-   background-image: linear-gradient(101deg, #4b5aed, #a865e9);
+   background: linear-gradient(275deg, #2b2b4d);
 }
 
 /* Optional: course card overall styling */
@@ -2987,7 +2967,7 @@ margin: 10px auto;
 }
 
 .premium-btn:hover{
- background-image: linear-gradient(101deg, #4b5aed, #a865e9);
+ background: linear-gradient(275deg, #2b2b4d);
 }
 
 .view-all-container {
@@ -4029,6 +4009,7 @@ h1,h2,h3 {
 
 .courseCard-container {
       display: flex;
+      align-items: stretch;
       background-color: #fff;
       border-radius: 10px;
       overflow: hidden;
@@ -4045,9 +4026,17 @@ h1,h2,h3 {
     }
 
     .courseCard-image {
-      width: 50%;
-      height: auto;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      display: block;
+    }
+
+    .courseCard-image-link {
+      display: block;
+      width: 42%;
+      flex: 0 0 42%;
+      min-height: 100%;
     }
 
     .courseCard-content {
@@ -4061,10 +4050,17 @@ h1,h2,h3 {
       margin-bottom: 6px;
     }
 
+    .courseCard-title a,
+    .courseCard-price a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .courseCard-subtitle {
       color: #555;
       margin-bottom: 12px;
       font-size: 14px;
+      line-height: 1.7;
     }
 
     .courseCard-instructor {
@@ -4103,9 +4099,14 @@ h1,h2,h3 {
       border-radius: 50px;
       font-size: 13px;
     }
+     .courseCard-tag-filled a{
+      textdecoration: none;
+      color: #fff;
+     }
+
     
     .courseCard-tag-filled:hover{
-      background-image: linear-gradient(101deg, #4b5aed, #a865e9);
+      background: linear-gradient(275deg, #2b2b4d);
     }
 
     .courseCard-tag-outline {
@@ -4645,13 +4646,19 @@ ul#move li:nth-child(5) {
   .courseCard-container {
     width: 100% !important;
     margin: 35px auto;
-        display: block;
-}
+    display: block;
+  }
 
-.courseCard-image {
-    width: 335px;
-    margin: 2px;
-}
+  .courseCard-image-link {
+    width: 100% !important;
+    flex: none !important;
+  }
+
+  .courseCard-image {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
   
   .secondContainer {
           padding: 35px 30px;

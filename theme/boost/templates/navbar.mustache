@@ -132,6 +132,23 @@
   left: 0;
   right: 0;
 }
+
+.explore-dropdown-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.explore-dropdown-toggle .nav-link {
+  white-space: nowrap;
+}
+
+.explore-toggle-btn {
+  border: 0;
+  box-shadow: none !important;
+  padding-left: 0.2rem;
+  padding-right: 0;
+  background: transparent;
+}
 </style>
 <nav class="navbar fixed-top bg-body navbar-expand site-topnav" aria-label="{{#str}}sitemenubar, admin{{/str}}">
     <div class="container-fluid">
@@ -208,13 +225,15 @@
                          {{/navcourses}}
                      </ul>
            </li>-->
-           <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             Explore 
-           </a>
-                     <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
-                         <li><a class="dropdown-item" href="{{ config.wwwroot }}/course/index.php">All Categories</a></li>
-                         <li><hr class="dropdown-divider"></li>
+           <li class="nav-item dropdown explore-dropdown">
+           <div class="explore-dropdown-toggle">
+             <a class="nav-link" href="{{ config.wwwroot }}/course/index.php">
+               Explore
+             </a>
+             <button class="btn nav-link dropdown-toggle explore-toggle-btn" type="button" id="categoriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Open Explore menu"></button>
+           </div>
+                     <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">                   
+                         
                          {{#navcategories}}
                              <li><a class="dropdown-item" href="{{url}}">{{{name}}}</a></li>
                              <li><hr class="dropdown-divider"></li>
@@ -246,15 +265,22 @@
  
         </ul>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        <ul class="navbar-nav d-none d-md-flex my-1 px-1">
-            <!-- page_heading_menu -->
-              <li class="nav-item">
-                            <a class="nav-link login-icon-link" href="#" aria-label="Log in" id="openLoginModal">
-                                 <i class="fa fa-user" aria-hidden="true"></i>
-                            </a>
-              </li>
- 
-        </ul>
+        {{#showloginbutton}}
+            <ul class="navbar-nav d-none d-md-flex my-1 px-1">
+                <li class="nav-item">
+                    <a class="nav-link login-icon-link" href="#" aria-label="Log in" id="openLoginModal">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+        {{/showloginbutton}}
+        {{#isloggedinuser}}
+            <ul class="navbar-nav d-none d-md-flex my-1 px-1">
+                <li class="nav-item">
+                    <a class="btn btn-outline-danger logout-btn ms-2" href="{{logouturl}}">Logout</a>
+                </li>
+            </ul>
+        {{/isloggedinuser}}
 
         <ul class="navbar-nav d-none d-md-flex my-1 px-1">
             <li class="nav-item dropdown">
@@ -262,7 +288,6 @@
                 <i class="fa fa-bars" aria-hidden="true"></i>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quickMenu">
-                <li><a class="dropdown-item" href="https://elearnkranti.com/course/index.php?categoryid=3">Offers</a></li>
                 <li><a class="dropdown-item" href="{{ config.wwwroot }}/theme/boost/testimonials.php">Testimonials</a></li>
                 <!--<li><a class="dropdown-item" href="{{ config.wwwroot }}/theme/boost/aboutus.php">About Us</a></li>-->
               </ul>
@@ -308,8 +333,10 @@
             </div>
             <div class="modal-body pt-0">
                 <div class="loginform">
-                    <form class="login-form" action="/login/index.php" method="post" id="loginFormModal">
-                        <input type="hidden" name="logintoken" value="">
+                    <form class="login-form" action="{{loginurl}}" method="post" id="loginFormModal">
+                        <input id="modal-anchor" type="hidden" name="anchor" value="">
+                        <script>document.getElementById('modal-anchor').value = location.hash;</script>
+                        <input type="hidden" name="logintoken" value="{{logintoken}}">
                         <div class="login-form-username mb-3">
                             <label for="modal-username" class="visually-hidden">Username</label>
                             <input type="text" name="username" id="modal-username" class="form-control form-control-lg" placeholder="Username" autocomplete="username" required>
@@ -322,8 +349,8 @@
                             <button class="btn btn-primary btn-lg w-100" type="submit" id="loginbtnModal">Log in</button>
                         </div>
                         <div class="login-form-forgotpassword mb-3 text-center">
-                            <a href="{{ config.wwwroot }}/login/forgot_password.php">Forgotten your username or password?</a><br>
-                            <a href="{{ config.wwwroot }}/login/signup.php">Sign up for an account</a>
+                            <a href="{{forgotpasswordurl}}">Forgotten your username or password?</a><br>
+                            <a href="{{signupurl}}">Register with Us</a>
                         </div>
                     </form>
                 </div>

@@ -1,16 +1,7 @@
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us</title>
- 
-</head>
-<body>
-  <section class="contact-hero">
+<section class="contact-hero">
     <div class="hero-text">
       
     </div>
@@ -44,108 +35,48 @@
 </section>
 
 <section class="contact-form-section">
-  <div class="form-container">
-    <h2>Contact Us</h2>
-    <form action="#" method="post">
-      <div class="form-group">
-        <label for="username">Your Name</label>
-        <input type="text" id="username" name="username" required />
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email ID</label>
-        <input type="email" id="email" name="email" required />
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" required />
-      </div>
-
-      <div class="form-group">
-        <label for="message">Your Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-      </div>
-
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
-</section>
-
-<section class="help-support">
-  <div class="container">
-    <p>
-      Check out our <a href="#">Help and Support</a> center to find quick answers to your questions.
-    </p>
-  </div>
-</section>
-<footer class="footer">
-  <div class="footer-container">
-
-    <!-- Left Side -->
-    <div class="top">
-
-
-     
-        
-      
-
-          {{# output.loggedinuser }}
-          
-            You are logged in as 
-            <a href="{{{ output.userprofileurl }}}" title="View profile">{{{ output.userfullname }}}</a> 
-            (<a href="{{{ config.wwwroot }}}/login/logout.php?sesskey={{{ sesskey }}}">Log out</a>)
-          
-          {{/ output.loggedinuser }}
+  <div class="contact-section-grid">
+    <div class="help-support">
+      <div class="container">
+        <h2>Contact Information</h2>
+        <div class="contact-detail-list">
+          <p><strong>Phone:</strong> +91 9217456669</p>
+          <p><strong>Email:</strong> info@elearnkranti.com</p>
+          <p><strong>Director:</strong> director@elearnkranti.com</p>
+          <p><strong>Address:</strong> 205-206, Pragati House, 47-48, Nehru Place, New Delhi -110019, Delhi, India</p>
         </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.787542894999!2d77.25051277536649!3d28.54610498800058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3df7078e931%3A0x6ff0916ce9147617!2skreative%20Captains!5e0!3m2!1sen!2sin!4v1775851477977!5m2!1sen!2sin" width="450" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-    
-
-    <!-- Right Side -->
-    <div class="footer-right">
-      <div class="footer-down">
-          <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1767950654/eLearnKranti%20Logo%20%281%29.png" class="logo me-1" alt="Pariksha Kranti" style="margin-bottom: 20px !important;">
-        <p>Join eLearnKranti, India's premier e-learning platform launched in 2025, empowering learners with cutting-edge skills for a dynamic future.</p>
-      </div>
-      <div class="footer-down">
-        <h4>Data Science</h4>
-        <ul>
-          <li>Python</li>
-          <li>Machine Learning</li>
-          <li>ChatGPT</li>
-          <li>Deep Learning</li>
-        </ul>
-      </div>
-      <div class="footer-down">
-        <h4>Legal & Accessibility</h4>
-        <ul>
-         <li><a href="https://elearnkranti.com/theme/boost/privacy-policy.php">Privacy Policy</a></li>
-          <li><a href="https://elearnkranti.com/theme/boost/terms.php">Terms</a></li>
-          <li>Accessibility statement</li>
-          <li>Sitemap</li>
-        </ul>
-      </div>
-     <div class="footer-down">
-        <h4>Contact Information</h4>
-        <ul>
-          <li>Phone: +91 6284910733</li>
-          <li>Email: info@elearnkranti.com</li>
-          <li><a href="https://www.linkedin.com/in/elearn-kranti-a1ab65395/">Linkedin</a></li>
-          <li><a href="https://www.instagram.com/elearnkranti?igsh=aDZpcnpmNGxoZWF6&utm_source=qr">Instagram</a></li>
-          <li><a href="https://www.facebook.com/profile.php?id=61585129565822">Facebook</a></li>
-        </ul>
-      </div>
-      
-     
     </div>
 
+    <div class="form-container">
+      <h2>Contact Us</h2>
+      <form action="#" method="post">
+        <div class="form-group">
+          <label for="username">Your Name</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email ID</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
   </div>
-</footer>
-</body>
-
-
-
-</html>
+</section>
 <style>
   * {
   margin: 0;
@@ -279,9 +210,15 @@ background-color: #f7f9fa;
 .contact-form-section {
   background-color: #f7f9fc;
   padding: 80px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+.contact-section-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(420px, 1.1fr);
+  gap: 32px;
+  align-items: stretch;
 }
 
 .form-container {
@@ -290,7 +227,7 @@ background-color: #f7f9fa;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 600px;
+  max-width: none;
 }
 
 .form-container h2 {
@@ -345,16 +282,6 @@ button[type="submit"]:hover {
   background-color: #4b5aed;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .form-container {
-    padding: 30px 20px;
-  }
-
-  .form-container h2 {
-    font-size: 1.6rem;
-  }
-}
 .how-we-started {
   background-color: #f7f9fa;
   padding: 60px 20px;
@@ -410,234 +337,63 @@ button[type="submit"]:hover {
 }
 
 .help-support {
-  background-color: #ffffff;
-  padding: 40px 20px;
-  text-align: center;
+  background: transparent;
+  padding: 0;
 }
 
-.help-support p {
+.help-support .container {
+  max-width: none;
+  height: 100%;
+  margin: 0;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 12px 30px rgba(19, 24, 44, 0.08);
+}
+
+.help-support h2 {
+  font-size: 2rem;
+  margin-bottom: 18px;
+  color: #121212;
+  text-align: left;
+}
+
+.contact-detail-list
+{
+  padding-bottom: 40px;
+}
+.contact-detail-list p {
   font-size: 1rem;
   color: #222;
-  line-height: 1.6;
+  line-height: 1.8;
+  margin-bottom: 12px;
+  text-align: left;
 }
 
-.help-support a {
-  color: #4b5aed;
-  text-decoration: none;
-  font-weight: 500;
+.contact-detail-list p:last-child {
+  margin-bottom: 0;
 }
 
-.help-support a:hover {
-  text-decoration: underline;
+.contact-detail-list strong {
+  color: #121212;
 }
 
-
-    /* body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fff;
-  color: #fff;
-} */
-
-.footer {
-  background-color: #111;
-  padding: 40px 20px;
-  margin-top: 65px;
+@media (max-width: 900px) {
+  .contact-section-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: auto;
-  gap: 40px;
-  justify-content: space-between;
-}
+@media (max-width: 600px) {
+  .form-container,
+  .help-support .container {
+    padding: 26px 20px;
+  }
 
-.footer-left {
-  flex: 1 1 300px;
-}
-
-.logo {
-  margin-bottom: 15px;
-}
-
-.description {
-  font-size: 14px;
-  margin-bottom: 20px;
-  color: #ccc;
-}
-
-.contact {
-  font-size: 14px;
-  color: white;
-  margin-top:0;
-  margin-bottom:0;
-
-}
-
-.contact-title {
-  font-weight: bold;
-  margin-bottom: 0px;
-}
-
-.contact-info span {
-  display: inline-block;
-  margin-right: 15px;
-  margin-top: 0px;
-}
-
-.footer-right {
-  padding-left:55px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0px;
-  flex: 1;
-}
-
-.footer-down h4 {
-  margin-bottom: 0px;
-  font-size: 16px;
-  color: #fff;
-}
-
-.footer-down ul {
-  list-style: none;
-  padding: 0;
-  font-size: 14px;
-}
-
-.footer-down li {
-  margin-bottom: 6px;
-  color: #ccc;
-  cursor: pointer;
-}
-
-.footer-down li:hover {
-  text-decoration: underline;
-}
-
-
-
-
-.footer-right {
-  flex: 2 1 600px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-}
-
-.footer-down h4 {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.footer-down ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-down ul li {
-  margin-bottom: 6px;
-  color: #eee;
-}
-
-.footer a {
-  color: #ddd;
-  text-decoration: underline;
-}
-
-.footer a:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
-.contact-info span,
-.contact-info div,
-.contact-info h5 {
-  display: block;
-  margin-bottom: 0px;
-}
-
-.footer {
-  background-color: #000000;
-  color: white;
-  padding: 0px 20px;
-  font-family: Arial, sans-serif;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0;
-  
-}
-.footer {
-  margin: 0;
-  padding: 0;
-}
-.footer-left {
-  padding-left:50px;
-  padding-top:30px;
-  background-color:#00000;
-  color:white;
-}
-.top {
-  padding-top:40px;
-  padding-left:55px;
-  padding-bottom:40px;
-}
-
-.footer-right {
-  flex: 2 1 600px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-  padding-bottom:40px;
-}
-
-.footer-down h4 {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.footer-down ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-down ul li {
-  margin-bottom: 6px;
-  color: #eee;
-}
-
-.footer a {
-  color: #ddd;
-  text-decoration: underline;
-}
-
-.footer a:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
-.contact-info span,
-.contact-info div,
-.contact-info h5 {
-  display: block;
-  margin-bottom: 0px;
-}
-
-.tag{
-  padding-right:55px;
-  
-}
-.footer-left {
-    flex: 1 1 300px !important;
+  .form-container h2,
+  .help-support h2 {
+    font-size: 1.6rem;
+  }
 }
 
 .logininfo{
