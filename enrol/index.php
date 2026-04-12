@@ -72,16 +72,32 @@ foreach ($roles as $role) {
     }
 }
 
-// Template context
+
+// Get price and MRP (20% extra, strikethrough)
+$price = '';
+$mrp = '';
+$enrolinstances = enrol_get_instances($course->id, true);
+foreach ($enrolinstances as $instance) {
+    if (!empty($instance->cost) && is_numeric($instance->cost) && $instance->cost > 0) {
+        $currency = !empty($instance->currency) ? $instance->currency : 'INR';
+        $amount = (float)$instance->cost;
+        $price = ($currency === 'INR' ? '&#8377; ' : $currency . ' ') . number_format($amount, 2);
+        $mrp_amount = round($amount * 1.2, 2);
+        $mrp = ($currency === 'INR' ? '&#8377; ' : $currency . ' ') . number_format($mrp_amount, 2);
+        break;
+    }
+}
+
 $templatecontext = [
     'fullname' => format_string($course->fullname),
     'summary' => $summary,
     'courseimage' => $imageurl,
-    'price' => '',
+    'price' => $price,
+    'mrp' => $mrp,
     'enrolurl' => (new moodle_url('/enrol/index.php', ['id' => $course->id]))->out(false),
     'teachers' => $teachers,
     'haswidgets' => !empty($widgets),
-     'enrolwidgets' => array_values(array_map(function($widget) {
+    'enrolwidgets' => array_values(array_map(function($widget) {
         return (string) $widget;
     }, $widgets))
 ];

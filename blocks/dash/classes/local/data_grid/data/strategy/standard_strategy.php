@@ -24,8 +24,7 @@
 
 namespace block_dash\local\data_grid\data\strategy;
 
-defined('MOODLE_INTERNAL') || die;
-
+defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/blocks/dash/lib.php');
 
 use block_dash\local\dash_framework\structure\field_interface;
@@ -39,11 +38,10 @@ use block_dash\local\data_grid\field\attribute\context_attribute;
  * @package block_dash
  */
 class standard_strategy implements data_strategy_interface {
-
     /**
      * Convert records.
      *
-     * @param \stdClass[] $records
+     * @param \moodle_recordset $records
      * @param field_interface[] $fielddefinitions
      * @return data_collection_interface
      */
@@ -67,8 +65,12 @@ class standard_strategy implements data_strategy_interface {
                     $row->set_context(\context::instance_by_id($record->$name));
                 }
 
-                $row->add_data(new field($name, $fielddefinition->transform_data($record->$name, $fullrecord),
-                    $fielddefinition->get_visibility(), $fielddefinition->get_title()));
+                $row->add_data(new field(
+                    $name,
+                    $fielddefinition->transform_data($record->$name, $fullrecord),
+                    $fielddefinition->get_visibility(),
+                    $fielddefinition->get_title()
+                ));
             }
 
             $griddata->add_child_collection('rows', $row);

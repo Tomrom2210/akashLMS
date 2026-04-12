@@ -28,7 +28,6 @@ use block_dash\local\layout\grid_layout;
 use block_dash\local\layout\accordion_layout;
 use block_dash\local\layout\one_stat_layout;
 use block_dash\local\data_source\users_data_source;
-
 use block_dash\local\widget\mylearning\mylearning_widget;
 use block_dash\local\widget\groups\groups_widget;
 use block_dash\local\widget\contacts\contacts_widget;
@@ -174,7 +173,7 @@ function block_dash_output_fragment_block_preferences_form($args) {
  * @param array $options additional options affecting the file serving
  * @return bool false if the file was not found, just send the file otherwise and do not return anything
  */
-function block_dash_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options=[]) {
+function block_dash_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
 
     if ($context->contextlevel != CONTEXT_BLOCK && $context->contextlevel != CONTEXT_SYSTEM) {
         return false;
@@ -183,7 +182,6 @@ function block_dash_pluginfile($course, $cm, $context, $filearea, $args, $forced
     require_login();
 
     if ($filearea == 'images' || $filearea == 'categoryimg') {
-
         $relativepath = implode('/', $args);
 
         $fullpath = "/$context->id/block_dash/$filearea/$relativepath";
@@ -298,7 +296,7 @@ function block_dash_output_fragment_loadtable($args) {
     $args = (object) $args;
     $context = $args->context;
 
-    $classstr = 'block_dash\table\\'.$args->handler;
+    $classstr = 'block_dash\table\\' . $args->handler;
     $table = new $classstr($args->uniqueid);
     $table->set_filterset(json_decode($args->filter));
     $table->set_sort_column($args->sort);
@@ -312,7 +310,6 @@ function block_dash_output_fragment_loadtable($args) {
     ob_end_clean();
 
     return $tablehtml;
-
 }
 
 /**
@@ -358,8 +355,8 @@ function block_dash_visible_addons($id) {
             $addondependencies = $addon . "_extend_added_dependencies";
             if (get_config($addon, 'enabled')) {
                 $addonplugin = explode("dashaddon_", $addon)[1];
-                if (file_exists($CFG->dirroot. "/local/dash/addon/$addonplugin/lib.php")) {
-                    require_once($CFG->dirroot. "/local/dash/addon/$addonplugin/lib.php");
+                if (file_exists($CFG->dirroot . "/local/dash/addon/$addonplugin/lib.php")) {
+                    require_once($CFG->dirroot . "/local/dash/addon/$addonplugin/lib.php");
                     if (function_exists($addondependencies) && !empty($addondependencies())) {
                         return false;
                     }
@@ -370,4 +367,33 @@ function block_dash_visible_addons($id) {
         }
     }
     return true;
+}
+
+/**
+ * Get the disable addons list from the config file parameters.
+ *
+ * @return array $disabledaddons
+ */
+function block_dash_disabled_addons_list() {
+    global $CFG;
+
+    // Step 1: If a plugin config is present within the plugin, require it.
+    // This step might not be necessary as the plugin's config.php might also be loaded already,
+    // but better be safe than sorry.
+    //
+    // Regardless if the plugin's config.php is already loaded or not, a definition of
+    // $CFG->dashdisabledaddons in that file will supersede a defition of $CFG->dashdisabledaddons
+    // in Moodle's global config.php.
+    //
+    if (file_exists($CFG->dirroot . '/blocks/dash/config.php')) {
+        // phpcs:disable moodle.Files.RequireLogin.Missing
+        require_once($CFG->dirroot . '/blocks/dash/config.php');
+        // phpcs:enable moodle.Files.RequireLogin.Missing
+    }
+
+    // Step 2: Pick disabled addons from the global variable, if it exists.
+    $disabledaddons = isset($CFG->dashdisabledaddons) ? $CFG->dashdisabledaddons : [];
+
+    // Return the list.
+    return $disabledaddons;
 }

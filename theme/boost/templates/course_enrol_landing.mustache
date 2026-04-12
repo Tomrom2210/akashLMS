@@ -99,6 +99,15 @@
       <div class="detail"><span>Level</span><b>Intermediate</b></div>
       <div class="detail"><span>Language</span><b>English</b></div>
       <div class="detail"><span>Duration</span><b>4 Weeks</b></div>
+      {{#price}}
+      <div class="detail">
+        <span>Price</span>
+        <b>
+          <span style="color:#888;text-decoration:line-through;font-size:14px;margin-right:8px;">{{#mrp}}{{mrp}}{{/mrp}}</span>
+          <span style="color:#ffffff;font-weight:700;">{{price}}</span>
+        </b>
+      </div>
+      {{/price}}
     </div>
 
   </div>

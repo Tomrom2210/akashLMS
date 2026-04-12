@@ -38,7 +38,6 @@ require_once($CFG->libdir . '/formslib.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class preferences_form extends \moodleform {
-
     /** @var string General tab id. */
     const TAB_GENERAL = 'tabgeneral';
 
@@ -71,6 +70,9 @@ class preferences_form extends \moodleform {
         if (!isset($this->_customdata['tab'])) {
             $this->_customdata['tab'] = self::TABS[0];
         }
+
+        // Disable form change checker to prevent node missing errors when multiple widget/datasource blocks are added to a page.
+        $this->_form->disable_form_change_checker();
 
         $configuration = configuration::create_from_instance($block);
         if ($configuration->is_fully_configured()) {

@@ -141,6 +141,14 @@ $string['sectionbadgeingridbox_help'] = 'Show the section badge in the grid box'
 $string['defaultsectionbadgeingridbox'] = 'Section badge in grid box';
 $string['defaultsectionbadgeingridbox_desc'] = 'Show the section badge in the grid box.';
 
+// Course index.
+$string['courseindex'] = 'Course index';
+$string['courseindex_help'] = 'Show the \'Course index\'';
+
+// Indentation.
+$string['indentation'] = 'Allow indentation on the course page';
+$string['indentation_help'] = 'Allow teachers and other users with the manage activities capability to indent items on the course page.';
+
 // Completion.
 $string['showcompletion'] = 'Show completion';
 $string['showcompletion_help'] = 'Show the completion percentage of the sections';
@@ -180,6 +188,7 @@ $string['cannotconvertuploadedimagetodisplayedimage'] = 'Cannot convert uploaded
 $string['cannotgetmanagesectionimagelock'] = 'Cannot get manage section image lock.  This can happen if two people are editing the settinsg of the same section on the same course at the same time.';
 $string['formatnotsupported'] = 'Format is not supported at this server, please fix the system configuration to have the GD PHP extension installed - {$a}';
 $string['functionfailed'] = 'Function failed on image - {$a}';
+$string['imagecopyresampledfailed'] = 'Image copy resampled failed on image - {$a}';
 $string['imagemanagement'] = 'Image management: {$a}.';
 $string['mimetypenotsupported'] = 'Mime type is not supported as an image format in the Grid format - {$a}';
 $string['originalheightempty'] = 'Original height is empty - {$a}';

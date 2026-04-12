@@ -26,12 +26,14 @@
 namespace mod_customcert;
 
 use advanced_testcase;
+use context_module;
+use stdClass;
 
 defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
-require_once($CFG->dirroot.'/mod/customcert/lib.php');
-require_once($CFG->libdir.'/componentlib.class.php');
+require_once($CFG->dirroot . '/mod/customcert/lib.php');
+require_once($CFG->libdir . '/componentlib.class.php');
 
 /**
  * Unit tests for mod_customcert lib.
@@ -42,78 +44,326 @@ require_once($CFG->libdir.'/componentlib.class.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class lib_test extends advanced_testcase {
-
     /**
      * Test set up.
      */
-    public function setUp(): void {
+    protected function setUp(): void {
         $this->resetAfterTest();
-
         parent::setUp();
     }
 
     /**
-     * Tests force custom language for current session.
+     * Tests apply_runtime_language() with valid and invalid languages.
      *
-     * @covers ::mod_customcert_force_current_language
+     * @covers ::mod_customcert_apply_runtime_language
      */
-    public function test_mod_customcert_force_current_language(): void {
+    public function test_mod_customcert_apply_runtime_language(): void {
         global $USER;
 
         $user1 = $this->getDataGenerator()->create_user();
         $USER = $user1;
-        $testlangs = ['es_mx', 'pt_br', 'cs', 'da', 'nb', 'sv'];
 
-        $activelangs = get_string_manager()->get_list_of_translations();
-        // Testing not installed languages.
-        foreach ($testlangs as $lang) {
-            $forced = mod_customcert_force_current_language($lang);
-            $this->assertFalse($forced);
-            $this->assertArrayNotHasKey($lang, $activelangs);
-        }
+        // 1) Not installed: should NOT switch.
+        $this->assertFalse(mod_customcert_apply_runtime_language('pt_br'));
 
-        // Testing english language.
-        $forced = mod_customcert_force_current_language('en');
-        $this->assertFalse($forced);
-        $this->assertArrayHasKey('en', $activelangs);
+        // 2) English usually installed: switching to current language is a no-op.
+        $current = current_language();
+        $this->assertFalse(mod_customcert_apply_runtime_language($current));
 
-        // Install Language packs.
-        $this->install_languagues();
-
-        $activelangs = get_string_manager()->get_list_of_translations();
-        foreach ($testlangs as $lang) {
-            $forced = mod_customcert_force_current_language($lang);
-            $this->assertTrue($forced);
-            $this->assertArrayHasKey($lang, $activelangs);
-        }
+        // 3) Install a single non-English language and verify switching works.
+        $this->install_languages(['cs']);
+        $this->assertTrue(mod_customcert_apply_runtime_language('cs'));
     }
 
     /**
-     * Install lang packs by lang codes.
+     * Test get language to use certificate language.
      *
+     * @covers ::mod_customcert_get_language_to_use
+     */
+    public function test_get_language_to_use_precedence_cert_forced(): void {
+        global $USER;
+
+        $this->resetAfterTest();
+        $this->setAdminUser();
+        $this->ensure_base_langs();
+
+        $user = $this->getDataGenerator()->create_user(['lang' => 'es']);
+        $USER = $user;
+
+        $customcert = (object)[
+            'language' => 'es_co', // Cert forces Colombian Spanish.
+        ];
+
+        $resolved = mod_customcert_get_language_to_use($customcert, $user, 'fr');
+        $this->assertSame('es_co', $resolved);
+    }
+
+    /**
+     * Test get language to use course language.
+     *
+     * @covers ::mod_customcert_get_language_to_use
+     */
+    public function test_get_language_to_use_precedence_course_when_cert_empty(): void {
+        global $USER;
+
+        $this->resetAfterTest();
+        $this->setAdminUser();
+        $this->ensure_base_langs();
+
+        $user = $this->getDataGenerator()->create_user(['lang' => 'es']);
+        $USER = $user;
+
+        $customcert = (object)[
+            'language' => '', // Use user preferences.
+        ];
+
+        $resolved = mod_customcert_get_language_to_use($customcert, $user, 'fr');
+        $this->assertSame('fr', $resolved);
+    }
+
+    /**
+     * Test what language to use when cert and course is empty.
+     *
+     * @covers ::mod_customcert_get_language_to_use
+     */
+    public function test_get_language_to_use_user_when_cert_and_course_empty(): void {
+        global $USER;
+
+        $this->resetAfterTest();
+        $this->setAdminUser();
+        $this->ensure_base_langs();
+
+        $user = $this->getDataGenerator()->create_user(['lang' => 'es']);
+        $USER = $user;
+
+        $customcert = (object)[
+            'language' => '',
+        ];
+
+        $resolved = mod_customcert_get_language_to_use($customcert, $user, null);
+        $this->assertSame('es', $resolved);
+    }
+
+    /**
+     * Test that site default is used when everything else is empty.
+     *
+     * @covers ::mod_customcert_get_language_to_use
+     */
+    public function test_get_language_to_use_site_default_when_all_empty(): void {
+        global $CFG, $USER;
+
+        $this->resetAfterTest();
+        $this->setAdminUser();
+        $this->ensure_base_langs();
+
+        $user = $this->getDataGenerator()->create_user(['lang' => '']);
+        $USER = $user;
+
+        $customcert = (object)['language' => ''];
+
+        $resolved = mod_customcert_get_language_to_use($customcert, $user, null);
+        $this->assertSame($CFG->lang, $resolved);
+    }
+
+    /**
+     * Test that we use the global user when user is not passed.
+     *
+     * @covers ::mod_customcert_get_language_to_use
+     */
+    public function test_get_language_to_use_defaults_to_global_user_when_user_null(): void {
+        global $USER;
+
+        $this->resetAfterTest();
+        $this->setAdminUser();
+        $this->ensure_base_langs();
+
+        $user = $this->getDataGenerator()->create_user(['lang' => 'es']);
+        $USER = $user;
+
+        $customcert = (object)['language' => ''];
+
+        $resolved = mod_customcert_get_language_to_use($customcert, null, null);
+        $this->assertSame('es', $resolved);
+    }
+
+    /**
+     * Test we do not switch language if it is already active.
+     *
+     * @covers ::mod_customcert_apply_runtime_language
+     */
+    public function test_apply_runtime_language_noop_for_same_language(): void {
+        $this->resetAfterTest();
+        $this->setAdminUser();
+
+        $current = current_language();
+        $forced = mod_customcert_apply_runtime_language($current);
+        $this->assertFalse($forced, 'Should not switch when language is already active.');
+    }
+
+    /**
+     * Test we do not switch language if it is invalid.
+     *
+     * @covers ::mod_customcert_apply_runtime_language
+     */
+    public function test_apply_runtime_language_invalid_code_is_ignored(): void {
+        $this->resetAfterTest();
+        $this->setAdminUser();
+
+        $before = current_language();
+        $forced = mod_customcert_apply_runtime_language('xx_invalid');
+        $this->assertFalse($forced);
+        $this->assertSame($before, current_language());
+    }
+
+    /**
+     * Test we switch and can restore language successfully.
+     *
+     * @covers ::mod_customcert_apply_runtime_language
+     */
+    public function test_apply_runtime_language_switch_and_restore(): void {
+        $this->resetAfterTest();
+        $this->setAdminUser();
+        $this->install_languages(['cs']);
+
+        $before = current_language();
+
+        $forced = mod_customcert_apply_runtime_language('cs');
+        $this->assertTrue($forced);
+        $this->assertSame('cs', current_language());
+
+        // Restore to before.
+        $restored = mod_customcert_apply_runtime_language($before);
+        $this->assertTrue($restored);
+        $this->assertSame($before, current_language());
+    }
+
+    /**
+     * Resolver may return a code that is not installed; apply() decides if it can switch.
+     *
+     * @covers ::mod_customcert_get_language_to_use
+     * @covers ::mod_customcert_apply_runtime_language
+     */
+    public function test_resolve_returns_uninstalled_code_but_apply_refuses(): void {
+        $this->resetAfterTest();
+        $this->setAdminUser();
+
+        $user = (object)['lang' => 'xx_notinstalled']; // Avoid create_user() cleaning.
+        $customcert = (object)['language' => ''];
+
+        $resolved = mod_customcert_get_language_to_use($customcert, $user, null);
+        $this->assertSame('xx_notinstalled', $resolved);
+
+        $before = current_language();
+        $forced = mod_customcert_apply_runtime_language($resolved);
+        $this->assertFalse($forced);
+        $this->assertSame($before, current_language());
+    }
+
+    /**
+     * Install language packs by lang codes.
+     *
+     * @param array $codes
      * @return bool
      */
-    private function install_languagues(): bool {
+    private function install_languages(array $codes): bool {
         \core_php_time_limit::raise();
-
-        $langcodes = [
-            'es' => 'es_mx',
-            'br' => 'pt_br',
-            'cz' => 'cs',
-            'dk' => 'da',
-            'no' => 'nb',
-            'se' => 'sv',
-        ];
         get_string_manager()->reset_caches();
 
         $controller = new \tool_langimport\controller();
         try {
-            $updated = $controller->install_languagepacks($langcodes);
+            $controller->install_languagepacks($codes);
             return true;
         } catch (\moodle_exception $e) {
             $this->assertInstanceOf('moodle_exception', $e);
         }
 
         return false;
+    }
+
+    /**
+     * Ensures the base set of language packs are installed.
+     */
+    private function ensure_base_langs(): void {
+        // Only what we truly need for test coverage.
+        $this->install_languages(['es', 'fr', 'cs']);
+    }
+
+    /**
+     * Helper to create a customcert with a template, page, and element.
+     *
+     * @param stdClass $course
+     * @return array [$customcert, $pageid, $elementid, $contextid]
+     */
+    private function create_cert_with_element(stdClass $course): array {
+        global $DB;
+
+        $customcert = $this->getDataGenerator()->create_module('customcert', ['course' => $course->id]);
+        $cm = get_coursemodule_from_instance('customcert', $customcert->id, $course->id, false, MUST_EXIST);
+        $context = context_module::instance($cm->id);
+
+        $templaterecord = $DB->get_record('customcert_templates', ['id' => $customcert->templateid], '*', MUST_EXIST);
+        $template = new template($templaterecord);
+
+        $pageid = $template->add_page();
+
+        $element = new stdClass();
+        $element->pageid = $pageid;
+        $element->name = 'Test element';
+        $element->element = 'text';
+        $element->sequence = 1;
+        $element->timecreated = time();
+        $element->timemodified = time();
+        $elementid = $DB->insert_record('customcert_elements', $element);
+
+        return [$customcert, $pageid, $elementid, $context];
+    }
+
+    /**
+     * Test that mod_customcert_output_fragment_editelement throws when the element
+     * belongs to a different context (cross-course access attempt).
+     *
+     * @covers ::mod_customcert_output_fragment_editelement
+     */
+    public function test_output_fragment_editelement_cross_context_denied(): void {
+        $this->setAdminUser();
+
+        // Course A — attacker has access to this context.
+        $coursea = $this->getDataGenerator()->create_course();
+        [, , , $contexta] = $this->create_cert_with_element($coursea);
+
+        // Course B — element belongs here.
+        $courseb = $this->getDataGenerator()->create_course();
+        [, , $elementidb] = $this->create_cert_with_element($courseb);
+
+        // Pass Course A's context but Course B's elementid.
+        $args = [
+            'elementid' => $elementidb,
+            'context'   => $contexta,
+        ];
+
+        $this->expectException(\moodle_exception::class);
+        mod_customcert_output_fragment_editelement($args);
+    }
+
+    /**
+     * Test that mod_customcert_output_fragment_editelement succeeds when the element
+     * belongs to the supplied context.
+     *
+     * @covers ::mod_customcert_output_fragment_editelement
+     */
+    public function test_output_fragment_editelement_same_context_allowed(): void {
+        $this->setAdminUser();
+
+        $course = $this->getDataGenerator()->create_course();
+        [, , $elementid, $context] = $this->create_cert_with_element($course);
+
+        $args = [
+            'elementid' => $elementid,
+            'context'   => $context,
+        ];
+
+        // Should not throw — element belongs to the same context.
+        $html = mod_customcert_output_fragment_editelement($args);
+        $this->assertIsString($html);
     }
 }

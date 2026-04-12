@@ -18,10 +18,10 @@
 	</div>
 
 	<ul id="move">
-		<li><img src="/media/new/banner/1.jpeg"></li>
-		<li><img src="/media/new/banner/2.jpeg"></li>
-		<li><img src="/media/new/banner/5.jpeg"></li>
-		<li><img src="/media/new/banner/6.jpeg"></li>
+		<li><img src="/media/new/banner/7.jpeg"></li>
+		<li><img src="/media/new/banner/8.jpeg"></li>
+		<li><img src="/media/new/banner/9.jpeg"></li>
+		<li><img src="/media/new/banner/10.jpeg"></li>
 		
 
 	</ul>
@@ -197,7 +197,12 @@
                     <h3>{{{name}}}</h3>
                     <p>{{teacher}}</p>
                     <div class="ts3-rating">{{{stars}}}</div>
-                    <div class="ts3-price">{{{price}}}</div>
+                    <div class="ts3-price">
+                      <span class="ts3-mrp" style="color:#888;text-decoration:line-through;font-size:15px;margin-right:8px;">
+                        {{#mrp}}₹ {{mrp}}{{/mrp}}
+                      </span>
+                      <span>{{{price}}}</span>
+                    </div>
                     <a href="{{url}}" class="ts3-button">Enroll Now</a>
                 </div>
             </div>
@@ -210,7 +215,12 @@
                     <h3>Courses will appear here soon</h3>
                     <p>New courses from the backend will be displayed in this section.</p>
                     <div class="ts3-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <div class="ts3-price">Free</div>
+                    <div class="ts3-price">
+                      <span class="ts3-mrp" style="color:#888;text-decoration:line-through;font-size:15px;margin-right:8px;">
+                        {{#mrp}}{{mrp}}{{/mrp}}
+                      </span>
+                      <span>Free</span>
+                    </div>
                     <a href="/course/index.php" class="ts3-button">Browse Courses</a>
                 </div>
             </div>
@@ -224,7 +234,10 @@
                     <h3>Sales and Marketing </h3>
                     <p>By Abhishek Singh</p>
                     <div class="ts3-rating">★★★★★</div>
-                    <div class="ts3-price">₹ 8000 + <small>GST</small></div>
+                    <div class="ts3-price">
+                      <span class="ts3-mrp" style="color:#888;text-decoration:line-through;font-size:15px;margin-right:8px;">₹ 9600</span>
+                      <span>₹ 8000 + <small>GST</small></span>
+                    </div>
                     <button>Enroll Now</button>
                 </div>
             </div>
@@ -236,7 +249,10 @@
                     <h3>DPDP Act </h3>
                     <p>By Abhay Sinha</p>
                     <div class="ts3-rating">★★★★★</div>
-                    <div class="ts3-price">₹ 2499 + <small>GST</small></div>
+                    <div class="ts3-price">
+                      <span class="ts3-mrp" style="color:#888;text-decoration:line-through;font-size:15px;margin-right:8px;">₹ 2999</span>
+                      <span>₹ 2499 + <small>GST</small></span>
+                    </div>
                     <button>Enroll Now</button>
                 </div>
             </div>
@@ -248,7 +264,10 @@
                     <h3>POSH </h3>
                     <p>By Abhay Sinha</p>
                     <div class="ts3-rating">★★★★★</div>
-                    <div class="ts3-price">₹ 3999 + <small>GST</small></div>
+                    <div class="ts3-price">
+                      <span class="ts3-mrp" style="color:#888;text-decoration:line-through;font-size:15px;margin-right:8px;">₹ 4799</span>
+                      <span>₹ 3999 + <small>GST</small></span>
+                    </div>
                     <button>Enroll Now</button>
                 </div>
             </div>
@@ -260,7 +279,10 @@
                     <h3>ESG</h3>
                     <p>By Abhay Sinha</p>
                     <div class="ts3-rating">★★★★★</div>
-                    <div class="ts3-price">₹ 6999 + <small>GST</small></div>
+                    <div class="ts3-price">
+                      <span class="ts3-mrp" style="color:#888;text-decoration:line-through;font-size:15px;margin-right:8px;">₹ 8399</span>
+                      <span>₹ 6999 + <small>GST</small></span>
+                    </div>
                     <button>Enroll Now</button>
                 </div>
             </div>
@@ -272,7 +294,10 @@
                     <h3>Startup Compliance and Legal</h3>
                     <p>By Abhishek Singh</p>
                     <div class="ts3-rating">★★★★★</div>
-                    <div class="ts3-price">₹ 14999 + <small>GST</small></div>
+                    <div class="ts3-price">
+                      <span class="ts3-mrp" style="color:#888;text-decoration:line-through;font-size:15px;margin-right:8px;">₹ 17999</span>
+                      <span>₹ 14999 + <small>GST</small></span>
+                    </div>
                     <button>Enroll Now</button>
                 </div>
             </div>
@@ -284,7 +309,10 @@
                     <h3>SOC Analyst Course</h3>
                     <p>By Abhay Sinha</p>
                     <div class="ts3-rating">★★★★★</div>
-                    <div class="ts3-price">₹ 25000 + <small>GST</small></div>
+                    <div class="ts3-price">
+                      <span class="ts3-mrp" style="color:#888;text-decoration:line-through;font-size:15px;margin-right:8px;">₹ 30000</span>
+                      <span>₹ 25000 + <small>GST</small></span>
+                    </div>
                     <button>Enroll Now</button>
                 </div>
             </div>
@@ -842,7 +870,10 @@
       </div>
       {{/haspricing}}
 
-      <div class="courseCard-price"><a href="{{url}}">{{{price}}}</a></div>
+      <div class="courseCard-price">
+        <span class="ts3-mrp" style="color:#888;text-decoration:line-through;font-size:15px;margin-right:8px;">{{#mrp}}{{mrp}}{{/mrp}}</span>
+        <a href="{{url}}">{{{price}}}</a>
+      </div>
     </div>
   </div>
   <script>
@@ -1030,7 +1061,6 @@
     <button class="view-all-btn">View all educators</button>
   </div>
 </section>
-here add
 
 </div>
 
@@ -1042,7 +1072,7 @@ here add
   {{#secondary_featured_course}}
   <div class="courseCard-container second-courseCard-container">
     <a href="{{url}}" class="courseCard-image-link">
-      <img class="courseCard-image social-governance" src="/media/new/6-4.jpg" alt="{{name}}">
+      <img class="courseCard-image social-governance" src="{{image}}" alt="{{name}}">
     </a>
 
     <div class="courseCard-content">
@@ -1109,6 +1139,84 @@ here add
 
 
 
+<section class="mentor-showcase">
+  <div class="mentor-showcase__header">
+    <span class="mentor-showcase__eyebrow">Skill Teacher</span>
+    <h2>Whose Inspirations You Love</h2>
+    <p>
+      Meet the mentors, trainers, and guides helping learners build confidence,
+      sharpen practical skills, and move ahead with clarity.
+    </p>
+  </div>
+
+  <div class="mentor-showcase__grid">
+    <article class="mentor-card">
+      <div class="mentor-card__image-wrap">
+        <img src="/media/pro4.avif" alt="Kiran Sharma">
+      </div>
+      <div class="mentor-card__body">
+        <h3>Kiran Sharma</h3>
+        <p class="mentor-card__role">Director & Lead Mentor</p>
+        <p class="mentor-card__meta">India</p>
+      </div>
+    </article>
+
+    <article class="mentor-card">
+      <div class="mentor-card__image-wrap">
+        <img src="/media/pro4.avif" alt="Kanchan Sharma">
+      </div>
+      <div class="mentor-card__body">
+        <h3>Kanchan Sharma</h3>
+        <p class="mentor-card__role">Student Success Coach</p>
+        <p class="mentor-card__meta">India</p>
+      </div>
+    </article>
+
+    <article class="mentor-card">
+      <div class="mentor-card__image-wrap">
+        <img src="/media/pro4.avif" alt="Compliance Faculty">
+      </div>
+      <div class="mentor-card__body">
+        <h3>Compliance Faculty</h3>
+        <p class="mentor-card__role">Corporate Trainer</p>
+        <p class="mentor-card__meta">Professional Learning</p>
+      </div>
+    </article>
+
+    <article class="mentor-card">
+      <div class="mentor-card__image-wrap">
+        <img src="/media/pro4.avif" alt="Leadership Coach">
+      </div>
+      <div class="mentor-card__body">
+        <h3>Leadership Coach</h3>
+        <p class="mentor-card__role">Industry Expert</p>
+        <p class="mentor-card__meta">Career Growth</p>
+      </div>
+    </article>
+
+    <article class="mentor-card">
+      <div class="mentor-card__image-wrap">
+        <img src="/media/pro4.avif" alt="Startup Advisor">
+      </div>
+      <div class="mentor-card__body">
+        <h3>Startup Advisor</h3>
+        <p class="mentor-card__role">Business Mentor</p>
+        <p class="mentor-card__meta">Innovation Hub</p>
+      </div>
+    </article>
+
+    <article class="mentor-card">
+      <div class="mentor-card__image-wrap">
+        <img src="/media/pro4.avif" alt="Skill Development Mentor">
+      </div>
+      <div class="mentor-card__body">
+        <h3>Skill Development Mentor</h3>
+        <p class="mentor-card__role">Learning Specialist</p>
+        <p class="mentor-card__meta">eLearnKranti</p>
+      </div>
+    </article>
+  </div>
+</section>
 
 
   <section class="courses-section">
@@ -1145,9 +1253,13 @@ here add
             <p class="instructor">{{teacher}}</p>
             <div class="stars">★★★★★</div>
             <div class="course-footer">
-              <span class="course-price">{{price}}</span>
-              <a href="{{url}}" class="premium-btn">View Course</a>
+              <span class="course-price">
+                <span class="ts3-mrp" style="color:#888;text-decoration:line-through;font-size:13px;margin-right:6px;">{{#mrp}}{{mrp}}{{/mrp}}</span>
+                {{price}}
+              </span>
+              
             </div>
+            <a href="{{url}}" class="premium-btn">View Course</a>
           </div>
         </div>
         {{/courses}}
@@ -3147,6 +3259,104 @@ margin: 10px auto;
   font-size: 14px;
 }
 
+.mentor-showcase {
+  max-width: 1240px;
+  margin: 72px auto 36px;
+  padding: 0 20px;
+}
+
+.mentor-showcase__header {
+  max-width: 760px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.mentor-showcase__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #fdecef;
+  color: #d94672;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.mentor-showcase__header h2 {
+  margin: 0 0 14px;
+  color: #10203f;
+  font-size: 46px;
+  line-height: 1.12;
+  font-weight: 800;
+}
+
+.mentor-showcase__header p {
+  margin: 0;
+  color: #5f6b85;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.mentor-showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.mentor-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 20px 20px 24px;
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mentor-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 58px rgba(15, 23, 42, 0.14);
+}
+
+.mentor-card__image-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #eef2f7;
+}
+
+.mentor-card__image-wrap img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.mentor-card__body {
+  padding-top: 16px;
+  text-align: center;
+}
+
+.mentor-card__body h3 {
+  margin: 0 0 8px;
+  color: #10203f;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.mentor-card__role {
+  margin: 0 0 6px;
+  color: #5b61ff;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.mentor-card__meta {
+  margin: 0;
+  color: #6f7a91;
+  font-size: 14px;
+}
+
 .stats {
   display: flex;
   gap: 18px;
@@ -3174,6 +3384,14 @@ margin: 10px auto;
     grid-template-columns: 1fr;
   }
 
+  .mentor-showcase__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mentor-showcase__header h2 {
+    font-size: 38px;
+  }
+
   .educator-card {
     grid-template-columns: 1fr;
     text-align: center;
@@ -3185,6 +3403,30 @@ margin: 10px auto;
 
   .stats {
     justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .mentor-showcase {
+    margin-top: 56px;
+    padding: 0 16px;
+  }
+
+  .mentor-showcase__grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .mentor-showcase__header {
+    margin-bottom: 30px;
+  }
+
+  .mentor-showcase__header h2 {
+    font-size: 30px;
+  }
+
+  .mentor-showcase__header p {
+    font-size: 15px;
   }
 }
 
@@ -3421,6 +3663,7 @@ margin: 10px auto;
   display: block;
 }
 .course-footer {
+      margin-bottom: 14px;
   margin-top: 14px;
   display: flex;
   align-items: center;
@@ -3486,6 +3729,10 @@ margin: 10px auto;
 
 .course-body {
   padding: 16px 16px 18px;
+      display: flex;
+    flex-direction: column;
+        height: 100%;
+        justify-content: space-around;
 }
 
 .course-card h3 {
@@ -4028,7 +4275,7 @@ h1,h2,h3 {
     .courseCard-image {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
     }
 
@@ -4095,7 +4342,7 @@ h1,h2,h3 {
     .courseCard-tag-filled {
       background-image: linear-gradient(275deg, #2b2b4d);
       color: #fff;
-      padding: 5px 12px;
+      padding: 16px 12px;
       border-radius: 50px;
       font-size: 13px;
     }
@@ -4111,7 +4358,7 @@ h1,h2,h3 {
 
     .courseCard-tag-outline {
       border: 1px solid #000;
-      padding: 5px 12px;
+      padding: 15px 12px;
       border-radius: 50px;
       font-size: 13px;
       color: #000;

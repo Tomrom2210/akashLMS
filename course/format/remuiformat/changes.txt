@@ -1,5 +1,24 @@
 CHANGES LOG
 
+Version 4.1.20
+===========
+Tweak - Added a banner highlighting the new video course format offering.
+
+Version 4.1.19
+===========
+Feature - Added compatibility with Moodle 5.1.
+Fix - Resolved minor UI issues.
+
+Version 4.1.18
+===========
+Tweak - Minor UI/UX improvement.
+Fix - Availability condition not displaying when restriction is added in Card Layout.
+Fix - Completion condition not visible in card layout view.	
+
+Version 4.1.17
+=============
+Tweak – Further UI/UX improvements implemented.
+
 Version 4.1.16
 =============
 Fix – Resolved warning occurring on  highlighting the section.

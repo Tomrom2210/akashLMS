@@ -29,7 +29,6 @@ namespace block_dash\local\data_grid\filter;
  * @package block_dash
  */
 abstract class select_filter extends filter {
-
     /**
      * All option value.
      */
@@ -139,8 +138,10 @@ abstract class select_filter extends filter {
      * @throws \Exception
      * @return string
      */
-    public function create_form_element(filter_collection_interface $filtercollection,
-                                        $elementnameprefix = '') {
+    public function create_form_element(
+        filter_collection_interface $filtercollection,
+        $elementnameprefix = ''
+    ) {
         global $OUTPUT;
         $options = $this->options;
         $options = array_filter($options);

@@ -33,7 +33,6 @@ use MoodleQuickForm;
  * @package block_dash
  */
 class filter implements filter_interface {
-
     /**
      * @var mixed The value a user has chosen. Or the default.
      */
@@ -342,7 +341,7 @@ class filter implements filter_interface {
                 $sql = "$select >= :$placeholder";
                 break;
             case self::OPERATION_IN_OR_EQUAL:
-                list ($sql, $params) = $this->get_in_or_equal();
+                 [$sql, $params] = $this->get_in_or_equal();
                 $sql = "$select $sql";
                 break;
             case self::OPERATION_LIKE:
@@ -351,7 +350,7 @@ class filter implements filter_interface {
             case self::OPERATION_LIKE_WILDCARD:
                 $sql = "$select LIKE :$placeholder";
                 // Convert value to wildcard.
-                $params[$placeholder] = '%'.$params[$placeholder].'%';
+                $params[$placeholder] = '%' . $params[$placeholder] . '%';
                 break;
             case self::OPERATION_CUSTOM:
                 $sql = $this->get_custom_operation();
@@ -386,7 +385,6 @@ class filter implements filter_interface {
         }
 
         if (is_null($this->sqlandparams)) {
-
             $values = $this->get_values();
 
             $this->sqlandparams = $DB->get_in_or_equal($values, SQL_PARAMS_NAMED);
@@ -402,8 +400,10 @@ class filter implements filter_interface {
      * @param string $elementnameprefix
      * @throws \Exception
      */
-    public function create_form_element(filter_collection_interface $filtercollection,
-                                        $elementnameprefix = '') {
+    public function create_form_element(
+        filter_collection_interface $filtercollection,
+        $elementnameprefix = ''
+    ) {
         throw new coding_exception('Filter element does not exist. Did you forget to override filter::create_form_element()?');
     }
 
@@ -485,7 +485,8 @@ class filter implements filter_interface {
     public function build_settings_form_fields(
         moodleform $moodleform,
         MoodleQuickForm $mform,
-        $fieldnameformat = 'filters[%s]'): void {
+        $fieldnameformat = 'filters[%s]'
+    ): void {
         $fieldname = sprintf($fieldnameformat, $this->get_name());
 
         $totaratitle = block_dash_is_totara() ? $this->get_label() : null;

@@ -130,6 +130,13 @@ foreach (array_values($homecourses) as $index => $course) {
         $image = $defaultimage;
     }
 
+    // Calculate MRP (20% higher than price if price is not Free)
+    $mrp = '';
+    if (isset($pricing['amount']) && $pricing['amount'] > 0) {
+        $mrp_amount = round($pricing['amount'] * 1.2, 2);
+        $mrp = $formatprice($mrp_amount, $pricing['currency'] ?? 'INR');
+    }
+
     $coursedata[] = [
         'name' => format_string($course->fullname, true, ['context' => $context, 'escape' => false]),
         'image' => $image,
@@ -139,6 +146,7 @@ foreach (array_values($homecourses) as $index => $course) {
         'stars' => '&#9733;&#9733;&#9733;&#9733;&#9733;',
         'categoryname' => $categorylabel,
         'price' => $pricing['label'],
+        'mrp' => $mrp,
         'layoutclass' => $recommendedlayoutpattern[$index % count($recommendedlayoutpattern)],
     ];
 }
@@ -203,7 +211,7 @@ if ($featuredcourserecord) {
     $featuredcustomsecondarytag = $featuredcustomfields['banner_secondary_tag'] ?? 'Popular';
 
     if ($featuredmrp === '' && !empty($featuredpricing['amount'])) {
-        $featuredmrp = $formatprice($featuredpricing['amount'] + 2000, $featuredpricing['currency'] ?? 'INR');
+        $featuredmrp = $formatprice(round($featuredpricing['amount'] * 1.2, 2), $featuredpricing['currency'] ?? 'INR');
     }
 
     $featuredcourse = [
@@ -246,6 +254,10 @@ $secondaryfeaturedcourserecord = $DB->get_record_sql("
 if ($secondaryfeaturedcourserecord) {
     $secondaryfeaturedcontext = context_course::instance($secondaryfeaturedcourserecord->id);
     $secondaryfeaturedlist = new core_course_list_element($secondaryfeaturedcourserecord);
+    $secondaryfeaturedimage = \core_course\external\course_summary_exporter::get_course_image($secondaryfeaturedcourserecord);
+    if (empty($secondaryfeaturedimage)) {
+        $secondaryfeaturedimage = $defaultimage;
+    }
     $secondaryfeaturedpricing = $pricesbycourse[$secondaryfeaturedcourserecord->id] ?? null;
     $secondaryfeaturedsummary = trim(html_to_text(format_text(
         $secondaryfeaturedcourserecord->summary,
@@ -291,7 +303,7 @@ if ($secondaryfeaturedcourserecord) {
     $secondaryfeaturedsecondarytag = $secondaryfeaturedcustomfields['banner_secondary_tag'] ?? 'Highest Rated';
 
     if ($secondaryfeaturedmrp === '' && !empty($secondaryfeaturedpricing['amount'])) {
-        $secondaryfeaturedmrp = $formatprice($secondaryfeaturedpricing['amount'] + 2000,
+        $secondaryfeaturedmrp = $formatprice(round($secondaryfeaturedpricing['amount'] * 1.2, 2),
             $secondaryfeaturedpricing['currency'] ?? 'INR');
     }
 
@@ -301,6 +313,7 @@ if ($secondaryfeaturedcourserecord) {
             'escape' => false,
         ]),
         'url' => (new moodle_url('/enrol/index.php', ['id' => $secondaryfeaturedcourserecord->id]))->out(false),
+        'image' => $secondaryfeaturedimage,
         'subtitle' => $secondaryfeaturedsubtitle !== '' ? $secondaryfeaturedsubtitle : 'Course details will appear here after update.',
         'instructor' => $secondaryfeaturedinstructorlabel,
         'update' => $secondaryfeaturedupdatelabel,

@@ -45,7 +45,6 @@ use moodle_url;
  * @package block_dash
  */
 abstract class abstract_layout implements layout_interface, \templatable {
-
     /**
      * @var int Used for creating unique checkbox controller group IDs.
      */
@@ -106,7 +105,6 @@ abstract class abstract_layout implements layout_interface, \templatable {
      * data source and data grid.
      */
     public function before_data() {
-
     }
 
     /**
@@ -116,7 +114,6 @@ abstract class abstract_layout implements layout_interface, \templatable {
      * @param data_collection_interface $datacollection
      */
     public function after_data(data_collection_interface $datacollection) {
-
     }
 
     /**
@@ -155,8 +152,12 @@ abstract class abstract_layout implements layout_interface, \templatable {
 
                     $title = $availablefield->get_table()->get_title();
 
-                    $icon = $OUTPUT->pix_icon('i/dragdrop', get_string('dragitem', 'block_dash'), 'moodle',
-                        ['class' => 'drag-handle']);
+                    $icon = $OUTPUT->pix_icon(
+                        'i/dragdrop',
+                        get_string('dragitem', 'block_dash'),
+                        'moodle',
+                        ['class' => 'drag-handle']
+                    );
                     $title = $icon . '<b>' . $title . '</b>: ' . $availablefield->get_title();
 
                     $totaratitle = block_dash_is_totara() ? $title : null;
@@ -168,8 +169,13 @@ abstract class abstract_layout implements layout_interface, \templatable {
                     ]);
                     $mform->setType($fieldname, PARAM_BOOL);
                 }
-                $mform->addGroup($group, 'available_fields', get_string('enabledfields', 'block_dash'),
-                    [''], false);
+                $mform->addGroup(
+                    $group,
+                    'available_fields',
+                    get_string('enabledfields', 'block_dash'),
+                    [''],
+                    false
+                );
 
                 $this->add_checkbox_toggleall(self::$currentgroupid, $form, $mform);
 
@@ -233,7 +239,7 @@ abstract class abstract_layout implements layout_interface, \templatable {
      * @throws \coding_exception
      */
     public function export_for_template(\renderer_base $output) {
-        global $OUTPUT, $PAGE;
+        global $OUTPUT, $PAGE, $CFG;
 
         $config = $this->get_data_source()->get_block_instance()->config;
         $noresulttxt = \html_writer::tag('p', get_string('noresults'), ['class' => 'text-muted']);
@@ -248,6 +254,8 @@ abstract class abstract_layout implements layout_interface, \templatable {
             'bootstrap4' => get_config('block_dash', 'bootstrap_version') == 4,
             'noresult' => (isset($config->emptystate))
                 ? format_text($config->emptystate['text'], FORMAT_HTML, ['noclean' => true]) : $noresulttxt,
+            'datatoggle' => ($CFG->branch >= 500) ? 'data-bs-toggle' : 'data-toggle',
+            'datatarget' => ($CFG->branch >= 500) ? 'data-bs-target' : 'data-target',
         ];
 
         if (!empty($this->get_data_source()->get_all_preferences())) {
@@ -262,10 +270,15 @@ abstract class abstract_layout implements layout_interface, \templatable {
                 $templatedata['error'] .= $OUTPUT->notification($error, 'error');
             }
 
-            if ($this->get_data_source()->get_paginator()->get_page_count() > 1) {
+            if (
+                !$this->get_data_source()->supports_ajax_pagination() &&
+                $this->get_data_source()->get_paginator()->get_page_count() > 1
+            ) {
                 $templatedata['paginator'] = $OUTPUT->render_from_template(paginator::TEMPLATE, $this->get_data_source()
                     ->get_paginator()
                     ->export_for_template($OUTPUT));
+            } else {
+                $templatedata['paginator'] = html_writer::tag('div', '', ['class' => 'ajax-pagination']);
             }
         }
 
@@ -282,7 +295,7 @@ abstract class abstract_layout implements layout_interface, \templatable {
             $button = $OUTPUT->single_button(new moodle_url($PAGE->url, $options), get_string("downloadcsv", 'block_dash'), 'get');
             $downloadoptions[] = html_writer::tag('li', $button, ['class' => 'reportoption list-inline-item']);
 
-            $options["download"] = "xls";
+            $options["download"] = "excel";
             $button = $OUTPUT->single_button(new moodle_url($PAGE->url, $options), get_string("downloadexcel"), 'get');
             $downloadoptions[] = html_writer::tag('li', $button, ['class' => 'reportoption list-inline-item']);
 
@@ -316,7 +329,7 @@ abstract class abstract_layout implements layout_interface, \templatable {
             if ($fieldname && !is_array($fieldname) && isset($datacollection[$fieldname])) {
                 $datacollection->add_data(new field($newname, $datacollection[$fieldname], true));
             } else if ($fieldname && is_array($fieldname)) {
-                $value = array_map(function($field) use ($datacollection) {
+                $value = array_map(function ($field) use ($datacollection) {
                     return $datacollection[$field];
                 }, $fieldname);
                 $datacollection->add_data(new field($newname, implode(" ", $value), true));

@@ -167,7 +167,7 @@ body#page-course-view-remuiformat {
                     }
                     .view-all-instructorslink {
                         @include frmt-font-styling(14px,22px,600);
-                        color: $white;
+                        // color: $white;
                     }
                 }
             }
@@ -309,6 +309,11 @@ body#page-course-view-remuiformat {
         }
         .stretched-link::after {
             display: none;
+        }
+        .dropdown-menu {
+            .stretched-link::after {
+                display: unset;
+            }
         }
         .general-section-activities {
             .activity {
@@ -1150,9 +1155,9 @@ body:not(.editing) #page-content .course-content ul li.section.main.delegated-se
 }
 
 // drag and drop icon removed temprarly from moodle4.5
-.edw-m405 #page .editing_move {
-	display: none !important;
-}
+// .edw-m405 #page .editing_move {
+// 	display: none !important;
+// }
 
 
 .erf-ml-2{
@@ -1177,4 +1182,101 @@ body:not(.editing) #page-content .course-content ul li.section.main.delegated-se
 }
 .erf-text-left{
     text-align: left !important;
+}
+.erf-gap-26{
+    gap:26px !important;
+}
+.erf-gap-24{
+    gap:24px !important;
+}
+
+
+#video-format-banner-box {
+    margin-top: 14px;
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+
+    max-width:891.96px;
+    height: auto;
+    border-radius:6px;
+    padding:32px;
+    background:linear-gradient(90deg,#109FAA 0%,#385BB5 67.21%,#324165 101.06%);
+
+    img.notice-logo {
+        flex: none;
+        width:239.96px;
+        height:100%;
+    }
+
+    .notice-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        .sub-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: #FFFFFF;
+
+            h2 {
+                font-size: 28px;
+                font-weight: 700;
+                line-height: 100%;
+                color: #FFFFFF;
+            }
+
+            .features-list {
+                display: flex;
+                gap: 18px;
+                flex-wrap: wrap;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 24px;
+                p {
+                    display: flex;
+                    gap: 8px;
+                    margin-bottom: 0px !important;
+                    align-items: center;
+                }
+            }
+        }
+
+        .buttons {
+            display: flex;
+            gap: 16px;
+
+            .explore-btn,
+            .view-demo-btn {
+                padding: 8.5px 16px;
+                border-radius: 3px;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 100%;
+                cursor: pointer;
+            }
+
+            .explore-btn {
+                border: 1px solid #F75D25;
+                background-color: #FFFFFF;
+                color: #F75D25;
+                &:hover {
+                    background-color: #F75D25;
+                    color: #FFFFFF;
+                }
+            }
+
+            .view-demo-btn {
+                background-color: #F75D25;
+                border: 1px solid #FFFFFF;
+                color: #FFFFFF;
+                &:hover {
+                    background-color: #FFFFFF;
+                    color: #F75D25;
+                }
+            }
+        }
+    }
 }
