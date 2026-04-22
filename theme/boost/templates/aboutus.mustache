@@ -1,23 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow-x: hidden;
-      line-height: 1.5;
-    }
-    
+ 
     
     #page.drawers .main-inner {
         padding: 0px !important;
@@ -38,7 +20,7 @@
 
     /* === BANNER === */
     .banner-content {
-       background-image: url('https://elearnkranti.com/media/mainBanner3.png'); /* Replace with your image path */
+       background-image: url('/media/new/banner/about.jpeg'); /* Replace with your image path */
       background-size: cover;
       background-position: center;
       height: 450px;
@@ -47,6 +29,16 @@
       justify-content: center;
       padding: 0 15px;
     }
+     @media (max-width: 769px) {
+
+      .banner-content{
+    background-size: contain;
+    background-position: center;
+    height: 132px;
+    padding: 0 11px;
+    background-repeat: no-repeat;
+      }
+     }
 
     .banner-content h1 {
       font-size: 40px;
@@ -90,7 +82,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 40px;
     }
     .image-text{
           text-align: justify;
@@ -312,6 +304,8 @@
 
     /* === MEDIA QUERIES === */
     @media (min-width: 769px) {
+
+      
       .content, .image-left, .image-text, .info-card {
         flex: 1 1 45%;
       }
@@ -654,6 +648,7 @@
     }
     .SearchSection button {
         width: 40%;
+        display: flex;
     }
     
     .footer-right {
@@ -672,25 +667,28 @@
    max-height: 100px;
 }
 
+.search-toggle{
+    display: none;
+}
+
 
   </style>
-</head>
-<body>
+
 
   <section class="about-banner">
     <div class="banner-content">
-      <h1>Welcome to where<br>possibilities begin</h1>
+      {{--<h1>Welcome to where<br>possibilities begin</h1>--}}
     </div>
   </section>
 
-  <div class="announcement-bar">
-    <p><strong>Check out our latest company news!</strong></p>
+  {{--  <div class="announcement-bar">
+   <p><strong>Check out our latest company news!</strong></p> 
   </div>
-
+--}}
 
   <div class="image-feature">
     <div class="image-left">
-      <img src="https://elearning.allhandsondeck.eu/wp-content/uploads/2022/03/mimi-thian-vdXMSiX-n6M-unsplash-scaled.jpg" alt="Featured image">
+      <img src="/media/new/homepageabout.png" alt="Featured image">
     </div>
     <div class="image-text">
       <h3>ABOUT US</h3>
@@ -705,11 +703,10 @@ At eLearnKranti, we don’t just teach—we ignite curiosity, nurture creativity
     <h2>Your Journey to Excellence Starts with E-Learn Kranti . Smart Learning. Bright Future.</h2>
     <p>We have Developed a System - Where Learning Meets Possibility. E-Learn Kranti  - Your Gateway to Smarter Learning.</p>
     <div class="impact-grid">
-      <div class="impact-item"><h3>82M+</h3><span>Learners</span></div>
-      <div class="impact-item"><h3>62K</h3><span>Instructors</span></div>
-      <div class="impact-item"><h3>250K</h3><span>Courses</span></div>
-      <div class="impact-item"><h3>75</h3><span>Languages</span></div>
-      <div class="impact-item"><h3>17K+</h3><span>Customers</span></div>
+      <div class="impact-item"><h3>200+</h3><span>Students</span></div>
+      <div class="impact-item"><h3>25+ </h3><span>Teachers </span></div>
+      <div class="impact-item"><h3>100+</h3><span>Courses</span></div>
+      <div class="impact-item"><h3>10,000+  </h3><span>Hours of Personalised Counselling</span></div>
     </div>
   </div>
   
@@ -817,7 +814,7 @@ Collaborate with corporates, institutions, incubators, and government bodies to 
 
   
   
-  
+  {{-- 
   
    <div class="testimonialparantSection">
 
@@ -853,7 +850,7 @@ Collaborate with corporates, institutions, incubators, and government bodies to 
 
 </section>
 
-</div>
+</div> --}}
   
 
   
@@ -862,7 +859,3 @@ Collaborate with corporates, institutions, incubators, and government bodies to 
   
   
 
-
-{{> theme_boost/footer }}
-</body>
-</html>

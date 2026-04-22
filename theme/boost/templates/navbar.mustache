@@ -77,7 +77,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Mea+Culpa&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <div class="topOfferBar">
   <p>
-    Launch your career with our exclusive academic offers — enjoy a flat <span>20% off</span> on all courses
+    Launch your career with our exclusive academic offers — enjoy a flat <span>Upto 50% off</span> on all courses
   </p>
 </div>
 <style>
@@ -227,10 +227,10 @@
            </li>-->
            <li class="nav-item dropdown explore-dropdown">
            <div class="explore-dropdown-toggle">
-             <a class="nav-link" href="{{ config.wwwroot }}/course/index.php">
+             <a class="nav-link" href="{{ config.wwwroot }}/course/index.php" style="padding-right: 5px;">
                Explore
              </a>
-             <button class="btn nav-link dropdown-toggle explore-toggle-btn" type="button" id="categoriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Open Explore menu"></button>
+             <button class="btn nav-link dropdown-toggle explore-toggle-btn" type="button" id="categoriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Open Explore menu" style="padding-left: 0;"></button>
            </div>
                      <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">                   
                          
@@ -248,11 +248,17 @@
            </li>-->
            
         </ul>
-          <ul class="navbar-nav d-none d-md-flex my-1 px-1">
-             <!-- page_heading_menu -->
-              <li class="nav-item">
-              <a class="nav-link" href="{{ config.wwwroot }}/theme/boost/aboutus.php">About Us</a>
-               </li>
+        <ul class="navbar-nav d-none d-md-flex my-1 px-1">
+            <li class="nav-item"><a class="nav-link" href="{{ config.wwwroot }}/theme/boost/aboutus.php">About Us</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="{{ config.wwwroot }}/theme/boost/services.php" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+              <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                
+                {{#navservices}}
+                <li><a class="dropdown-item" href="{{url}}">{{name}}</a></li>
+                {{/navservices}}
+              </ul>
+            </li>
         </ul>
         <ul class="navbar-nav d-none d-md-flex my-1 px-1">
             <!-- page_heading_menu -->
@@ -267,9 +273,10 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         {{#showloginbutton}}
             <ul class="navbar-nav d-none d-md-flex my-1 px-1">
-                <li class="nav-item">
-                    <a class="nav-link login-icon-link" href="#" aria-label="Log in" id="openLoginModal">
-                        <i class="fa fa-user" aria-hidden="true"></i>
+                <li class="nav-item" style="background: #1fad54;border-radius: 20%;">
+                    <a class="nav-link login-icon-link" href="#" aria-label="Log in" id="openLoginModal" style="color: white;">
+                    {{--  <i class="fa fa-user" aria-hidden="true"></i>--}}
+                     Log in
                     </a>
                 </li>
             </ul>
@@ -288,6 +295,7 @@
                 <i class="fa fa-bars" aria-hidden="true"></i>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quickMenu">
+                <li><a class="dropdown-item" href="{{ config.wwwroot }}/theme/boost/team.php">Team</a></li>
                 <li><a class="dropdown-item" href="{{ config.wwwroot }}/theme/boost/testimonials.php">Testimonials</a></li>
                 <!--<li><a class="dropdown-item" href="{{ config.wwwroot }}/theme/boost/aboutus.php">About Us</a></li>-->
               </ul>
@@ -434,6 +442,7 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+
     }
     .search-form-wrap{
         display: none;
@@ -565,7 +574,7 @@
         border-bottom-right-radius: 20px;
     }
     .site-topnav > .container-fluid{
-        padding: 10px 14px 14px;
+        padding: 20px 14px 14px;
         gap: 10px;
         flex-wrap: nowrap;
         position: relative;

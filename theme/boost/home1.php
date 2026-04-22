@@ -384,8 +384,13 @@ $sliceandwrap = static function(array $items, int $offset, int $length): array {
     return $results;
 };
 
+
+require_once(__DIR__ . '/classes/local/team_manager.php');
+
+use theme_boost\local\team_manager;
+
 echo $OUTPUT->header();
-echo $OUTPUT->render_from_template('theme_boost/home1', [
+echo $OUTPUT->render_from_template('theme_boost/home1', array_merge([
     'navcourses' => $navcoursedata,
     'featured_course' => $featuredcourse,
     'has_featured_course' => !empty($featuredcourse),
@@ -395,7 +400,5 @@ echo $OUTPUT->render_from_template('theme_boost/home1', [
     'has_recommendedcourses' => !empty($coursedata),
     'course_tabs' => $coursetabs,
     'has_course_tabs' => !empty($coursetabs),
-]);
+], team_manager::export_for_template(3)));
 echo $OUTPUT->footer();
-
-

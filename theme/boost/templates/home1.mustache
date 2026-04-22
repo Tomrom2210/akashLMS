@@ -20,8 +20,8 @@
 	<ul id="move">
 		<li><img src="/media/new/banner/7.jpeg"></li>
 		<li><img src="/media/new/banner/8.jpeg"></li>
-		<li><img src="/media/new/banner/9.jpeg"></li>
-		<li><img src="/media/new/banner/10.jpeg"></li>
+		<li><img src="/media/new/banner/9.1.jpeg"></li>
+		<li><img src="/media/new/banner/10.1.jpeg"></li>
 		
 
 	</ul>
@@ -52,9 +52,9 @@
         </p>
       </div>
       <div class="cta-button-group">
-        <a href="#" class="cta-btn-outline-unique">10th Grade Students</a>
-        <a href="#" class="cta-btn-outline-unique">12th Grade Students</a>
-        <a href="#" class="cta-btn-outline-unique">Graduate Students</a>
+        <a class="cta-btn-outline-unique">One-to-One Career Counselling</a>
+        <a class="cta-btn-outline-unique">Doubt Sessions</a>
+        <a class="cta-btn-outline-unique">eLearnKranti Certification</a>
       </div>
     </div>
     <style>
@@ -99,8 +99,8 @@
     </p>
     <div class="about-premium__stats">
       <div class="stat">
-        <strong>1000+</strong>
-        <span>Courses</span>
+        <strong>200+</strong> 
+        <span>Students</span>
       </div>
       <div class="stat">
         <strong>Live</strong>
@@ -108,7 +108,7 @@
       </div>
       <div class="stat">
         <strong>Weekly</strong>
-        <span>Podcasts</span>
+        <span>Live Interaction</span>
       </div>
     </div>
     <div class="about-premium__actions">
@@ -116,7 +116,7 @@
     </div>
   </div>
   <div class="about-premium__media">
-    <img src="https://elearning.allhandsondeck.eu/wp-content/uploads/2022/03/mimi-thian-vdXMSiX-n6M-unsplash-scaled.jpg" alt="Student learning online">
+    <img src="/media/new/homepageabout.png" alt="Student learning online">
   </div>
 </section>
 
@@ -199,7 +199,7 @@
                     <div class="ts3-rating">{{{stars}}}</div>
                     <div class="ts3-price">
                       <span class="ts3-mrp" style="color:#888;text-decoration:line-through;font-size:15px;margin-right:8px;">
-                        {{#mrp}}₹ {{mrp}}{{/mrp}}
+                        {{#mrp}} {{mrp}}{{/mrp}}
                       </span>
                       <span>{{{price}}}</span>
                     </div>
@@ -385,11 +385,11 @@
   <div class="promo-container">
 
     <div class="promo-card">
-      <a href="contact.php"><img src="/media/new/1.jpeg" alt="Promo 1"></a>
+      <a href="contact.php"><img src="/media/new/1.1.jpeg" alt="Promo 1"></a>
     </div>
 
     <div class="promo-card">
-      <a href="contact.php"><img src="/media/new/2.jpeg" alt="Promo 2"></a>
+      <a href="contact.php"><img src="/media/new/2.1.jpeg" alt="Promo 2"></a>
     </div>
 
   </div>
@@ -434,6 +434,7 @@
 /* SECTION */
 .ts3-section {
     background: #f4f7ff;
+    padding: 20px;
    
 }
 
@@ -441,7 +442,7 @@
 .ts3-container {
     max-width: 1240px;
     margin: auto;
-    padding: 0 20px;
+    padding: 0 0px;
     text-align: center;
 }
 
@@ -848,9 +849,7 @@
       <div class="courseCard-stars">★★★★★</div>
 
       <div class="courseCard-tags">
-        <div class="courseCard-tag-filled"><a href="{{url}}">{{primarytag}}</a></div>
-        {{#hassecondarytag}}<div class="courseCard-tag-outline"><a href="{{url}}">{{secondarytag}}</a></div>{{/hassecondarytag}}
-        <div class="courseCard-tag-filled"><a href="{{url}}">Enrolment </a></div>
+        <div class="courseCard-tag-filled"><a href="{{url}}">Enroll Now </a></div>
       </div>
 
       {{#haspricing}}
@@ -1021,8 +1020,357 @@
 
 </div>
 
+<style>
+.tp-team-shell.tp-team-shell--home {
+  --tp-team-ink: #132238;
+  --tp-team-soft: #60708b;
+  --tp-team-line: rgba(19, 34, 56, 0.1);
+  max-width: 1240px;
+  margin: 40px auto 0;
+  padding: 0 24px;
+  color: var(--tp-team-ink);
+}
 
+.tp-team-shell--home .tp-team-home-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
 
+.tp-team-shell--home .tp-team-home-header__content {
+  max-width: 720px;
+}
+
+.tp-team-shell--home .tp-team-home-header__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(37, 84, 204, 0.12), rgba(255, 155, 74, 0.16));
+  color: #2554cc;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tp-team-shell--home .tp-team-home-header h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3.8vw, 3.35rem);
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.tp-team-shell--home .tp-team-home-header p {
+  max-width: 58ch;
+  margin: 14px 0 0;
+  color: var(--tp-team-soft);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.tp-team-shell--home .tp-team-home-header__meta {
+  flex: 0 0 220px;
+  padding: 18px 20px;
+  border-radius: 24px;
+  {! background: linear-gradient(135deg, #132238, #2554cc); !}
+  color: #fff;
+  {!box-shadow: 0 20px 38px rgba(18, 34, 56, 0.16);!}
+}
+
+.tp-team-shell--home .tp-team-home-header__meta strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1.9rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.tp-team-shell--home .tp-team-home-header__meta span {
+  display: block;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.tp-team-shell--home .tp-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 12px;
+}
+
+.tp-team-shell--home .tp-team-card,
+.tp-team-shell--home .tp-team-empty {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--tp-team-line);
+  box-shadow: 0 22px 50px rgba(18, 34, 56, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.tp-team-shell--home .tp-team-card {
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.tp-team-shell--home .tp-team-card__media {
+  height: 280px;
+  background: linear-gradient(135deg, #e9f1ff, #fff2e4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tp-team-shell--home .tp-team-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tp-team-shell--home .tp-team-card__initials {
+  display: inline-flex;
+  width: 110px;
+  height: 110px;
+  border-radius: 28px;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  background: linear-gradient(135deg, #19325c, #ff9b4a);
+}
+
+.tp-team-shell--home .tp-team-card__body {
+  padding: 26px;
+}
+
+.tp-team-shell--home .tp-team-card__body h2 {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  margin: 0 0 6px;
+  font-weight: 800;
+}
+
+.tp-team-shell--home .tp-team-card__role {
+  color: #2554cc;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.tp-team-shell--home .tp-team-card__bio,
+.tp-team-shell--home .tp-team-empty p {
+  color: var(--tp-team-soft);
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.tp-team-shell--home .tp-team-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.tp-team-shell--home .tp-team-card__links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #f4f7fc;
+  color: var(--tp-team-ink);
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.tp-team-home-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.tp-team-home-action__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #132238, #2554cc 62%, #ff9b4a);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 16px 30px rgba(18, 34, 56, 0.16);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.tp-team-shell--home .tp-team-card__links a:hover {
+  color: var(--tp-team-ink);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(18, 34, 56, 0.12);
+}
+
+.tp-team-home-action__btn:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 20px 34px rgba(18, 34, 56, 0.2);
+}
+
+.tp-team-shell--home .tp-team-card.is-sky .tp-team-card__media {
+  background: linear-gradient(135deg, #dff3ff, #f7fbff);
+}
+
+.tp-team-shell--home .tp-team-card.is-amber .tp-team-card__media {
+  background: linear-gradient(135deg, #fff0cc, #fff9eb);
+}
+
+.tp-team-shell--home .tp-team-card.is-rose .tp-team-card__media {
+  background: linear-gradient(135deg, #ffe0e8, #fff7f9);
+}
+
+.tp-team-shell--home .tp-team-card.is-emerald .tp-team-card__media {
+  background: linear-gradient(135deg, #dbf7ec, #f7fffb);
+}
+
+.tp-team-shell--home .tp-team-card.is-indigo .tp-team-card__media {
+  background: linear-gradient(135deg, #e6e7ff, #f8f8ff);
+}
+
+.tp-team-shell--home .tp-team-card.is-slate .tp-team-card__media {
+  background: linear-gradient(135deg, #ebeff5, #fafcff);
+}
+
+.tp-team-shell--home .tp-team-empty {
+  margin-top: 12px;
+  border-radius: 30px;
+  padding: 42px;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .tp-team-shell.tp-team-shell--home .tp-team-home-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .tp-team-shell--home .tp-team-home-header__meta {
+    flex: 0 0 auto;
+    max-width: 320px;
+  }
+
+  .tp-team-shell.tp-team-shell--home .tp-team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .tp-team-shell.tp-team-shell--home {
+    margin-top: 28px;
+    padding: 0 16px;
+  }
+
+  .tp-team-shell--home .tp-team-home-header {
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+
+  .tp-team-shell--home .tp-team-home-header__eyebrow {
+    margin-bottom: 12px;
+    padding: 9px 14px;
+    font-size: 0.72rem;
+  }
+
+  .tp-team-shell--home .tp-team-home-header h2 {
+    font-size: clamp(1.7rem, 8vw, 2.35rem);
+    line-height: 1.1;
+  }
+
+  .tp-team-shell--home .tp-team-home-header p {
+    margin-top: 12px;
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+
+  .tp-team-shell--home .tp-team-home-header__meta {
+    max-width: none;
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 20px;
+  }
+
+  .tp-team-shell--home .tp-team-home-header__meta strong {
+    font-size: 1.55rem;
+  }
+
+  .tp-team-shell.tp-team-shell--home .tp-team-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .tp-team-shell--home .tp-team-card,
+  .tp-team-shell--home .tp-team-empty {
+    border-radius: 24px;
+  }
+}
+</style>
+
+ <div class="tp-team-shell tp-team-shell--home">
+  <div class="tp-team-home-header">
+    <div class="tp-team-home-header__content">
+      <span class="tp-team-home-header__eyebrow">Meet Our Educators</span>
+      <h2>India's top educators to learn from</h2>
+      <p>Learn from accomplished mentors who bring practical industry insight, clear teaching, and real student impact to every session.</p>
+    </div>
+    {{#hasmembers}}
+    <div class="tp-team-home-header__meta">
+     {{#teampageurl}}
+    <div class="tp-team-home-action">
+      <a href="{{teampageurl}}" class="tp-team-home-action__btn">View Teams</a>
+    </div>
+    {{/teampageurl}}
+    </div>
+    {{/hasmembers}}
+  </div>
+    {{#hasmembers}}
+    <section class="tp-team-grid">
+      {{#members}}
+      <article class="tp-team-card {{accentclass}}">
+        <div class="tp-team-card__media">
+          {{#hasimage}}
+          <img src="{{imageurl}}" alt="{{name}}">
+          {{/hasimage}}
+          {{^hasimage}}
+          <div class="tp-team-card__initials">{{initials}}</div>
+          {{/hasimage}}
+        </div>
+        <div class="tp-team-card__body">
+          <h2>{{name}}</h2>
+          <p class="tp-team-card__role">{{role}}</p>
+          <p class="tp-team-card__bio">{{bio}}</p>
+          
+        </div>
+      </article>
+      {{/members}}
+    </section>
+    {{/hasmembers}}
+
+    {{^hasmembers}}
+    <section class="tp-team-empty">
+      <h2>{{emptyheading}}</h2>
+      <p>{{emptysubcopy}}</p>
+    </section>
+    {{/hasmembers}}
+
+    
+  </div>
+
+{{-- 
 <div class="testimonialparantSection">
 
 
@@ -1063,7 +1411,7 @@
 </section>
 
 </div>
-
+ --}}
 
 
 <div class="contentContainer">
@@ -1086,9 +1434,7 @@
       <div class="courseCard-stars">★★★★★</div>
 
       <div class="courseCard-tags">
-        <div class="courseCard-tag-filled"><a href="{{url}}">{{primarytag}}</a></div>
-        {{#hassecondarytag}}<div class="courseCard-tag-outline"><a href="{{url}}">{{secondarytag}}</a></div>{{/hassecondarytag}}
-        <div class="courseCard-tag-filled"><a href="{{url}}">Enrolment </a></div>
+        <div class="courseCard-tag-filled"><a href="{{url}}">Enroll Now </a></div>
       </div>
       {{#haspricing}}
       <div class="courseCard-pricing">
@@ -1116,107 +1462,29 @@
   <!-- LEFT CONTENT -->
   <div class="eduHero-content">
     <h1 class="eduHero-title">
-     Explore how learners are reaching their career goals on eLearn Kranti.
+     Discover how personalised guidance helps learners achieve their career goals with eLearn Kranti.
     </h1>
 
     <p class="eduHero-subtitle">
-      94% of learners in emerging economies achieved at least one positive career outcome, while 97% also reported a personal benefit.
+     Over 94% of learners have achieved positive career outcomes, while 97% reported personal growth through expert counselling. Start your one-to-one counselling session today.
     </p>
 
    
 
     <div class="eduHero-bottom">
-      <button class="request-callback-btn">Enroll Now</button>
+      <a href="{{ config.wwwroot }}/theme/boost/contact.php" class="request-callback-btn">Contact Us</a>
     </div>
   </div>
 
   <!-- RIGHT IMAGE -->
   <div class="eduHero-imageBox">
-    <img src="/media/new/c4c-homepage-hero.jpg" alt="Course Image">
+    <img src="/media/new/explore .png" alt="Course Image">
   </div>
 
 </div>
 
 
 
-<section class="mentor-showcase">
-  <div class="mentor-showcase__header">
-    <span class="mentor-showcase__eyebrow">Skill Teacher</span>
-    <h2>Whose Inspirations You Love</h2>
-    <p>
-      Meet the mentors, trainers, and guides helping learners build confidence,
-      sharpen practical skills, and move ahead with clarity.
-    </p>
-  </div>
-
-  <div class="mentor-showcase__grid">
-    <article class="mentor-card">
-      <div class="mentor-card__image-wrap">
-        <img src="/media/pro4.avif" alt="Kiran Sharma">
-      </div>
-      <div class="mentor-card__body">
-        <h3>Kiran Sharma</h3>
-        <p class="mentor-card__role">Director & Lead Mentor</p>
-        <p class="mentor-card__meta">India</p>
-      </div>
-    </article>
-
-    <article class="mentor-card">
-      <div class="mentor-card__image-wrap">
-        <img src="/media/pro4.avif" alt="Kanchan Sharma">
-      </div>
-      <div class="mentor-card__body">
-        <h3>Kanchan Sharma</h3>
-        <p class="mentor-card__role">Student Success Coach</p>
-        <p class="mentor-card__meta">India</p>
-      </div>
-    </article>
-
-    <article class="mentor-card">
-      <div class="mentor-card__image-wrap">
-        <img src="/media/pro4.avif" alt="Compliance Faculty">
-      </div>
-      <div class="mentor-card__body">
-        <h3>Compliance Faculty</h3>
-        <p class="mentor-card__role">Corporate Trainer</p>
-        <p class="mentor-card__meta">Professional Learning</p>
-      </div>
-    </article>
-
-    <article class="mentor-card">
-      <div class="mentor-card__image-wrap">
-        <img src="/media/pro4.avif" alt="Leadership Coach">
-      </div>
-      <div class="mentor-card__body">
-        <h3>Leadership Coach</h3>
-        <p class="mentor-card__role">Industry Expert</p>
-        <p class="mentor-card__meta">Career Growth</p>
-      </div>
-    </article>
-
-    <article class="mentor-card">
-      <div class="mentor-card__image-wrap">
-        <img src="/media/pro4.avif" alt="Startup Advisor">
-      </div>
-      <div class="mentor-card__body">
-        <h3>Startup Advisor</h3>
-        <p class="mentor-card__role">Business Mentor</p>
-        <p class="mentor-card__meta">Innovation Hub</p>
-      </div>
-    </article>
-
-    <article class="mentor-card">
-      <div class="mentor-card__image-wrap">
-        <img src="/media/pro4.avif" alt="Skill Development Mentor">
-      </div>
-      <div class="mentor-card__body">
-        <h3>Skill Development Mentor</h3>
-        <p class="mentor-card__role">Learning Specialist</p>
-        <p class="mentor-card__meta">eLearnKranti</p>
-      </div>
-    </article>
-  </div>
-</section>
 
 
   <section class="courses-section">
@@ -1259,7 +1527,7 @@
               </span>
               
             </div>
-            <a href="{{url}}" class="premium-btn">View Course</a>
+            <a href="{{url}}" class="premium-btn">Enroll Now</a>
           </div>
         </div>
         {{/courses}}
@@ -1275,7 +1543,7 @@
   {{/has_course_tabs}}
 </section>
 <div class="contentContainer">
-
+{{-- fddsf
 <section class="promo-section">
   <div class="promo-container">
 
@@ -1293,7 +1561,7 @@
     </div>
 
   </div>
-</section>
+</section> --}}
 <section class="testimonialSection" id="testimonialSection">
   <div class="ts-header">
     <div>
@@ -1455,7 +1723,7 @@
         mentorship, live sessions, and career-focused training. Tell us what you
         need and our team will help you choose the right path.
       </p>
-      <div class="contact-cta-points">
+      {{--<div class="contact-cta-points">
         <div class="contact-cta-point">
           <strong>1000+</strong>
           <span>Career-focused courses</span>
@@ -1468,7 +1736,7 @@
           <strong>Fast</strong>
           <span>Response from our team</span>
         </div>
-      </div>
+      </div>--}}
     </div>
 
     <div class="contact-cta-formcard">
@@ -3170,9 +3438,9 @@ margin: 10px auto;
 
 .top-educators-section {
   position: relative;
-  margin: 70px auto;
+  margin:  auto;
   padding: 70px 24px;
-  max-width: 1200px;
+  max-width: 1240px;
   background: linear-gradient(120deg, #0f172a 0%, #1e1b4b 45%, #111827 100%);
   border-radius: 26px;
   color: #f8fafc;
@@ -3734,6 +4002,12 @@ margin: 10px auto;
         height: 100%;
         justify-content: space-around;
 }
+ @media (min-width: 769px) {
+
+      .course-body {
+  padding: 0px;
+      }
+ }
 
 .course-card h3 {
   font-size: 16px;
@@ -4262,7 +4536,7 @@ h1,h2,h3 {
       overflow: hidden;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
       width: 1240px;
-      margin: 0px 0px 0px 70px;
+      margin: auto;
     }
 .second-courseCard-container {
     
@@ -4419,7 +4693,7 @@ h1,h2,h3 {
     .courses-section {
             max-width: 1240px;
             margin: 25px auto;
-            padding: 20px;
+            padding: 20px 0;
             text-align: center;
         }
 
@@ -4455,7 +4729,6 @@ h1,h2,h3 {
 
         .tab-content {
             display: none;
-            padding: 20px;
         }
 
         .tab-content.active {
@@ -5200,6 +5473,14 @@ ul#move li:nth-child(5) {
         
         margin-top: 15px;
     }
+}
+
+@media (max-width: 600px) {
+
+
+  .tabs {
+    gap: 10px;
+  }
 }
 </style>
 

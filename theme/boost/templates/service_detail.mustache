@@ -1,0 +1,199 @@
+<section class="tp-service-detail">
+  <div class="tp-service-detail__hero">
+    <div class="tp-service-detail__shell tp-service-detail__hero-grid">
+      <div class="tp-service-detail__hero-media">
+        {{#hasheroimage}}
+        <img src="{{heroimageurl}}" alt="{{badge}}">
+        {{/hasheroimage}}
+        {{^hasheroimage}}
+        <div class="tp-service-detail__hero-placeholder"></div>
+        {{/hasheroimage}}
+      </div>
+      <div class="tp-service-detail__hero-copy">
+        <span class="tp-service-detail__pill">{{detailheroheading}}</span>
+        <h1>{{badge}}</h1>
+        <p class="tp-service-detail__copy">{{detailherocopy}}</p>
+        <div class="tp-service-detail__points tp-service-detail__points--hero">
+          {{#heroitems}}
+          <div class="tp-service-detail__point">{{text}}</div>
+          {{/heroitems}}
+        </div>
+        <div class="tp-service-detail__actions">
+          <a href="{{primaryctaurl}}" class="tp-service-detail__btn tp-service-detail__btn--primary">{{primaryctatext}}</a>
+          <a href="{{homeurl}}" class="tp-service-detail__btn tp-service-detail__btn--ghost">{{homebuttonlabel}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tp-service-detail__shell">
+    <section class="tp-service-detail__split">
+      <div class="tp-service-detail__visual-stack">
+        {{#hasoverviewimage}}
+        <div class="tp-service-detail__visual-main"><img src="{{overviewimageurl}}" alt="{{badge}} overview"></div>
+        {{/hasoverviewimage}}
+      </div>
+      <div class="tp-service-detail__content">
+        <span class="tp-service-detail__pill">{{overvieweyebrow}}</span>
+        <h2>{{overviewheading}}</h2>
+        <p>{{overviewcopy}}</p>
+        <div class="tp-service-detail__points">
+          {{#overviewpoints}}
+          <div class="tp-service-detail__point">{{text}}</div>
+          {{/overviewpoints}}
+        </div>
+      </div>
+    </section>
+
+    <section class="tp-service-detail__metrics">
+      <div class="tp-service-detail__metrics-copy">
+        <span class="tp-service-detail__pill">{{metricslabel}}</span>
+        <h2>{{metricsheading}}</h2>
+        <p>{{metricscopy}}</p>
+        <div class="tp-service-detail__metrics-grid">
+        {{#metrics}}
+        <div class="tp-service-detail__metric"><strong>{{value}}</strong><span>{{label}}</span></div>
+        {{/metrics}}
+      </div>
+      </div>
+      
+      {{#hasmetricsimage}}
+        <div class="tp-service-detail__section-image"><img src="{{metricsimageurl}}" alt="{{badge}} metrics"></div>
+        {{/hasmetricsimage}}
+    </section>
+
+    <section class="tp-service-detail__support-wrap">
+      <div class="tp-service-detail__support-copy">
+        <span class="tp-service-detail__pill">{{supportlabel}}</span>
+        <h2>{{supportheading}}</h2>
+        <p>{{supportcopy}}</p>
+      </div>
+      {{#hassupportimage}}
+      <div class="tp-service-detail__support-media">
+        <img src="{{supportimageurl}}" alt="{{badge}} support">
+      </div>
+      {{/hassupportimage}}
+      <section class="tp-service-detail__support">
+        {{#supportcards}}
+        <article class="tp-service-detail__support-card">
+          <h3>{{title}}</h3>
+          <p>{{description}}</p>
+        </article>
+        {{/supportcards}}
+      </section>
+    </section>
+
+    <section class="tp-service-detail__faq">
+      <div class="tp-service-detail__faq-copy">
+        <span class="tp-service-detail__pill">{{faqeyebrow}}</span>
+        <h2>{{faqheading}}</h2>
+        <div class="tp-service-detail__faq-list">
+          {{#faqs}}
+          <details class="tp-service-detail__faq-item">
+            <summary><span>{{question}}</span><span class="tp-service-detail__faq-icon" aria-hidden="true"></span></summary>
+            <div class="tp-service-detail__faq-answer">{{{answer}}}</div>
+          </details>
+          {{/faqs}}
+        </div>
+      </div>
+      <div class="tp-service-detail__faq-media">
+        {{#hasfaqimage}}<img src="{{faqimageurl}}" alt="{{badge}} faq">{{/hasfaqimage}}
+      </div>
+    </section>
+
+    {{#haspreforminquirycontent}}
+    <section class="tp-service-detail__preform-content">
+      <div class="tp-service-detail__richtext">
+        {{{preforminquirycontent}}}
+      </div>
+    </section>
+    {{/haspreforminquirycontent}}
+
+    <section class="tp-service-detail__inquiry">
+      <div class="tp-service-detail__inquiry-copy">
+        <span class="tp-service-detail__pill">Still Confused About Your Career?</span>
+        <h2>Get Personalised  {{badge}} from an expert</h2>
+        <p>Book Your Session Today</p>
+      </div>
+      <div class="tp-service-detail__inquiry-form">
+        {{{inquiryformhtml}}}
+      </div>
+    </section>
+
+    
+  </div>
+</section>
+
+<style>
+.tp-service-detail{--sd-navy:#121b3c;--sd-indigo:#4256e6;--sd-violet:#916ff7;--sd-text:#586480;background:linear-gradient(180deg,#fbfcff 0%,#f5f7ff 40%,#fff 100%);margin:-1rem -1.5rem 0;padding:0 0 3rem}
+.tp-service-detail__shell{max-width:1240px;margin:0 auto;padding:0 24px}
+.tp-service-detail__hero{padding:56px 0 40px;background:radial-gradient(circle at top right,rgba(66,86,230,.10),transparent 24%),radial-gradient(circle at top left,rgba(145,111,247,.10),transparent 26%)}
+.tp-service-detail__hero-grid,.tp-service-detail__split,.tp-service-detail__faq,.tp-service-detail__metrics{display:grid;grid-template-columns:minmax(320px,.92fr) minmax(0,1.08fr);gap:34px;align-items:center}
+.tp-service-detail__hero-media img,.tp-service-detail__visual-main img,.tp-service-detail__faq-media img,.tp-service-detail__section-image img,.tp-service-detail__support-media img,.tp-service-detail__cta-media img{width:100%;display:block;object-fit:cover;border-radius:28px;box-shadow:0 18px 44px rgba(18,27,60,.12)}
+.tp-service-detail__hero-media img{min-height:520px}
+.tp-service-detail__hero-placeholder{min-height:520px;border-radius:28px;background:linear-gradient(135deg,#dbe5ff,#b9cbff)}
+.tp-service-detail__pill{display:inline-flex;padding:10px 18px;border-radius:999px;background:rgba(66,86,230,.1);color:var(--sd-indigo);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.tp-service-detail__pill--soft{background:rgba(255,255,255,.12);color:#fff}
+.tp-service-detail__hero-copy h1,.tp-service-detail__content h2,.tp-service-detail__metrics-copy h2,.tp-service-detail__support-copy h2,.tp-service-detail__faq-copy h2,.tp-service-detail__inquiry-copy h2,.tp-service-detail__cta h2{font-size:clamp(2rem,4vw,4rem);line-height:1.04;color:var(--sd-navy);font-weight:800;margin:18px 0}
+.tp-service-detail__content h2,.tp-service-detail__metrics-copy h2,.tp-service-detail__support-copy h2,.tp-service-detail__faq-copy h2,.tp-service-detail__inquiry-copy h2,.tp-service-detail__cta h2{font-size:clamp(1.8rem,3vw,3rem)}
+.tp-service-detail__lead,.tp-service-detail__copy,.tp-service-detail__content p,.tp-service-detail__metrics-copy p,.tp-service-detail__support-copy p,.tp-service-detail__cta p,.tp-service-detail__support-card p{color:var(--sd-text);line-height:1.7;font-size:1.02rem}
+.tp-service-detail__actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px}
+.tp-service-detail__btn{display:inline-flex;align-items:center;justify-content:center;padding:0 24px;min-height:52px;border-radius:16px;text-decoration:none;font-weight:700}
+.tp-service-detail__btn--primary{background:linear-gradient(135deg,var(--sd-indigo),var(--sd-violet));color:#fff;box-shadow:0 16px 30px rgba(66,86,230,.22)}
+.tp-service-detail__btn--ghost{background:#fff;border:1px solid rgba(66,86,230,.12);color:var(--sd-navy)}
+.tp-service-detail__split,.tp-service-detail__metrics,.tp-service-detail__support-wrap,.tp-service-detail__faq,.tp-service-detail__preform-content,.tp-service-detail__inquiry{margin-top:54px}
+.tp-service-detail__visual-main{max-width:100%}
+.tp-service-detail__points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.tp-service-detail__points--hero{margin-top:20px}
+.tp-service-detail__point,.tp-service-detail__metric,.tp-service-detail__faq-item,.tp-service-detail__inquiry-form,.tp-service-detail__cta{background:#fff;border:1px solid rgba(66,86,230,.10);box-shadow:0 18px 38px rgba(18,27,60,.08)}
+.tp-service-detail__point{padding:18px;border-radius:22px;color:var(--sd-navy);font-weight:600}
+.tp-service-detail__section-image{margin-top:24px}
+.tp-service-detail__metrics-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.tp-service-detail__metric{border-radius:999px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tp-service-detail__metric strong{font-size:2rem;color:#57b36e}
+.tp-service-detail__metric span{font-size:1.15rem;color:var(--sd-navy);font-weight:700}
+.tp-service-detail__support-wrap{display:grid;gap:24px}
+.tp-service-detail__inquiry{display:grid;grid-template-columns:minmax(280px,.78fr) minmax(420px,.92fr);gap:40px;align-items:center;max-width:1120px;margin:72px auto 0;padding:0 12px}
+.tp-service-detail__inquiry-copy{max-width:100%}
+.tp-service-detail__inquiry-copy h2{max-width:100%}
+.tp-service-detail__inquiry-form{border-radius:32px;padding:34px;max-width:690px;width:100%;margin:0 auto;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(246,248,255,.98));box-shadow:0 30px 60px rgba(18,27,60,.12)}
+.tp-service-detail__inquiry-form .mform{margin:0}
+.tp-service-detail__inquiry-form .fitem{margin-bottom:18px}
+.tp-service-detail__inquiry-form .fitemtitle{margin-bottom:8px;font-weight:700;color:var(--sd-navy);font-size:.98rem}
+.tp-service-detail__inquiry-form .fitemtitle label{margin:0}
+.tp-service-detail__inquiry-form input[type=text],.tp-service-detail__inquiry-form input[type=email],.tp-service-detail__inquiry-form textarea,.tp-service-detail__inquiry-form select{width:100%;padding:15px 18px;border-radius:18px;border:1px solid rgba(66,86,230,.16);background:#f7f9ff;transition:border-color .2s ease,box-shadow .2s ease,background-color .2s ease}
+.tp-service-detail__inquiry-form input[type=text]:focus,.tp-service-detail__inquiry-form input[type=email]:focus,.tp-service-detail__inquiry-form textarea:focus,.tp-service-detail__inquiry-form select:focus{outline:none;border-color:rgba(66,86,230,.44);box-shadow:0 0 0 4px rgba(66,86,230,.12);background:#fff}
+.tp-service-detail__inquiry-form textarea{min-height:156px;resize:vertical}
+.tp-service-detail__inquiry-form select{appearance:auto;max-width:none}
+.tp-service-detail__inquiry-form .btn,.tp-service-detail__inquiry-form input[type=submit]{background:linear-gradient(135deg,var(--sd-indigo),var(--sd-violet));border:0;color:#fff;border-radius:18px;padding:15px 24px;font-weight:700;min-width:160px;box-shadow:0 18px 28px rgba(66,86,230,.22)}
+.tp-service-detail__inquiry-form .btn:hover,.tp-service-detail__inquiry-form input[type=submit]:hover{filter:brightness(1.03);transform:translateY(-1px)}
+.tp-service-detail__inquiry-form .col-md-3,.tp-service-detail__inquiry-form .col-md-9{max-width:100%;flex:0 0 100%}
+.tp-service-detail__inquiry-form .felement{width:100%}
+.tp-service-detail__inquiry-form .form-control-feedback,.tp-service-detail__inquiry-form .invalid-feedback,.tp-service-detail__inquiry-form .error{font-size:.92rem;margin-top:6px}
+.tp-service-detail__inquiry-form .fdescription.required{margin-top:14px;color:var(--sd-text)}
+.tp-service-detail__support{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));overflow:hidden;border-radius:28px;background:linear-gradient(135deg,var(--sd-indigo),var(--sd-violet))}
+.tp-service-detail__support-card{padding:34px;color:#fff;border-right:1px solid rgba(255,255,255,.15)}
+.tp-service-detail__support-card:last-child{border-right:0}
+.tp-service-detail__support-card h3{color:#fff;font-size:1.3rem;margin:0 0 14px}
+.tp-service-detail__support-card p{color:rgba(255,255,255,.86)}
+.tp-service-detail__faq-item{border-radius:22px;padding:0 24px;margin-bottom:18px}
+.tp-service-detail__faq-item summary{cursor:pointer;list-style:none;font-weight:800;color:var(--sd-navy);padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.tp-service-detail__faq-item summary::-webkit-details-marker{display:none}
+.tp-service-detail__faq-answer{padding-bottom:22px;color:var(--sd-text);line-height:1.7;font-size:1.02rem}
+.tp-service-detail__faq-answer > *:last-child,.tp-service-detail__richtext > *:last-child{margin-bottom:0}
+.tp-service-detail__faq-answer ul,.tp-service-detail__faq-answer ol,.tp-service-detail__richtext ul,.tp-service-detail__richtext ol{padding-left:1.3rem;margin:0 0 1rem}
+.tp-service-detail__faq-answer p,.tp-service-detail__richtext p{margin:0 0 1rem}
+.tp-service-detail__preform-content{max-width:1120px;margin-left:auto;margin-right:auto}
+.tp-service-detail__richtext{background:#fff;border:1px solid rgba(66,86,230,.10);box-shadow:0 18px 38px rgba(18,27,60,.08);border-radius:28px;padding:30px;color:var(--sd-text);line-height:1.7;font-size:1.02rem}
+.tp-service-detail__faq-icon{position:relative;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;background:rgba(66,86,230,.08);color:var(--sd-indigo);flex:0 0 28px}
+.tp-service-detail__faq-icon::before,.tp-service-detail__faq-icon::after{content:"";position:absolute;background:currentColor;border-radius:999px;transition:transform .2s ease,opacity .2s ease}
+.tp-service-detail__faq-icon::before{width:12px;height:2px}
+.tp-service-detail__faq-icon::after{width:2px;height:12px}
+.tp-service-detail__faq-item[open] .tp-service-detail__faq-icon::after{opacity:0;transform:scaleY(.2)}
+.tp-service-detail__faq-media img,.tp-service-detail__cta-media img,.tp-service-detail__support-media img{min-height:320px}
+.tp-service-detail__cta{margin-top:54px;border-radius:34px;padding:34px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(220px,.8fr) auto;align-items:center;gap:24px;background:linear-gradient(135deg,rgba(18,27,60,.96),rgba(66,86,230,.94) 60%,rgba(145,111,247,.92));color:#fff}
+.tp-service-detail__cta h2,.tp-service-detail__cta p{color:#fff}
+.page-context-header{display:none !important;}
+@media (max-width:1100px){.tp-service-detail__hero-grid,.tp-service-detail__split,.tp-service-detail__faq,.tp-service-detail__metrics,.tp-service-detail__support{grid-template-columns:1fr 1fr}.tp-service-detail__inquiry{grid-template-columns:1fr;justify-items:center;text-align:center}.tp-service-detail__inquiry-copy{max-width:100%}.tp-service-detail__inquiry-copy h2{max-width:none}.tp-service-detail__points{grid-template-columns:1fr}.tp-service-detail__cta{grid-template-columns:1fr}}
+@media (max-width:767px){.tp-service-detail{margin:-1rem -.75rem 0}.tp-service-detail__shell{padding:0 16px}.tp-service-detail__hero-grid,.tp-service-detail__split,.tp-service-detail__faq,.tp-service-detail__metrics,.tp-service-detail__metrics-grid,.tp-service-detail__support,.tp-service-detail__points,.tp-service-detail__cta,.tp-service-detail__inquiry{grid-template-columns:1fr}.tp-service-detail__hero-media img,.tp-service-detail__hero-placeholder,.tp-service-detail__faq-media img,.tp-service-detail__cta-media img,.tp-service-detail__support-media img{min-height:280px}.tp-service-detail__support-card{border-right:0;border-bottom:1px solid rgba(255,255,255,.15)}.tp-service-detail__inquiry{gap:24px;margin-top:56px;padding:0}.tp-service-detail__inquiry-copy{text-align:left}.tp-service-detail__inquiry-form{padding:24px;border-radius:24px}}
+</style>

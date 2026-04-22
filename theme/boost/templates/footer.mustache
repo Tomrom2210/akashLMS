@@ -61,12 +61,14 @@
     <div class="footer-right">
       <div class="footer-down">
           <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1767950654/eLearnKranti%20Logo%20%281%29.png" class="logo me-1" alt="Pariksha Kranti" style="margin-bottom: 20px !important;">
-        <p>Join eLearnKranti, India's premier e-learning platform launched in 2025, empowering learners with cutting-edge skills for a dynamic future.</p>
+        <p>eLearnKranti is a digital learning and skilling platform developed as an educational initiative under its parent organisation, UG Alliance Foundation, a registered Non-Governmental Organisation (NGO) dedicated to education, skill development, and youth empowerment.</p>
       </div>
       <div class="footer-down">
         <h4>Quick Links</h4>
         <ul>
           <li> <a class="nav-link" href="{{ config.wwwroot }}/theme/boost/aboutus.php">About Us</a></li>
+          <li> <a class="nav-link" href="{{ config.wwwroot }}/theme/boost/team.php">Our Team</a></li>
+          <li> <a class="nav-link" href="{{ config.wwwroot }}/theme/boost/services.php">Services</a></li>
           <li> <a class="nav-link" href="{{ config.wwwroot }}/course/index.php">Explore</a></li>
           <li><a class="dropdown-item" href="{{ config.wwwroot }}/theme/boost/testimonials.php">Testimonials</a></li>
           <li><a class="nav-link" href="{{ config.wwwroot }}/theme/boost/contact.php">Contact</a></li>
@@ -81,8 +83,8 @@
       <div class="footer-down">
         <h4>Legal & Accessibility</h4>
         <ul>
-         <li><a href="https://elearnkranti.com/theme/boost/privacy-policy.php">Privacy Policy</a></li>
-          <li><a href="https://elearnkranti.com/theme/boost/terms.php">Terms</a></li>
+         <li><a href="{{ config.wwwroot }}/theme/boost/privacy-policy.php">Privacy Policy</a></li>
+          <li><a href="{{ config.wwwroot }}/theme/boost/terms.php">Terms</a></li>
           
           <li>Sitemap</li>
         </ul>
@@ -122,7 +124,9 @@
         </div>
       </div>
     </div>
+    <p style="text-align: center;">© 2026 All Rights Reserved by <a href="https://elearnkranti.com/">eLearnKranti</a>.</p>
   </div>
+
 </footer>
 
 <style>
@@ -169,6 +173,9 @@
   gap: 20px;
 }
 
+.footer-down {
+  text-align: left;
+}
 .footer-down h4 {
   font-size: 16px;
   margin-bottom: 10px;

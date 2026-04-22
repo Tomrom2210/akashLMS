@@ -88,6 +88,31 @@ function theme_boost_pluginfile($course, $cm, $context, $filearea, $args, $force
             $options['cacheability'] = 'public';
         }
         return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
+    } else if ($context->contextlevel == CONTEXT_SYSTEM && in_array($filearea, [
+        'serviceimage',
+        'serviceheroimage',
+        'serviceoverviewimage',
+        'servicemetricsimage',
+        'servicesupportimage',
+        'servicefaqimage',
+        'servicectaimage',
+        'teammemberimage',
+    ], true)) {
+        $itemid = (int)array_shift($args);
+        $filename = array_pop($args);
+        $filepath = $args ? '/' . implode('/', $args) . '/' : '/';
+
+        $fs = get_file_storage();
+        $file = $fs->get_file($context->id, 'theme_boost', $filearea, $itemid, $filepath, $filename);
+        if (!$file || $file->is_directory()) {
+            send_file_not_found();
+        }
+
+        if (!array_key_exists('cacheability', $options)) {
+            $options['cacheability'] = 'public';
+        }
+
+        send_stored_file($file, 0, 0, $forcedownload, $options);
     } else {
         send_file_not_found();
     }

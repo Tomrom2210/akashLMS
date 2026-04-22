@@ -1,190 +1,255 @@
 {{!
-    This file is part of Moodle - http://moodle.org/
-
-    Moodle is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    Moodle is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-}}
-{{!
-
     @template theme_boost/primary-drawer-mobile
-
-    This template renders the mobile version of the top navbar menu in a drawer.
-
-    Example context (json):
-    {
-        "output": {
-            "should_display_navbar_logo": true,
-            "get_compact_logo_url": "http://placekitten.com/50/50"
-        },
-        "mobileprimarynav": [
-            {
-                "text": "Dashboard",
-                "url": "/my",
-                "isactive": "true"
-            },
-            {
-                "text": "Site home",
-                "url": "/",
-                "isactive": "false"
-            },
-            {
-                "text": "My courses",
-                "url": "/course",
-                "isactive": "false"
-            }
-        ]
-    }
 }}
 
 {{< theme_boost/drawer }}
     {{$id}}theme_boost-drawers-primary{{/id}}
     {{$drawerclasses}}drawer drawer-left drawer-primary{{/drawerclasses}}
     {{$drawercloseonresize}}1{{/drawercloseonresize}}
+
     {{$drawerheading}}
-        {{# output.should_display_navbar_logo }}
-            <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1767950654/eLearnKranti%20Logo%20%281%29.png" class="logo py-1 h-100" alt="{{sitename}}">
-        {{/ output.should_display_navbar_logo }}
-        {{^ output.should_display_navbar_logo }}
-            <span class="sitename" title="{{{ sitename }}}">{{{ sitename }}}</span>
-        {{/ output.should_display_navbar_logo }}
+        {{#output.should_display_navbar_logo}}
+            <img src="https://elearnkranti.com/pluginfile.php/1/core_admin/logocompact/300x300/1767950654/eLearnKranti%20Logo%20%281%29.png"
+                 class="logo py-1 h-100"
+                 alt="{{sitename}}">
+        {{/output.should_display_navbar_logo}}
+
+        {{^output.should_display_navbar_logo}}
+            <span class="sitename" title="{{{sitename}}}">
+                {{{sitename}}}
+            </span>
+        {{/output.should_display_navbar_logo}}
     {{/drawerheading}}
+
     {{$drawercontent}}
-        <div class="list-group">
-            {{#mobileprimarynav}}
-                {{#haschildren}}
-                <a id="drop-down-{{sort}}" href="#" class="list-group-item list-group-item-action icons-collapse-expand {{^isopen}}collapsed {{/isopen}}d-flex" data-bs-toggle="collapse" data-bs-target="#drop-down-menu-{{sort}}" aria-expanded="{{#isopen}}true{{/isopen}}{{^isopen}}false{{/isopen}}" aria-controls="drop-down-menu-{{sort}}">
+    <div class="list-group">
+
+        <!-- Default Moodle Navigation -->
+        {{#mobileprimarynav}}
+
+            {{#haschildren}}
+                <a id="drop-down-{{sort}}"
+                   href="javascript:void(0);"
+                   class="list-group-item list-group-item-action icons-collapse-expand {{^isopen}}collapsed{{/isopen}} d-flex"
+                   data-bs-toggle="collapse"
+                   data-bs-target="#drop-down-menu-{{sort}}"
+                   aria-expanded="{{#isopen}}true{{/isopen}}{{^isopen}}false{{/isopen}}"
+                   aria-controls="drop-down-menu-{{sort}}">
+
                     {{{text}}}
+
                     <span class="ms-auto expanded-icon icon-no-margin mx-2">
                         {{#pix}} t/expanded, core {{/pix}}
-                        <span class="visually-hidden">
-                            {{#str}} collapse, core {{/str}}
-                        </span>
                     </span>
+
                     <span class="ms-auto collapsed-icon icon-no-margin mx-2">
                         {{#pix}} t/collapsed, core {{/pix}}
-                        <span class="visually-hidden">
-                            {{#str}} expand, core {{/str}}
-                        </span>
                     </span>
                 </a>
-                <div class="collapse {{#isopen}}show {{/isopen}}list-group-item p-0 border-0" role="menu" id="drop-down-menu-{{sort}}" aria-labelledby="drop-down-{{sort}}">
+
+                <div class="collapse {{#isopen}}show{{/isopen}} p-0 border-0"
+                     id="drop-down-menu-{{sort}}">
+
                     {{#children}}
                         {{^divider}}
-                             <a href="{{{url}}}" class="ps-5 {{^isactive}}bg-light{{/isactive}}{{#isactive}}active{{/isactive}} list-group-item list-group-item-action">{{{text}}}</a>
+                            <a href="{{{url}}}"
+                               class="ps-5 list-group-item list-group-item-action {{#isactive}}active{{/isactive}}">
+                                {{{text}}}
+                            </a>
                         {{/divider}}
                     {{/children}}
                 </div>
-                {{/haschildren}}
-                {{^haschildren}}
-                <a href="{{{url}}}" class="list-group-item list-group-item-action {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}" {{#isactive}}aria-current="true"{{/isactive}}>
+            {{/haschildren}}
+
+            {{^haschildren}}
+                <a href="{{{url}}}"
+                   class="list-group-item list-group-item-action {{#isactive}}active{{/isactive}}">
                     {{{text}}}
                 </a>
-                {{/haschildren}}
-            {{/mobileprimarynav}}
-            <a id="mobile-courses-toggle" href="#" class="list-group-item list-group-item-action icons-collapse-expand collapsed d-flex" data-bs-toggle="collapse" data-bs-target="#mobile-courses-menu" aria-expanded="false" aria-controls="mobile-courses-menu">
-                Courses
-                <span class="ms-auto expanded-icon icon-no-margin mx-2">
-                    {{#pix}} t/expanded, core {{/pix}}
-                    <span class="visually-hidden">
-                        {{#str}} collapse, core {{/str}}
-                    </span>
-                </span>
-                <span class="ms-auto collapsed-icon icon-no-margin mx-2">
-                    {{#pix}} t/collapsed, core {{/pix}}
-                    <span class="visually-hidden">
-                        {{#str}} expand, core {{/str}}
-                    </span>
-                </span>
-            </a>
-           <!-- <div class="collapse list-group-item p-0 border-0" role="menu" id="mobile-courses-menu" aria-labelledby="mobile-courses-toggle">
-                <a href="{{ config.wwwroot }}/course/index.php" class="ps-5 list-group-item list-group-item-action">
-                    All Courses
+            {{/haschildren}}
+
+        {{/mobileprimarynav}}
+
+
+        <!-- Explore Dropdown -->
+        <button id="mobile-categories-toggle"
+                type="button"
+                class="list-group-item list-group-item-action icons-collapse-expand collapsed d-flex border-0 w-100 text-start"
+                data-mobile-collapse="true"
+                data-bs-target="#mobile-categories-menu"
+                aria-expanded="false"
+                aria-controls="mobile-categories-menu">
+
+            Explore
+
+            <span class="ms-auto expanded-icon icon-no-margin mx-2">
+                {{#pix}} t/expanded, core {{/pix}}
+            </span>
+
+            <span class="ms-auto collapsed-icon icon-no-margin mx-2">
+                {{#pix}} t/collapsed, core {{/pix}}
+            </span>
+        </button>
+
+        <div class="collapse p-0 border-0"
+             id="mobile-categories-menu">
+
+            {{#navcategories}}
+                <a href="{{url}}"
+                   class="ps-5 list-group-item list-group-item-action">
+                    {{{name}}}
                 </a>
-                {{#navcourses}}
-                    <a href="{{url}}" class="ps-5 list-group-item list-group-item-action">
-                        {{{name}}}
-                    </a>
-                {{/navcourses}}
-                {{^navcourses}}
-                    <span class="ps-5 list-group-item text-muted">
-                        No courses yet
-                    </span>
-                {{/navcourses}}
-            </div>-->
-            <a id="mobile-categories-toggle" href="#" class="list-group-item list-group-item-action icons-collapse-expand collapsed d-flex" data-bs-toggle="collapse" data-bs-target="#mobile-categories-menu" aria-expanded="false" aria-controls="mobile-categories-menu">
-                Explore 
-                <span class="ms-auto expanded-icon icon-no-margin mx-2">
-                    {{#pix}} t/expanded, core {{/pix}}
-                    <span class="visually-hidden">
-                        {{#str}} collapse, core {{/str}}
-                    </span>
+            {{/navcategories}}
+
+            {{^navcategories}}
+                <span class="ps-5 list-group-item text-muted">
+                    No categories yet
                 </span>
-                <span class="ms-auto collapsed-icon icon-no-margin mx-2">
-                    {{#pix}} t/collapsed, core {{/pix}}
-                    <span class="visually-hidden">
-                        {{#str}} expand, core {{/str}}
-                    </span>
-                </span>
-            </a>
-            <div class="collapse list-group-item p-0 border-0" role="menu" id="mobile-categories-menu" aria-labelledby="mobile-categories-toggle">
-                
-                {{#navcategories}}
-                    <a href="{{url}}" class="ps-5 list-group-item list-group-item-action">
-                        {{{name}}}
-                    </a>
-                {{/navcategories}}
-                {{^navcategories}}
-                    <span class="ps-5 list-group-item text-muted">
-                        No categories yet
-                    </span>
-                {{/navcategories}}
-            </div>
-            <a href="{{ config.wwwroot }}/theme/boost/aboutus.php" class="list-group-item list-group-item-action">
-                About Us
-            </a>
-            <a href="{{ config.wwwroot }}/theme/boost/contact.php" class="list-group-item list-group-item-action">
-                Contact
-            </a>
-            <a href="{{ config.wwwroot }}/theme/boost/testimonials.php" class="list-group-item list-group-item-action">
-                Testimonials
-            </a>
-            <a href="{{ config.wwwroot }}/login/index.php" class="list-group-item list-group-item-action">
-                Log In
-            </a>
+            {{/navcategories}}
         </div>
-        <style>
-            #theme_boost-drawers-primary.drawer {
-                z-index: 1045;
+
+
+        <!-- Static Links -->
+        <a href="{{config.wwwroot}}/theme/boost/aboutus.php"
+           class="list-group-item list-group-item-action">
+            About Us
+        </a>
+
+        <a href="{{config.wwwroot}}/theme/boost/team.php"
+           class="list-group-item list-group-item-action">
+            Team
+        </a>
+
+
+        <!-- Services Dropdown -->
+        <button id="mobile-services-toggle"
+                type="button"
+                class="list-group-item list-group-item-action icons-collapse-expand collapsed d-flex border-0 w-100 text-start"
+                data-mobile-collapse="true"
+                data-bs-target="#mobile-services-menu"
+                aria-expanded="false"
+                aria-controls="mobile-services-menu">
+
+            Services
+
+            <span class="ms-auto expanded-icon icon-no-margin mx-2">
+                {{#pix}} t/expanded, core {{/pix}}
+            </span>
+
+            <span class="ms-auto collapsed-icon icon-no-margin mx-2">
+                {{#pix}} t/collapsed, core {{/pix}}
+            </span>
+        </button>
+
+        <div class="collapse p-0 border-0"
+             id="mobile-services-menu">
+
+            {{#navservices}}
+                <a href="{{url}}"
+                   class="ps-5 list-group-item list-group-item-action">
+                    {{{name}}}
+                </a>
+            {{/navservices}}
+
+            {{^navservices}}
+                <span class="ps-5 list-group-item text-muted">
+                    No services available
+                </span>
+            {{/navservices}}
+        </div>
+
+
+        <!-- Remaining Links -->
+        <a href="{{config.wwwroot}}/theme/boost/contact.php"
+           class="list-group-item list-group-item-action">
+            Contact
+        </a>
+
+        <a href="{{config.wwwroot}}/theme/boost/testimonials.php"
+           class="list-group-item list-group-item-action">
+            Testimonials
+        </a>
+
+        <a href="{{config.wwwroot}}/login/index.php"
+           class="list-group-item list-group-item-action">
+            Log In
+        </a>
+
+    </div>
+
+
+    <style>
+        #theme_boost-drawers-primary.drawer {
+            z-index: 1045;
+            top: 15px;
+        }
+
+        #theme_boost-drawers-primary .drawerheader {
+            margin-top: var(--offerbar-height, 44px);
+        }
+
+        #theme_boost-drawers-primary .list-group-item {
+            font-weight: 600;
+            border: 0;
+            border-bottom: 1px solid rgba(75, 90, 237, 0.08);
+            padding: 14px 18px;
+        }
+
+        #theme_boost-drawers-primary .list-group-item.active {
+            background-image: linear-gradient(275deg, #2b2b4d);
+            color: #fff;
+        }
+
+        #theme_boost-drawers-primary .collapse .list-group-item {
+            background: #f8f8ff;
+            font-weight: 500;
+        }
+
+        button.list-group-item {
+            background: white;
+        }
+    </style>
+    {{#js}}
+    require(['theme_boost/bootstrap/collapse'], function(Collapse) {
+        const drawer = document.getElementById('theme_boost-drawers-primary');
+        if (!drawer || drawer.dataset.mobileCollapseBound === 'true') {
+            return;
+        }
+
+        drawer.dataset.mobileCollapseBound = 'true';
+
+        const syncButtonState = (button, isOpen) => {
+            button.classList.toggle('collapsed', !isOpen);
+            button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        };
+
+        drawer.querySelectorAll('[data-mobile-collapse="true"]').forEach((button) => {
+            const targetSelector = button.getAttribute('data-bs-target');
+            const target = targetSelector ? drawer.querySelector(targetSelector) : null;
+
+            if (!target) {
+                return;
             }
-            #theme_boost-drawers-primary .drawerheader {
-                margin-top: var(--offerbar-height, 44px);
-            }
-            #theme_boost-drawers-primary .list-group-item {
-                font-weight: 600;
-                border: 0;
-                border-bottom: 1px solid rgba(75, 90, 237, 0.08);
-                padding: 14px 18px;
-            }
-            #theme_boost-drawers-primary .list-group-item.active {
-                background-image: linear-gradient(275deg, #2b2b4d);
-                border-color: transparent;
-                color: #fff;
-            }
-            #theme_boost-drawers-primary .collapse .list-group-item {
-                background: #f8f8ff;
-                font-weight: 500;
-            }
-        </style>
+
+            const collapse = Collapse.getOrCreateInstance(target, {toggle: false});
+            syncButtonState(button, target.classList.contains('show'));
+
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                collapse.toggle();
+            });
+
+            target.addEventListener('shown.bs.collapse', () => {
+                syncButtonState(button, true);
+            });
+
+            target.addEventListener('hidden.bs.collapse', () => {
+                syncButtonState(button, false);
+            });
+        });
+    });
+    {{/js}}
     {{/drawercontent}}
+
     {{$drawerstate}}show-drawer-primary{{/drawerstate}}
-{{/ theme_boost/drawer}}
+{{/theme_boost/drawer}}

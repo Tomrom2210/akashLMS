@@ -26,6 +26,7 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/behat/lib.php');
 require_once($CFG->dirroot . '/course/lib.php');
+require_once($CFG->dirroot . '/theme/boost/classes/local/service_manager.php');
 
 global $DB;
 
@@ -145,7 +146,8 @@ $templatecontext = [
     'headercontent' => $headercontent,
     'addblockbutton' => $addblockbutton,
     'navcourses' => $navcoursedata,
-    'navcategories' => $navcategoriesdata
+    'navcategories' => $navcategoriesdata,
+    'navservices' => \theme_boost\local\service_manager::get_nav_services()
 ];
 
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);

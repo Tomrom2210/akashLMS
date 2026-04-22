@@ -22,6 +22,20 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$ADMIN->add('themes', new admin_externalpage(
+    'theme_boost_services',
+    'Manage services',
+    new moodle_url('/theme/boost/manage_services.php'),
+    'moodle/site:config'
+));
+
+$ADMIN->add('themes', new admin_externalpage(
+    'theme_boost_team',
+    'Manage team',
+    new moodle_url('/theme/boost/manage_team.php'),
+    'moodle/site:config'
+));
+
 if ($ADMIN->fulltree) {
     $settings = new theme_boost_admin_settingspage_tabs('themesettingboost', get_string('configtitle', 'theme_boost'));
     $page = new admin_settingpage('theme_boost_general', get_string('generalsettings', 'theme_boost'));
@@ -88,6 +102,18 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configcolourpicker($name, $title, $description, '');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
+
+    $page->add(new admin_setting_heading(
+        'theme_boost/servicesmanager',
+        'Services',
+        html_writer::link(new moodle_url('/theme/boost/manage_services.php'), 'Manage services')
+    ));
+
+    $page->add(new admin_setting_heading(
+        'theme_boost/teammanager',
+        'Team',
+        html_writer::link(new moodle_url('/theme/boost/manage_team.php'), 'Manage team')
+    ));
 
     // Must add the page after definiting all the settings!
     $settings->add($page);

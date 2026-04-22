@@ -23,6 +23,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
+require_once($CFG->dirroot . '/theme/boost/classes/local/service_manager.php');
 
 $bodyattributes = $OUTPUT->body_attributes([]);
 $templatecontext = [
@@ -36,6 +37,7 @@ $templatecontext = [
     'showloginbutton' => !isloggedin() || isguestuser(),
     'logouturl' => (new moodle_url('/login/logout.php', ['sesskey' => sesskey()]))->out(false),
     'bodyattributes' => $bodyattributes,
+    'navservices' => \theme_boost\local\service_manager::get_nav_services(),
 ];
 
 if (empty($PAGE->layout_options['noactivityheader'])) {

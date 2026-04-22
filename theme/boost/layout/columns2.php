@@ -25,6 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/behat/lib.php');
+require_once($CFG->dirroot . '/theme/boost/classes/local/service_manager.php');
 
 // Add block button in editing mode.
 $addblockbutton = $OUTPUT->addblockbutton();
@@ -79,6 +80,7 @@ $templatecontext = [
     'headercontent' => $headercontent,
     'overflow' => $overflow,
     'addblockbutton' => $addblockbutton,
+    'navservices' => \theme_boost\local\service_manager::get_nav_services(),
 ];
 
 echo $OUTPUT->render_from_template('theme_boost/columns2', $templatecontext);

@@ -1,0 +1,120 @@
+<section class="tp-team-page">
+  <div class="tp-team-hero">
+    <div class="tp-team-shell">
+      <div class="tp-team-hero__content">
+        <span class="tp-team-pill">{{eyebrow}}</span>
+        <h1>{{heading}}</h1>
+        <p class="tp-team-lead">{{intro}}</p>
+        <div class="tp-team-hero__meta">
+          <div class="tp-team-meta-card">
+            <strong>{{membercount}}</strong>
+            <span>Visible team members</span>
+          </div>
+          <div class="tp-team-meta-card">
+            <strong>Dynamic</strong>
+            <span>Lorem Ipsum is simply dummy text of the printing and typesetting</span>
+          </div>
+        </div>
+      </div>
+      <div class="tp-team-hero__aside">
+        <div class="tp-team-highlight">
+          <span class="tp-team-pill tp-team-pill--soft">Separate Team Page</span>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tp-team-shell">
+    {{#hasmembers}}
+    <section class="tp-team-grid">
+      {{#members}}
+      <article class="tp-team-card {{accentclass}}">
+        <div class="tp-team-card__media">
+          {{#hasimage}}
+          <img src="{{imageurl}}" alt="{{name}}">
+          {{/hasimage}}
+          {{^hasimage}}
+          <div class="tp-team-card__initials">{{initials}}</div>
+          {{/hasimage}}
+        </div>
+        <div class="tp-team-card__body">
+          <h2>{{name}}</h2>
+          <p class="tp-team-card__role">{{role}}</p>
+          <p class="tp-team-card__bio">{{bio}}</p>
+          <div class="tp-team-card__links">
+            {{#hasemail}}<a href="{{emaillink}}">{{email}}</a>{{/hasemail}}
+            {{#hasphone}}<a href="{{phonelink}}">{{phone}}</a>{{/hasphone}}
+            {{#hasprofileurl}}<a href="{{profileurl}}" target="_blank" rel="noopener">Profile</a>{{/hasprofileurl}}
+          </div>
+        </div>
+      </article>
+      {{/members}}
+    </section>
+    {{/hasmembers}}
+
+    {{^hasmembers}}
+    <section class="tp-team-empty">
+      <h2>{{emptyheading}}</h2>
+      <p>{{emptysubcopy}}</p>
+    </section>
+    {{/hasmembers}}
+
+    <section class="tp-team-cta">
+      <div>
+        <h2>{{ctaheading}}</h2>
+        <p>{{ctacopy}}</p>
+      </div>
+      <div class="tp-team-cta__actions">
+        <a href="{{contacturl}}" class="tp-team-btn tp-team-btn--primary">Contact us</a>
+      </div>
+    </section>
+  </div>
+</section>
+
+<style>
+.tp-team-page{--tp-team-ink:#132238;--tp-team-soft:#60708b;--tp-team-line:rgba(19,34,56,.1);color:var(--tp-team-ink);background:radial-gradient(circle at top left,rgba(255,183,77,.18),transparent 28%),radial-gradient(circle at top right,rgba(47,109,245,.12),transparent 32%),linear-gradient(180deg,#fffdf8 0%,#f6f9ff 48%,#ffffff 100%);margin:-1rem -1.5rem 0;padding-bottom:3rem}
+#page.drawers .main-inner,#page.drawers div[role="main"]{padding-left:0!important;padding-right:0!important}
+.header-maxwidth,#page-header,.secondary-navigation,.tertiary-navigation,.page-context-header{display:none!important}
+.tp-team-shell{max-width:1240px;margin:0 auto;padding:0 24px}
+.tp-team-hero{padding:72px 0 44px}
+.tp-team-hero .tp-team-shell{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:28px;align-items:center}
+.tp-team-pill{display:inline-flex;align-items:center;padding:10px 18px;border-radius:999px;background:rgba(47,109,245,.1);color:#2554cc;font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.tp-team-pill--soft{background:rgba(255,255,255,.16);color:#fff}
+.tp-team-hero h1{font-size:clamp(2.4rem,4.6vw,4.8rem);line-height:1;letter-spacing:-.045em;margin:16px 0;font-weight:900;max-width:740px}
+.tp-team-lead,.tp-team-card__bio,.tp-team-cta p,.tp-team-adminhint,.tp-team-highlight p,.tp-team-empty p{color:var(--tp-team-soft);font-size:1.02rem;line-height:1.75}
+.tp-team-hero__meta,.tp-team-grid{display:grid;gap:20px}
+.tp-team-hero__meta{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:28px}
+.tp-team-meta-card,.tp-team-card,.tp-team-highlight,.tp-team-cta,.tp-team-empty{background:rgba(255,255,255,.86);border:1px solid var(--tp-team-line);box-shadow:0 22px 50px rgba(18,34,56,.08);backdrop-filter:blur(10px)}
+.tp-team-meta-card{border-radius:22px;padding:22px}.tp-team-meta-card strong{display:block;font-size:1.8rem;font-weight:900}.tp-team-meta-card span{color:var(--tp-team-soft)}
+.tp-team-highlight{border-radius:32px;padding:34px;background:linear-gradient(135deg,#19325c,#2554cc 62%,#ff9b4a);color:#fff}.tp-team-highlight p{color:rgba(255,255,255,.82);margin:16px 0 0}
+.tp-team-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:12px}
+.tp-team-card{border-radius:28px;overflow:hidden}
+.tp-team-card__media{height:280px;background:linear-gradient(135deg,#e9f1ff,#fff2e4);display:flex;align-items:center;justify-content:center}
+.tp-team-card__media img{width:100%;height:100%;object-fit:cover}
+.tp-team-card__initials{display:inline-flex;width:110px;height:110px;border-radius:28px;align-items:center;justify-content:center;font-size:2rem;font-weight:900;color:#fff;background:linear-gradient(135deg,#19325c,#ff9b4a)}
+.tp-team-card__body{padding:26px}
+.tp-team-card__body h2{font-size:1.4rem;line-height:1.2;margin:0 0 6px;font-weight:800}
+.tp-team-card__role{color:#2554cc;font-weight:700;margin:0 0 14px}
+.tp-team-card__links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.tp-team-card__links a,.tp-team-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-weight:700;border-radius:999px;transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease}
+.tp-team-card__links a{padding:10px 14px;background:#f4f7fc;color:var(--tp-team-ink)}
+.tp-team-card__links a:hover,.tp-team-btn:hover{transform:translateY(-2px)}
+.tp-team-card.is-sky .tp-team-card__media{background:linear-gradient(135deg,#dff3ff,#f7fbff)}
+.tp-team-card.is-amber .tp-team-card__media{background:linear-gradient(135deg,#fff0cc,#fff9eb)}
+.tp-team-card.is-rose .tp-team-card__media{background:linear-gradient(135deg,#ffe0e8,#fff7f9)}
+.tp-team-card.is-emerald .tp-team-card__media{background:linear-gradient(135deg,#dbf7ec,#f7fffb)}
+.tp-team-card.is-indigo .tp-team-card__media{background:linear-gradient(135deg,#e6e7ff,#f8f8ff)}
+.tp-team-card.is-slate .tp-team-card__media{background:linear-gradient(135deg,#ebeff5,#fafcff)}
+.tp-team-empty{margin-top:12px;border-radius:30px;padding:42px;text-align:center}
+.tp-team-cta{margin-top:40px;border-radius:34px;padding:34px;display:flex;align-items:center;justify-content:space-between;gap:24px;background:linear-gradient(135deg,#132238,#2554cc 62%,#ff9b4a);color:#fff}
+.tp-team-cta h2{font-size:clamp(1.8rem,3vw,3rem);margin:0 0 12px;font-weight:900}
+.tp-team-cta p{color:rgba(255,255,255,.84);margin:0}
+.tp-team-cta__actions{display:flex;flex-wrap:wrap;gap:14px}
+.tp-team-btn{min-height:50px;padding:0 22px}
+.tp-team-btn--primary{background:#fff;color:#132238;box-shadow:0 18px 30px rgba(0,0,0,.16)}
+.tp-team-btn--ghost{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff}
+.tp-team-adminhint{margin-top:18px;text-align:center}
+@media (max-width:1100px){.tp-team-hero .tp-team-shell,.tp-team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:767px){.tp-team-page{margin:-1rem -.75rem 0}.tp-team-shell{padding:0 16px}.tp-team-hero{padding-top:46px}.tp-team-hero .tp-team-shell,.tp-team-grid,.tp-team-hero__meta{grid-template-columns:1fr}.tp-team-highlight,.tp-team-card,.tp-team-empty,.tp-team-cta{border-radius:24px}.tp-team-cta{flex-direction:column;align-items:flex-start}}
+</style>
