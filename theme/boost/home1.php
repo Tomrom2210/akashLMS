@@ -133,7 +133,7 @@ foreach (array_values($homecourses) as $index => $course) {
     // Calculate MRP (20% higher than price if price is not Free)
     $mrp = '';
     if (isset($pricing['amount']) && $pricing['amount'] > 0) {
-        $mrp_amount = round($pricing['amount'] * 1.2, 2);
+        $mrp_amount = round($pricing['amount'] * 2.0, 2);
         $mrp = $formatprice($mrp_amount, $pricing['currency'] ?? 'INR');
     }
 
@@ -211,7 +211,7 @@ if ($featuredcourserecord) {
     $featuredcustomsecondarytag = $featuredcustomfields['banner_secondary_tag'] ?? 'Popular';
 
     if ($featuredmrp === '' && !empty($featuredpricing['amount'])) {
-        $featuredmrp = $formatprice(round($featuredpricing['amount'] * 1.2, 2), $featuredpricing['currency'] ?? 'INR');
+        $featuredmrp = $formatprice(round($featuredpricing['amount'] * 2.0, 2), $featuredpricing['currency'] ?? 'INR');
     }
 
     $featuredcourse = [
@@ -303,7 +303,7 @@ if ($secondaryfeaturedcourserecord) {
     $secondaryfeaturedsecondarytag = $secondaryfeaturedcustomfields['banner_secondary_tag'] ?? 'Highest Rated';
 
     if ($secondaryfeaturedmrp === '' && !empty($secondaryfeaturedpricing['amount'])) {
-        $secondaryfeaturedmrp = $formatprice(round($secondaryfeaturedpricing['amount'] * 1.2, 2),
+        $secondaryfeaturedmrp = $formatprice(round($secondaryfeaturedpricing['amount'] * 2.0, 2),
             $secondaryfeaturedpricing['currency'] ?? 'INR');
     }
 

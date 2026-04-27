@@ -82,7 +82,7 @@ foreach ($enrolinstances as $instance) {
         $currency = !empty($instance->currency) ? $instance->currency : 'INR';
         $amount = (float)$instance->cost;
         $price = ($currency === 'INR' ? '&#8377; ' : $currency . ' ') . number_format($amount, 2);
-        $mrp_amount = round($amount * 1.2, 2);
+        $mrp_amount = round($amount * 2.0, 2);
         $mrp = ($currency === 'INR' ? '&#8377; ' : $currency . ' ') . number_format($mrp_amount, 2);
         break;
     }
